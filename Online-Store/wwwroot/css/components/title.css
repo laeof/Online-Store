@@ -1,0 +1,39 @@
+.title {
+    font-family: 'Kyiv*Type Serif';
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 38px;
+    color: #000000;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+p.title {
+    font-family: 'Kyiv*Type Serif';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+}
+
+p.subtitle {
+    font-family: 'Kyiv*Type Serif';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 17px;
+    color: rgb(148, 141, 141);
+}
+
+a {
+    font-family: 'Kyiv*Type Serif';
+    font-style: normal;
+    font-weight: 400;
+    transition: all 0.2s ease-in-out;
+}
+
+a:hover {
+    font-size: 20px;
+    font-weight: 500;
+}

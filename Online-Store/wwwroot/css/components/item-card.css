@@ -1,0 +1,116 @@
+.item-card {
+    margin-bottom: 30px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 16px rgba(9, 24, 26, 0.04);
+    border-radius: 12px;
+    padding: 10px;
+    max-width: 300px;
+}
+
+.item-card .pic {
+    max-width: 300px;
+    max-height: 230px;
+}
+
+.item-card .name {
+    text-align: left;
+    font-family: 'Kyiv*Type Serif';
+    font-style: normal;
+    font-weight: 550;
+    font-size: 20px;
+    line-height: 19px;
+    margin-top: 5px;
+    color: #000000;
+}
+
+    .item-card .description {
+        display: none;
+        padding: 10px;
+        margin-left: -10px;
+        margin-top: 10px;
+        font-family: 'Kyiv*Type Serif', sans-serif;
+        font-weight: 200;
+        font-size: 12px;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        letter-spacing: 1.2px;
+        text-align: left;
+        line-height: 23px;
+        max-width: 293px;
+        background-color: #f0f0f0;
+        box-shadow: 0px 0px 25px rgba(9, 24, 26, 0.04);
+        opacity: 1;
+    }
+
+    .item-card:hover .description {
+        display: block;
+        box-shadow: 0px 10px 25px rgba(9, 24, 26, 0.04);
+        position: absolute;
+    }
+
+    .item-card:hover .pic {
+        content: url(/img/jpg/monitor2.jpg);
+    }
+
+    .item-card:hover {
+        background-color: #f0f0f0;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        box-shadow: 0px -10px 25px rgba(9, 24, 26, 0.04);
+    }
+
+.item-card .catcash{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.item-card .catcash .subtitle {
+    justify-content: flex-start;
+}
+
+.item-card .catcash .name{
+    justify-content: flex-end;
+}
+
+@media screen and (max-width: 1024px) {
+    .item-card .name{
+        font-size: 18px;
+        line-height: 20px;
+    }
+    .item-card .catcash .subtitle {
+        font-size: 15px;
+        line-height: 15px;
+    }
+
+    .item-card .catcash .name{
+        font-size: 16px;
+        line-height: 16px;
+    }
+
+    .item-card {
+        max-width: 200px;
+    }
+
+    .item-card .pic {
+        max-width: 180px;
+    }
+
+    .item-card .description {
+        max-width: 200px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .item-card {
+        max-width: 180px;
+    }
+
+    .item-card .pic {
+        max-width: 160px;
+    }
+
+    .item-card .description {
+        max-width: 180px;
+    } 
+}

@@ -1,0 +1,35 @@
+.banners {
+    border-top: 5px solid #000000;
+    text-align: center;
+}
+
+.banners .ban {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.banners .link img {
+    max-width: 300px;
+    max-height: 450px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.banners img:not(:last-child) {
+    margin-right: 30px;
+}
+
+@media screen and (max-width: 768px){
+    .banners .ban {
+        margin-right: 0%;
+        margin-left: 0%;
+
+    }
+    .banners .link img {
+        max-width: 160px;
+        max-height: 240px;
+    }
+}

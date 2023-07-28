@@ -1,0 +1,45 @@
+.deliverchoice {
+    display: flex;
+    padding: 10px;
+    padding-right: 0px;
+    background-color: #e4e4e4;
+    justify-content: space-between;
+}
+
+.deliverchoice div {
+    display: flex;
+    align-items: center;
+}
+
+.deliverchoice div:last-child {
+    max-width: 100px;
+}
+
+.deliverchoice div:first-child p {
+    font-family: 'Kyiv*Type Serif';
+    font-style: normal;
+    font-weight: 350;
+    font-size: 16px;
+    line-height: 19px;
+    padding-left: 14px;
+    margin-right: 10px;
+    color: #000000;
+}
+
+.deliverchoice div:last-child p {
+    font-family: 'Kyiv*Type Serif';
+    font-style: normal;
+    font-weight: 350;
+    font-size: 14px;
+    line-height: 19px;
+    color: #5D5D5D;
+}
+
+.deliverchoice div p {
+    font-family: 'Kyiv*Type Serif';
+    font-style: normal;
+    font-weight: 350;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+}

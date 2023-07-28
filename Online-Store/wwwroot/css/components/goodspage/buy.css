@@ -1,0 +1,28 @@
+.buy{
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 5%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.buy .title{
+    padding: 0;
+    margin: 0;
+    font-family: 'Kyiv*Type Serif';
+    font-style: normal;
+    font-weight: 600;
+}
+
+.buy div{
+    display: flex;
+    align-items: center;
+}
+
+.buy div img:last-child:hover{
+    content: url("/img/svg/Favorite_light_filled.svg");
+}
+
+.buy>*:not(:last-child){
+    margin-right: 15px;
+}

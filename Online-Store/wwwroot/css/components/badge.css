@@ -1,0 +1,27 @@
+.badge {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+}
+
+.badge img {
+    padding-right: 5px;
+}
+
+.badge.green .subtitle {
+    color: rgb(2, 128, 2);
+}
+
+.badge.gray {
+    background-color: #808080;
+    margin-right: 10px;
+    padding: 5px;
+    padding-right: 15px;
+    border-radius: 6px;
+}
+
+.badge.gray .title{
+    color: #FFFFFF;
+    font-weight: 300;
+    font-size: 18px;
+}

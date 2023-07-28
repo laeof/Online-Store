@@ -1,0 +1,9 @@
+label {
+    font-family: 'Kyiv*Type Serif';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 14px;
+    color: #252525;
+    transition: all 0.2s ease-in-out;
+}

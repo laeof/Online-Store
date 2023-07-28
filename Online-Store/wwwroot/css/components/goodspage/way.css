@@ -1,0 +1,28 @@
+.way {
+    border-top: 5px solid #000000;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.linkrow {
+    margin-left: 20%;
+    display: flex;
+    font-family: 'Kyiv*Type Serif';
+    font-weight: 750;
+    font-size: 17px;
+    line-height: 17px;
+}
+
+.linkrow>*:not(:last-child) {
+    color: #1a1a1a;
+}
+
+.linkrow>*:last-child {
+    color: #9A9A9A;
+}
+
+@media screen and (max-width: 1366px) {
+    .linkrow {
+        margin-left: 15%;
+    }
+}

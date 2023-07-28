@@ -1,0 +1,15 @@
+@media screen and (max-width: 768px) {
+
+    .navigation.is-active .nav {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+
+    .navigation .nav .list .item {
+        margin: 0;
+        padding: 0;
+        color: #FFFFFF;
+        margin-bottom: 30px;
+        background-color: transparent;
+    }
+}

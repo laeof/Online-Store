@@ -1,0 +1,32 @@
+@import "container.css";
+@import "title.css";
+@import "header.css";
+@import "logo.css";
+@import "input.css";
+@import "search.css";
+@import "language.css";
+@import "button.css";
+@import "item-card.css";
+@import "footer.css";
+@import "badge.css";
+@import "form.css";
+@import "label.css";
+@import "content.css";
+@import "nav.css";
+@import "navigation.css";
+
+@import "mainpage/category.css";
+@import "mainpage/banners.css";
+@import "mainpage/novelties.css";
+@import "mainpage/popular.css";
+@import "mainpage/blog.css";
+
+@import "goodspage/way.css";
+@import "goodspage/goods.css";
+@import "goodspage/goodnav.css";
+@import "goodspage/buy.css";
+@import "goodspage/delivery.css";
+@import "goodspage/deliverchoice.css";
+@import "goodspage/anotherreview.css";
+
+@import "authpage/regform.css";

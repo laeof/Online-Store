@@ -1,0 +1,28 @@
+.popular {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 90px;
+    border-top: 5px solid #000000;
+}
+
+.popular .nov {
+    width: 100%;
+    text-align: center;
+}
+
+.popular .nov .list {
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+@media screen and (max-width: 1024px) {
+    .popular .nov .list {
+        margin-right: 3%;
+        margin-left: 3%;
+    }
+}

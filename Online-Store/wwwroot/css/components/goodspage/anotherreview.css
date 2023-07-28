@@ -1,0 +1,113 @@
+.anotherreview {
+    border-top: 5px solid #000000;
+    display: flex;
+    margin-bottom: 70px;
+    padding-top: 30px;
+}
+
+.anotherreview .another {
+    margin-left: 10%;
+    width: 40%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.another .title {
+    font-size: 25px;
+    margin-top: 0;
+}
+
+.another .list {
+    display: flex;
+    justify-content: center;
+}
+
+.another .list .item-card {
+    max-width: 250px;
+}
+
+.another .list .item-card .pic {
+    max-width: 230px;
+}
+
+.another .list .item-card .description {
+    max-width: 250px;
+}
+
+.review {
+    margin-right: 15%;
+    max-width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #c2c2c2;
+}
+
+.review .stars{
+    margin-top: -20px;
+}
+
+.review .stars>*:not(:last-child) {
+    margin-right: 30px;
+}
+
+.review input{
+    width: 100%;
+    border: 0;
+    border-radius: 0;
+}
+
+@media screen and (max-width: 1500px) {
+    
+}
+
+@media screen and (max-width: 1366px) {
+    .another .title {
+        font-size: 25px;
+    }
+
+    .another {
+        margin-left: 7%;
+        max-width: 40%;
+    }
+
+    .review {
+        margin-right: 7%;
+        max-width: 40%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .another .list .item-card {
+        max-width: 200px;
+    }
+
+    .another .list .item-card .pic {
+        max-width: 180px;
+    }
+
+    .another .list .item-card .description {
+        max-width: 200px;
+    }
+
+    .another .title {
+        font-size: 23px;
+    }
+    
+}
+
+@media screen and (max-width: 768px) {
+    .another .item-card {
+        max-width: 180px;
+    }
+
+    .another .item-card .pic {
+        max-width: 160px;
+    }
+
+    .another .item-card .description {
+        max-width: 180px;
+    }
+}

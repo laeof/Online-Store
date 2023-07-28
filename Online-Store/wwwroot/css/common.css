@@ -1,0 +1,15 @@
+body {
+    font-family: 'Kyiv*Type Serif', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #000000;
+}
+
+body.disable-scroll{
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}

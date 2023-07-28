@@ -1,0 +1,42 @@
+.blog {
+    border-top: 5px solid #000000;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.blog .blogdiv h2{
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.blog .blogdiv {
+    margin-right: 10%;
+    margin-left: 10%;
+    text-align: center;
+}
+
+.blog .blogdiv .list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.blog .blogdiv .list .item {
+    max-width: 300px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.blog .blogdiv .list .item img{
+    width: 300px;
+    height: 300px;
+}
+
+.blog .blogdiv .subtitle {
+    font-family: 'Kyiv*Type Serif';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 19px;
+    color: #5F5F5F;
+}
