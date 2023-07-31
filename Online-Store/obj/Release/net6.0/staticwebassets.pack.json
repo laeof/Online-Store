@@ -1,0 +1,433 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\common.css",
+      "PackagePath": "staticwebassets\\css\\common.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\additional\\additional-section.css",
+      "PackagePath": "staticwebassets\\css\\components\\additional\\additional-section.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\additional\\main.css",
+      "PackagePath": "staticwebassets\\css\\components\\additional\\main.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\additional\\rate.css",
+      "PackagePath": "staticwebassets\\css\\components\\additional\\rate.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\banners\\banners-section.css",
+      "PackagePath": "staticwebassets\\css\\components\\banners\\banners-section.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\banners\\main.css",
+      "PackagePath": "staticwebassets\\css\\components\\banners\\main.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\blog\\blog-card.css",
+      "PackagePath": "staticwebassets\\css\\components\\blog\\blog-card.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\blog\\blog-section.css",
+      "PackagePath": "staticwebassets\\css\\components\\blog\\blog-section.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\blog\\main.css",
+      "PackagePath": "staticwebassets\\css\\components\\blog\\main.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\button.css",
+      "PackagePath": "staticwebassets\\css\\components\\button.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\categories\\categories-section.css",
+      "PackagePath": "staticwebassets\\css\\components\\categories\\categories-section.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\categories\\main.css",
+      "PackagePath": "staticwebassets\\css\\components\\categories\\main.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\footer.css",
+      "PackagePath": "staticwebassets\\css\\components\\footer.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\form.css",
+      "PackagePath": "staticwebassets\\css\\components\\form.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\goods\\good-card.css",
+      "PackagePath": "staticwebassets\\css\\components\\goods\\good-card.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\goods\\goods-section.css",
+      "PackagePath": "staticwebassets\\css\\components\\goods\\goods-section.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\goods\\main.css",
+      "PackagePath": "staticwebassets\\css\\components\\goods\\main.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\header.css",
+      "PackagePath": "staticwebassets\\css\\components\\header.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\header\\down.css",
+      "PackagePath": "staticwebassets\\css\\components\\header\\down.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\header\\language.css",
+      "PackagePath": "staticwebassets\\css\\components\\header\\language.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\header\\main.css",
+      "PackagePath": "staticwebassets\\css\\components\\header\\main.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\header\\menu.css",
+      "PackagePath": "staticwebassets\\css\\components\\header\\menu.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\header\\search.css",
+      "PackagePath": "staticwebassets\\css\\components\\header\\search.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\header\\up.css",
+      "PackagePath": "staticwebassets\\css\\components\\header\\up.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\input.css",
+      "PackagePath": "staticwebassets\\css\\components\\input.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\logo.css",
+      "PackagePath": "staticwebassets\\css\\components\\logo.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\main.css",
+      "PackagePath": "staticwebassets\\css\\components\\main.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\nav.css",
+      "PackagePath": "staticwebassets\\css\\components\\nav.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\overlay.css",
+      "PackagePath": "staticwebassets\\css\\components\\overlay.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\path-section.css",
+      "PackagePath": "staticwebassets\\css\\components\\path-section.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\personal-icons.css",
+      "PackagePath": "staticwebassets\\css\\components\\personal-icons.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\product\\main.css",
+      "PackagePath": "staticwebassets\\css\\components\\product\\main.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\product\\product-info.css",
+      "PackagePath": "staticwebassets\\css\\components\\product\\product-info.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\product\\product-section.css",
+      "PackagePath": "staticwebassets\\css\\components\\product\\product-section.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\section.css",
+      "PackagePath": "staticwebassets\\css\\components\\section.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\sidebar.css",
+      "PackagePath": "staticwebassets\\css\\components\\sidebar.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\slider.css",
+      "PackagePath": "staticwebassets\\css\\components\\slider.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\social-list.css",
+      "PackagePath": "staticwebassets\\css\\components\\social-list.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\textarea.css",
+      "PackagePath": "staticwebassets\\css\\components\\textarea.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\title.css",
+      "PackagePath": "staticwebassets\\css\\components\\title.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\wrapper.css",
+      "PackagePath": "staticwebassets\\css\\components\\wrapper.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\fonts.css",
+      "PackagePath": "staticwebassets\\css\\fonts.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\main.css",
+      "PackagePath": "staticwebassets\\css\\main.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\reset.css",
+      "PackagePath": "staticwebassets\\css\\reset.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\fonts\\Roboto-Black.woff",
+      "PackagePath": "staticwebassets\\fonts\\Roboto-Black.woff"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\fonts\\Roboto-Black.woff2",
+      "PackagePath": "staticwebassets\\fonts\\Roboto-Black.woff2"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\fonts\\Roboto-BlackItalic.woff",
+      "PackagePath": "staticwebassets\\fonts\\Roboto-BlackItalic.woff"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\fonts\\Roboto-BlackItalic.woff2",
+      "PackagePath": "staticwebassets\\fonts\\Roboto-BlackItalic.woff2"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\fonts\\Roboto-Bold.woff",
+      "PackagePath": "staticwebassets\\fonts\\Roboto-Bold.woff"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\fonts\\Roboto-Bold.woff2",
+      "PackagePath": "staticwebassets\\fonts\\Roboto-Bold.woff2"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\fonts\\Roboto-BoldItalic.woff",
+      "PackagePath": "staticwebassets\\fonts\\Roboto-BoldItalic.woff"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\fonts\\Roboto-BoldItalic.woff2",
+      "PackagePath": "staticwebassets\\fonts\\Roboto-BoldItalic.woff2"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\fonts\\Roboto-Italic.woff",
+      "PackagePath": "staticwebassets\\fonts\\Roboto-Italic.woff"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\fonts\\Roboto-Italic.woff2",
+      "PackagePath": "staticwebassets\\fonts\\Roboto-Italic.woff2"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\fonts\\Roboto-Light.woff",
+      "PackagePath": "staticwebassets\\fonts\\Roboto-Light.woff"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\fonts\\Roboto-Light.woff2",
+      "PackagePath": "staticwebassets\\fonts\\Roboto-Light.woff2"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\fonts\\Roboto-LightItalic.woff",
+      "PackagePath": "staticwebassets\\fonts\\Roboto-LightItalic.woff"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\fonts\\Roboto-LightItalic.woff2",
+      "PackagePath": "staticwebassets\\fonts\\Roboto-LightItalic.woff2"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\fonts\\Roboto-Medium.woff",
+      "PackagePath": "staticwebassets\\fonts\\Roboto-Medium.woff"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\fonts\\Roboto-Medium.woff2",
+      "PackagePath": "staticwebassets\\fonts\\Roboto-Medium.woff2"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\fonts\\Roboto-MediumItalic.woff",
+      "PackagePath": "staticwebassets\\fonts\\Roboto-MediumItalic.woff"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\fonts\\Roboto-MediumItalic.woff2",
+      "PackagePath": "staticwebassets\\fonts\\Roboto-MediumItalic.woff2"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\fonts\\Roboto-Regular.woff",
+      "PackagePath": "staticwebassets\\fonts\\Roboto-Regular.woff"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\fonts\\Roboto-Regular.woff2",
+      "PackagePath": "staticwebassets\\fonts\\Roboto-Regular.woff2"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\fonts\\Roboto-Thin.woff",
+      "PackagePath": "staticwebassets\\fonts\\Roboto-Thin.woff"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\fonts\\Roboto-Thin.woff2",
+      "PackagePath": "staticwebassets\\fonts\\Roboto-Thin.woff2"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\fonts\\Roboto-ThinItalic.woff",
+      "PackagePath": "staticwebassets\\fonts\\Roboto-ThinItalic.woff"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\fonts\\Roboto-ThinItalic.woff2",
+      "PackagePath": "staticwebassets\\fonts\\Roboto-ThinItalic.woff2"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\jpg\\monitor.jpg",
+      "PackagePath": "staticwebassets\\img\\jpg\\monitor.jpg"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\jpg\\monitor2.jpg",
+      "PackagePath": "staticwebassets\\img\\jpg\\monitor2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\png\\Rectangle 57.png",
+      "PackagePath": "staticwebassets\\img\\png\\Rectangle 57.png"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\png\\Rectangle 58.png",
+      "PackagePath": "staticwebassets\\img\\png\\Rectangle 58.png"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\png\\Rectangle 59.png",
+      "PackagePath": "staticwebassets\\img\\png\\Rectangle 59.png"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\png\\ban1.png",
+      "PackagePath": "staticwebassets\\img\\png\\ban1.png"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\png\\ban2.png",
+      "PackagePath": "staticwebassets\\img\\png\\ban2.png"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\png\\ban3.png",
+      "PackagePath": "staticwebassets\\img\\png\\ban3.png"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\png\\ban4.png",
+      "PackagePath": "staticwebassets\\img\\png\\ban4.png"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\png\\facebook.png",
+      "PackagePath": "staticwebassets\\img\\png\\facebook.png"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\png\\image 1.png",
+      "PackagePath": "staticwebassets\\img\\png\\image 1.png"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\png\\image 2.png",
+      "PackagePath": "staticwebassets\\img\\png\\image 2.png"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\png\\image 3.png",
+      "PackagePath": "staticwebassets\\img\\png\\image 3.png"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\png\\image 4.png",
+      "PackagePath": "staticwebassets\\img\\png\\image 4.png"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\png\\image 5.png",
+      "PackagePath": "staticwebassets\\img\\png\\image 5.png"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\png\\image 7.png",
+      "PackagePath": "staticwebassets\\img\\png\\image 7.png"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\png\\linkedin.png",
+      "PackagePath": "staticwebassets\\img\\png\\linkedin.png"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\png\\logo.png",
+      "PackagePath": "staticwebassets\\img\\png\\logo.png"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\png\\telegram.png",
+      "PackagePath": "staticwebassets\\img\\png\\telegram.png"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\png\\tiktok.png",
+      "PackagePath": "staticwebassets\\img\\png\\tiktok.png"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\svg\\available.svg",
+      "PackagePath": "staticwebassets\\img\\svg\\available.svg"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\svg\\basket.svg",
+      "PackagePath": "staticwebassets\\img\\svg\\basket.svg"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\svg\\burgerbtn.svg",
+      "PackagePath": "staticwebassets\\img\\svg\\burgerbtn.svg"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\svg\\card.svg",
+      "PackagePath": "staticwebassets\\img\\svg\\card.svg"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\svg\\courier.svg",
+      "PackagePath": "staticwebassets\\img\\svg\\courier.svg"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\svg\\guarantee.svg",
+      "PackagePath": "staticwebassets\\img\\svg\\guarantee.svg"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\svg\\like.svg",
+      "PackagePath": "staticwebassets\\img\\svg\\like.svg"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\svg\\mail.svg",
+      "PackagePath": "staticwebassets\\img\\svg\\mail.svg"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\svg\\personal.svg",
+      "PackagePath": "staticwebassets\\img\\svg\\personal.svg"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\svg\\phone.svg",
+      "PackagePath": "staticwebassets\\img\\svg\\phone.svg"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\svg\\postal-office.svg",
+      "PackagePath": "staticwebassets\\img\\svg\\postal-office.svg"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\svg\\search.svg",
+      "PackagePath": "staticwebassets\\img\\svg\\search.svg"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\svg\\star.svg",
+      "PackagePath": "staticwebassets\\img\\svg\\star.svg"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\js\\main.js",
+      "PackagePath": "staticwebassets\\js\\main.js"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\js\\slider.js",
+      "PackagePath": "staticwebassets\\js\\slider.js"
+    },
+    {
+      "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.Online-Store.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.build.Online-Store.props",
+      "PackagePath": "build\\Online-Store.props"
+    },
+    {
+      "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.Online-Store.props",
+      "PackagePath": "buildMultiTargeting\\Online-Store.props"
+    },
+    {
+      "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.buildTransitive.Online-Store.props",
+      "PackagePath": "buildTransitive\\Online-Store.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
