@@ -56,21 +56,23 @@ dots.forEach((dot, index) => {
         updateActiveDot();
     });
 });
+if (prevButton != null)
+    prevButton.addEventListener('click', () => {
+        prevSlide();
+        updateActiveDot();
+    });
 
-prevButton.addEventListener('click', () => {
-    prevSlide();
-    updateActiveDot();
-});
-
-nextButton.addEventListener('click', () => {
-    nextSlide();
-    updateActiveDot();
-});
+if (nextButton != null)
+    nextButton.addEventListener('click', () => {
+        nextSlide();
+        updateActiveDot();
+    });
 
 let currentSlide = 0;
 
 function showSlide(slideIndex) {
-    slidesContainer.style.transform = `translateX(-${slideIndex * 100}%)`;
+    if (slidesContainer != null)
+        slidesContainer.style.transform = `translateX(-${slideIndex * 100}%)`;
 }
 
 function nextSlide() {
@@ -85,5 +87,54 @@ function prevSlide() {
 
 updateActiveDot();
 
-// Добавляем обработчики событий для кнопок "Next" и "Prev"
 document.addEventListener('DOMContentLoaded', showSlide(currentSlide));
+
+
+const modal = document.getElementById("myModal");
+const openModalBtn = document.getElementById("openModalBtn");
+const modal_content = document.getElementById('modal-content');
+const closeModalBtn = document.getElementsByClassName("close")[0];
+const loginForm = document.getElementById("loginForm");
+const registerForm = document.getElementById("registerForm");
+const modalTitle = document.getElementById("modalTitle");
+const toggleFormLink = document.getElementById("toggleForm");
+
+function openModal() {
+    modal.style.visibility = "visible";
+    modal_content.style.transform = 'translateY(0)';
+    showLoginForm();
+}
+
+function closeModal() {
+    modal.style.visibility = "hidden";
+    modal_content.style.transform = 'translateY(-100%)';
+}
+
+function showLoginForm() {
+    loginForm.style.display = "flex";
+    registerForm.style.display = "none";
+
+    modalTitle.textContent = "Вход";
+}
+
+function showRegisterForm() {
+    registerForm.style.display = "flex";
+    loginForm.style.display = "none";
+    modalTitle.textContent = "Регистрация";
+}
+
+openModalBtn.addEventListener("click", openModal);
+closeModalBtn.addEventListener("click", closeModal);
+window.addEventListener("click", (event) => {
+    if (event.target === modal) {
+        closeModal();
+    }
+});
+
+function toggleForm() {
+    if (loginForm.style.display === "flex") {
+        showRegisterForm();
+    } else {
+        showLoginForm();
+    }
+}

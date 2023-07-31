@@ -21,8 +21,22 @@
     color: #fff;
 }
 
-.button.white{
+.button.white {
     background: rgb(255,255,255);
     transition: background-color 0.3s;
     color: #000000;
+}
+
+.button.white:hover {
+    background: rgb(226, 226, 226);
+}
+
+.button.grayblack {
+    background: rgb(51,51,51);
+    transition: background-color 0.3s;
+    color: #fff;
+}
+
+.button.grayblack:hover {
+    background: rgb(92, 92, 92);
 }

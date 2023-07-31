@@ -101,6 +101,14 @@
       "PackagePath": "staticwebassets\\css\\components\\input.css"
     },
     {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\loginreg\\loginreg.css",
+      "PackagePath": "staticwebassets\\css\\components\\loginreg\\loginreg.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\loginreg\\main.css",
+      "PackagePath": "staticwebassets\\css\\components\\loginreg\\main.css"
+    },
+    {
       "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\logo.css",
       "PackagePath": "staticwebassets\\css\\components\\logo.css"
     },
@@ -313,6 +321,10 @@
       "PackagePath": "staticwebassets\\img\\png\\facebook.png"
     },
     {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\png\\google.png",
+      "PackagePath": "staticwebassets\\img\\png\\google.png"
+    },
+    {
       "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\png\\image 1.png",
       "PackagePath": "staticwebassets\\img\\png\\image 1.png"
     },
@@ -403,6 +415,10 @@
     {
       "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\svg\\star.svg",
       "PackagePath": "staticwebassets\\img\\svg\\star.svg"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\js\\loginreg.js",
+      "PackagePath": "staticwebassets\\js\\loginreg.js"
     },
     {
       "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\js\\main.js",
