@@ -1,31 +1,15 @@
-input {
-    margin-bottom: 30px;
-    margin-top: 10px;
-    background: #FFFFFF;
-    border: 1px solid black;
-    padding: 10px;
-    padding-left: 15px;
-    font-size: 15px;
+input{
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 18px;
     color: #000000;
-    outline: none;
-    transition: all 0.2s ease-in-out;
-    outline-offset: 0;
+    padding-left: 35px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-input::placeholder {
-    color: #666666;
-}
-
-.input.search {
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-    width: 80%;
-}
-
-@media screen and (max-width: 768px) {
-    .input.search {
-        width: 100%;
-        border-top-right-radius: 8px;
-        border-bottom-right-radius: 8px;
-    }
+.input-img{
+    position: absolute;
+    margin-left: 10px;
+    height: 15px;
 }

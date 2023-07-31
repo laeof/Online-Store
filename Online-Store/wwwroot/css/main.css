@@ -1,4 +1,11 @@
-@import "components/main.css";
 @import "reset.css";
-@import "common.css";
 @import "fonts.css";
+@import "common.css";
+@import "components/main.css";
+@import "components/header/main.css";
+@import "components/banners/main.css";
+@import "components/categories/main.css";
+@import "components/goods/main.css";
+@import "components/blog/main.css";
+@import "components/product/main.css";
+@import "components/additional/main.css";

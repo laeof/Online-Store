@@ -1,0 +1,38 @@
+.personal-icons .item:not(:last-child) {
+    margin-right: 5px;
+}
+
+.personal-icons {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: space-around;
+    width: 10%;
+}
+
+.icon {
+    min-width: 25px;
+    min-height: 25px;
+}
+
+.personal-icons .item:nth-child(2) {
+    min-width: 30px;
+    min-height: 30px;
+}
+
+@media screen and (max-width: 1024px) {
+    .personal-icons {
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .personal-icons .item:nth-child(1) {
+        display: none;
+    }
+
+    .personal-icons {
+        width: 5%;
+    }
+}

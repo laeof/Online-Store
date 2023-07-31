@@ -1,0 +1,7 @@
+header .up{
+    display: flex;
+    align-items: center;
+    background: #000000;
+    justify-content: space-around;
+    height: 70px;
+}

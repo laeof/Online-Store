@@ -1,47 +1,114 @@
-﻿<header class="header">
-    <div class="head-content">
-        <button class="nav-btn">
-            <span class="nav-btn-line"></span>
-            <span class="nav-btn-line"></span>
-            <span class="nav-btn-line"></span>
-        </button>
-        <div class="logo"><a href="/"><img src="../../img/png/logo.png"></a></div>
-        <div class="search">
-            <input class="input search" type="text" placeholder="Я шукаю..." id="search">
-            <button type="button" class="searchbtn">Знайти</button>
-        </div>
-        <div class="lang">
-            <div><a href="">EN</a></div>
-            <div><a href="">UA</a></div>
-        </div>
-        <ul class="list">
-            <li class="item"><a href="/Account/PersonalPage"><img src="../../img/svg/User_cicrle_light.svg"></a></li>
-            <li class="item"><a href="/Buy/Basket"><img src="../../img/svg/Basket_alt_3_light.svg"></a></li>
-        </ul>
+﻿<header>
+    <div class="overlay" id="overlay"></div>
+    <div class="up">
+        <nav class="nav">
+            <ul class="menu">
+                <img class="icon" src="~/img/svg/burgerbtn.svg" onclick="toggleSideBar()">
+            </ul>
+            <ul class="wrap-logo" onclick=" window.location.href='/Home/';">
+                <img class="logo" src="~/img/png/logo.png" >
+            </ul>
+            <ul class="wrap-search">
+                <img class="input-img" src="~/img/svg/search.svg">
+                <input class="input search" placeholder="Знайти щось">
+                <button class="button gray">Знайти</button>
+            </ul>
+            <ul class="language">
+                <li class="item">EN</li>
+                <li class="item">|</li>
+                <li class="item">UA</li>
+            </ul>
+            <ul class="personal-icons">
+                <li class="item">
+                    <img class="icon" src="~/img/svg/personal.svg">
+                </li>
+                <li class="item">
+                    <img class="icon" src="~/img/svg/basket.svg">
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="down">
+        <nav class="nav">
+            <ul class="list">
+                <li class="item">
+                    <span class="button gray">Каталог</span>
+                    <ul class="drop-list">
+                        <li class="drop-item">
+                            1
+                        </li>
+                        <li class="drop-item">
+                            2
+                        </li>
+                    </ul>
+                </li>
+                <li class="item">
+                    <span class="button white">Акції</span>
+                    <ul class="drop-list">
+                        <li class="drop-item">
+                            1
+                        </li>
+                        <li class="drop-item">
+                            2
+                        </li>
+                    </ul>
+                </li>
+                <li class="item">
+                    <span class="button white">Оплата</span>
+                    <ul class="drop-list">
+                        <li class="drop-item">
+                            1
+                        </li>
+                        <li class="drop-item">
+                            2
+                        </li>
+                    </ul>
+                </li>
+                <li class="item">
+                    <span class="button white">Гарантії</span>
+                    <ul class="drop-list">
+                        <li class="drop-item">
+                            1
+                        </li>
+                        <li class="drop-item">
+                            2
+                        </li>
+                    </ul>
+                </li>
+                <li class="item">
+                    <span class="button white">Контакти</span>
+                    <ul class="drop-list">
+                        <li class="drop-item">
+                            1
+                        </li>
+                        <li class="drop-item">
+                            2
+                        </li>
+                    </ul>
+                </li>
+                <li class="item">
+                    <span class="button white">Доставка</span>
+                    <ul class="drop-list">
+                        <li class="drop-item">
+                            1
+                        </li>
+                        <li class="drop-item">
+                            2
+                        </li>
+                    </ul>
+                </li>
+                <li class="item">
+                    <span class="button white">Інформація</span>
+                    <ul class="drop-list">
+                        <li class="drop-item">
+                            1
+                        </li>
+                        <li class="drop-item">
+                            2
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
     </div>
 </header>
-<div class="navigation">
-    <nav class="nav">
-        <div class="navlog">
-            <button class="nav-btn">
-                <span class="nav-btn-line"></span>
-                <span class="nav-btn-line"></span>
-                <span class="nav-btn-line"></span>
-            </button>
-            <div class="logo"><a href="/"><img src="../../img/png/logo.png"></a></div>
-        </div>
-        <a href="" class="link">
-            <img src="../../img/svg/User_cicrle_light.svg">
-            <p>Log In</p>
-        </a>
-        <ul class="list">
-            <li class="item"><button class="button gray" onclick="window.location.href = '/';">Каталог</button></li>
-            <li class="item"><a href="">Акції</a></li>
-            <li class="item"><a href="">Оплата</a></li>
-            <li class="item"><a href="">Гарантії</a></li>
-            <li class="item"><a href="">Контакти</a></li>
-            <li class="item"><a href="">Доставка</a></li>
-            <li class="item"><a href="">Інформація</a></li>
-        </ul>
-    </nav>
-</div>

@@ -1,62 +1,51 @@
-.footer {
-    background-color: #000000;
-    display: flex;
-    justify-content: space-around;
-    height: 240px;
+footer{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background: #000;
     margin-top: auto;
 }
 
-.footer .list {
-    margin-top: 20px;
+footer .nav{
+    display: flex;
+    align-items: start;
+}
+
+footer .nav .list{
     display: flex;
     flex-direction: column;
 }
 
-.footer .list .item{
+footer .nav .list .item{
+    color: #fff;
+    width: 100%;
+    font-weight: 500;
     margin-bottom: 10px;
+    text-align: center;
 }
 
-.footer .list .item:last-child .list {
-    flex-direction: row;
-    margin-top: 0px;
-    justify-content: space-around;
+footer .nav .list .item .list .item{
+    font-weight: 300;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.footer .list .item:first-child {
-    font-family: 'Kyiv*Type Serif';
+footer .nav .list .item .list .item .icon{
+    margin-right: 10px;
+}
+
+footer .nav .list .item .list .item:hover{
     font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    color: #FFFFFF;
 }
-
-    .footer .list .item {
-        text-align: center;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 19px;
-        color: #FFFFFF;
-    }
 
 @media screen and (max-width: 768px){
-    .footer{
-        display: block;
-        height: 70%;
-        padding-top: 20px;
+    footer .nav {
+        flex-direction: column;
+        align-items: center;
     }
-    .footer .list .item:last-child .list {
-        flex-direction: row;
-        margin-top: 0px;
-        justify-content: center;
-    }
-    .footer .link img:hover {
-        max-width: 45px;
-        width: 45px;
-        height: 45px;
-    }
-
-    .footer .list .item:last-child .list .item:not(:last-child) {
-        margin-right: 20px;
+    footer .nav .list{
+        margin-bottom: 20px;
     }
 }
+
