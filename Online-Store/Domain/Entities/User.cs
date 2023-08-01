@@ -1,12 +1,7 @@
 ﻿namespace Online_Store.Domain.Entities
 {
-	public class User
+	public class User: AbstractModel
 	{
-		public Guid Id { get; private set; }
-		public User()
-		{
-			Id = Guid.NewGuid();
-		}
 		public string Name { get; set; }
 		public string Email { get; set; }
 		public string Password { get; set; }
@@ -23,7 +18,7 @@
 		public bool IsActive { get; set; } = true;
 		public bool IsDeleted { get; set; } = false;
 		public DateTime RegistrationDate { get; set; }
-		public ICollection<Orders>? Orders { get; set; }
+		public ICollection<Order>? Order { get; set; }
 		public ICollection<UserRole>? UserRoles { get; set; }
 	}
 }

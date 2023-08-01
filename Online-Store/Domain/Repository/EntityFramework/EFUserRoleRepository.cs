@@ -35,15 +35,5 @@ namespace Online_Store.Domain.Repository.EntityFramework
 
 			return saveTask.IsCompletedSuccessfully;
 		}
-		public async Task<bool> DeleteUserRoleAsync(Guid id)
-		{
-			context.UserRoles.Remove(new UserRole { Id = id });
-
-			var saveTask = context.SaveChangesAsync();
-
-			await saveTask;
-
-			return saveTask.IsCompletedSuccessfully;
-		}
 	}
 }

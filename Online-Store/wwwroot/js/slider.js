@@ -113,7 +113,6 @@ slidesContainer.addEventListener('touchmove', (event) => {
     const touchMoveX = touch.clientX;
     const deltaX = touchMoveX - touchStartX;
 
-    // Если слайдер на крайнем левом или правом слайде и происходит свайп влево или вправо, отключаем прокрутку страницы
     if ((currentSlide === 0 && deltaX > 0) || (currentSlide === slides.length - 1 && deltaX < 0)) {
         event.preventDefault();
     }
@@ -125,31 +124,29 @@ slidesContainer.addEventListener('touchend', (event) => {
 });
 
 function handleSwipe() {
-    const SWIPE_THRESHOLD = 50; // Порог для определения свайпа
+    const SWIPE_THRESHOLD = 50; 
 
     const deltaX = touchEndX - touchStartX;
 
     if (deltaX > SWIPE_THRESHOLD) {
-        // Смахивание вправо, переключаем на предыдущий слайд
+        
         prevSlide();
         updateActiveDot();
         updateActiveThumb();
     } else if (deltaX < -SWIPE_THRESHOLD) {
-        // Смахивание влево, переключаем на следующий слайд
+        
         nextSlide();
         updateActiveDot();
         updateActiveThumb();
     }
 }
 
-// Добавим обработчик события 'dragstart' для изображений
 slides.forEach((slide) => {
     slide.addEventListener('dragstart', (event) => {
-        event.preventDefault(); // Отключить стандартное перетаскивание изображений
+        event.preventDefault(); 
     });
 });
 
-// Добавим обработчики событий для перемещения слайдов с помощью мыши
 slidesContainer.addEventListener('mousedown', (event) => {
     isDragging = true;
     dragStartX = event.clientX;

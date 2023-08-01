@@ -78,18 +78,22 @@ namespace Online_Store.Domain
 			// create user
 			var user = new User
 			{
+				Name= model.Name,
 				Email = model.Email,
-				Password = model.Password
+				Password = model.Password,
+				PhoneNumber = model.PhoneNumber,
 			};
 
 			//save user
 			await dataManager.Users.SaveUserAsync(user);
 
-			// create role for user
-			var userrole = new UserRole
+			var role = await dataManager.Roles.GetRoleByNameAsync("user");
+
+            // create role for user
+            var userrole = new UserRole
 			{
 				UserId = user.Id,
-				RoleId = model.Id,
+				RoleId = role.Id,
 			};
 
 			//save user role to db

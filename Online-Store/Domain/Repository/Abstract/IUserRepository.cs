@@ -7,7 +7,6 @@ namespace Online_Store.Domain.Repository.Abstract
 		IQueryable<User> GetUsers();
 		Task<User> GetUserByIdAsync(Guid id);
 		Task<bool> SaveUserAsync(User entity);
-		Task<bool> DeleteUserAsync(User user);
 		Task<bool> SoftDeleteUserAsync(User user);
 	}
 }

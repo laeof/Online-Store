@@ -2,13 +2,8 @@
 
 namespace Online_Store.Domain.Entities
 {
-	public class UserRole
+	public class UserRole: AbstractModel
 	{
-		public Guid Id { get; set; }
-		public UserRole()
-		{
-			Id = Guid.NewGuid();
-		}
 		public Guid RoleId { get; set; }
 		[ForeignKey("RoleId")]
 		public Role? Role { get; set; }

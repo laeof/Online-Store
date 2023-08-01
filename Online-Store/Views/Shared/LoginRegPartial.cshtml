@@ -1,37 +1,7 @@
 ﻿<div id="myModal" class="loginreg">
     <div class="loginreg-content" id="modal-content">
         <span class="close">&times;</span>
-        <form id="loginForm" class="login">
-            <h2 class="title">Вхід</h2>
-            <div class="alternate">
-                <button class="button white"><img class="icon" src="~/img/png/google.png">Google</button>
-                <button class="button white"><img class="icon" src="~/img/png/google.png">Google</button>
-            </div>
-            <label for="login">Електронна пошта</label>
-            <input type="text" name="login">
-            <label for="password">Пароль</label>
-            <input type="password" name="password">
-            <button class="button grayblack" type="submit">Увійти</button>
-            <p>Не зареєстровані? <a href="#" onclick="toggleForm()">Зареєструватися</a></p>
-        </form>
-        <form id="registerForm" class="login" style="display: none;">
-            <h2 class="title">Реєстрація</h2>
-            <div class="alternate">
-                <button class="button white"><img class="icon" src="~/img/png/google.png">Google</button>
-                <button class="button white"><img class="icon" src="~/img/png/google.png">Google</button>
-            </div>
-            <label for="name">Ім'я</label>
-            <input type="text" name="name">
-            <label for="surname">Прізвище</label>
-            <input type="text" name="surname">
-            <label for="phone">Номер телефону</label>
-            <input type="text" name="phone">
-            <label for="login">Електронна пошта</label>
-            <input type="text" name="login">
-            <label for="password">Пароль</label>
-            <input type="password" name="password">
-            <button class="button grayblack" type="submit">Увійти</button>
-            <p>Вже є акаунт? <a href="#" onclick="toggleForm()">Увійти</a></p>
-        </form>
+        <vc:Login />
+        <vc:Register/>
     </div>
 </div>

@@ -7,6 +7,5 @@ namespace Online_Store.Domain.Repository.Abstract
 		IQueryable<UserRole> GetUserRole();
 		Task<UserRole> GetUserRoleByIdAsync(Guid id);
 		Task<bool> SaveUserRoleAsync(UserRole entity);
-		Task<bool> DeleteUserRoleAsync(Guid id);
 	}
 }

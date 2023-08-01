@@ -1,0 +1,23 @@
+﻿@model LoginViewModel
+<div id="myModal" class="loginreg" style="visibility: visible">
+    <div class="loginreg-content" id="modal-content" style="transform: translateY(-20%)">
+        <span class="close">&times;</span>
+        <form id="loginForm"
+              asp-controller="Account"
+              asp-action="Login"
+              class="login">
+            <h2 class="title">Вхід</h2>
+            <div class="alternate">
+                <button class="button white"><img class="icon" src="~/img/png/google.png">Google</button>
+                <button class="button white"><img class="icon" src="~/img/png/google.png">Google</button>
+            </div>
+            <label for="email">Електронна пошта</label>
+            <input type="text" name="email" asp-for="Email">
+            <label for="password">Пароль</label>
+            <input type="password" name="password" asp-for="Password">
+            <label asp-for="ErrorMessage"></label>
+            <button class="button grayblack" type="submit">Увійти</button>
+            <p>Не зареєстровані? <a href="#" onclick="toggleForm()">Зареєструватися</a></p>
+        </form>
+    </div>
+</div>

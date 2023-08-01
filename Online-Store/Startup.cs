@@ -23,7 +23,7 @@
             services.AddTransient<IUserRepository, EFUserRepository>();
             services.AddTransient<IRoleRepository, EFRoleRepository>();
             services.AddTransient<IUserRoleRepository, EFUserRoleRepository>();
-            services.AddTransient<IOrdersRepository, EFOrdersRepository>();
+            services.AddTransient<IOrderRepository, EFOrderRepository>();
 
             services.AddTransient<DataManager>();
             services.AddTransient<UserManager>();

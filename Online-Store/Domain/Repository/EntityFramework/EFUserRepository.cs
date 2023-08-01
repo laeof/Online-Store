@@ -38,16 +38,6 @@ namespace Online_Store.Domain.Repository.EntityFramework
 
 			return saveTask.IsCompletedSuccessfully;
 		}
-		public async Task<bool> DeleteUserAsync(User user)
-		{
-			context.Users.Remove(user);
-
-			var saveTask = context.SaveChangesAsync();
-
-			await saveTask;
-
-			return saveTask.IsCompletedSuccessfully;
-		}
 		public async Task<bool> SoftDeleteUserAsync(User user)
 		{
 			var usr = await context.Users.FirstOrDefaultAsync(r => r.Id == user.Id);

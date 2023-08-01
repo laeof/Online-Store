@@ -1,0 +1,25 @@
+﻿@model RegisterViewModel
+
+<form id="registerForm"
+      class="login"
+      asp-controller="Account"
+      asp-action="Register"
+      style="display: none;">
+    <h2 class="title">Реєстрація</h2>
+    <div class="alternate">
+        <button class="button white"><img class="icon" src="~/img/png/google.png">Google</button>
+        <button class="button white"><img class="icon" src="~/img/png/google.png">Google</button>
+    </div>
+    <label for="Name">Ім'я</label>
+    <input type="text" name="Name" asp-for="Name">
+    <label for="surname">Прізвище</label>
+    <input type="text" name="surname">
+    <label for="PhoneNumber">Номер телефону</label>
+    <input type="text" name="PhoneNumber" asp-for="PhoneNumber">
+    <label for="Email">Електронна пошта</label>
+    <input type="text" name="Email" asp-for="Email">
+    <label for="password">Пароль</label>
+    <input type="password" name="password" asp-for="Password">
+    <button class="button grayblack" type="submit">Зареєструватися</button>
+    <p>Вже є акаунт? <a href="#" onclick="toggleForm()">Увійти</a></p>
+</form>

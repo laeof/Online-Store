@@ -11,34 +11,26 @@ namespace Online_Store.Controllers
 	{
 		private readonly DataManager dataManager;
 		private readonly UserManager userManager;
-		private readonly IWebHostEnvironment environment;
-		public AccountController(DataManager dataManager, UserManager userManager, IWebHostEnvironment environment)
+		public AccountController(DataManager dataManager, UserManager userManager)
 		{
 			this.dataManager = dataManager;
 			this.userManager = userManager;
-			this.environment = environment;
 		}
 
 		[HttpGet]
 		[AllowAnonymous]
-		public IActionResult Login(string returnUrl)
+		public IActionResult Login()
 		{
-			ViewBag.Title = "Вхід";
-			if (returnUrl == null)
-			{
-				returnUrl = "/";
-			}
 			if (userManager.User != null)
 			{
 				return Redirect("/Account/PersonalPage");
 			}
-			ViewBag.ReturnUrl = returnUrl;
 			return View(new LoginViewModel());
 		}
 
 		[HttpPost]
 		[AllowAnonymous]
-		public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
+		public async Task<IActionResult> Login(LoginViewModel model)
 		{
 			if (ModelState.IsValid)
 			{
@@ -48,33 +40,34 @@ namespace Online_Store.Controllers
 
 					//редіректи
 
-					return Redirect(returnUrl);
+					return Redirect("/Home/");
 				}
 				model.ErrorMessage = "";
-				ViewBag.ReturnUrl = returnUrl;
-			}
-			ViewBag.Title = "Вхід";
-			ViewBag.ReturnUrl = returnUrl;
-			return View(model);
-		}
+            }
+            return View(new LoginViewModel());
+        }
 
 		[Authorize]
 		public async Task<IActionResult> Logout()
 		{
-			ViewBag.Title = "Вихід";
 			await userManager.SignOutAsync();
 			return RedirectToAction("Login");
 		}
 
 		[HttpGet]
-		public IActionResult Register()
+        [AllowAnonymous]
+        public IActionResult Register()
 		{
-			ViewBag.Title = "Створити обліковий запис";
-			return View(new RegisterViewModel());
+            if (userManager.User != null)
+            {
+                return Redirect("/Account/PersonalPage");
+            }
+            return View(new RegisterViewModel());
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> Register(RegisterViewModel model)
+        [AllowAnonymous]
+        public async Task<IActionResult> Register(RegisterViewModel model)
 		{
 
 			if (ModelState.IsValid)
@@ -89,12 +82,11 @@ namespace Online_Store.Controllers
 
 				await userManager.SingUpAsync(model);
 
-				// redirect to users
-				return Redirect("/User/Users");
-			}
+                // redirect to home page
+                return Redirect("/Home/");
+            }
 
-			// if invalid register again
-			return View(model);
-		}
+            return View(new RegisterViewModel());
+        }
 	}
 }

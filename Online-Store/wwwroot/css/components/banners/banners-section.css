@@ -10,28 +10,10 @@
     margin-bottom: 15px;
 }
 
-.banners-section .banners {
-    display: flex;
-    justify-content: space-around;
-    width: 65%;
-}
-
-    .banners-section .banners .banner-img {
-        width: 100%;
-        height: 100%;
-        cursor: pointer;
-    }
-
-@media screen and (max-width: 1600px){
-    .banners-section .banners {
-        width: 75%;
-    }
-}
-
-@media screen and (max-width: 1366px){
-    .banners-section .banners {
-        width: 85%;
-    }
+.banners-section .nav .banner-img {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 1024px) {

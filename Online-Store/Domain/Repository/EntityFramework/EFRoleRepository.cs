@@ -15,9 +15,13 @@ namespace Online_Store.Domain.Repository.EntityFramework
 		{
 			return context.Roles;
 		}
-		public async Task<Role> GetRoleByIdAsync(Guid id)
+        public async Task<Role> GetRoleByIdAsync(Guid id)
+        {
+            return await context.Roles.FirstOrDefaultAsync(x => x.Id == id);
+        }
+        public async Task<Role> GetRoleByNameAsync(string name)
 		{
-			return await context.Roles.FirstOrDefaultAsync(x => x.Id == id);
+			return await context.Roles.FirstOrDefaultAsync(x => x.Name == name);
 		}
 		public async Task<bool> SaveRoleAsync(Role entity)
 		{
@@ -27,16 +31,6 @@ namespace Online_Store.Domain.Repository.EntityFramework
 			}
 			else
 				context.Entry(entity).State = EntityState.Modified;
-
-			var saveTask = context.SaveChangesAsync();
-
-			await saveTask;
-
-			return saveTask.IsCompletedSuccessfully;
-		}
-		public async Task<bool> DeleteRoleAsync(Guid id)
-		{
-			context.Roles.Remove(new Role { Id = id });
 
 			var saveTask = context.SaveChangesAsync();
 
