@@ -25,6 +25,14 @@
       "PackagePath": "staticwebassets\\css\\components\\banners\\main.css"
     },
     {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\banners\\nav.css",
+      "PackagePath": "staticwebassets\\css\\components\\banners\\nav.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\banners\\slider.css",
+      "PackagePath": "staticwebassets\\css\\components\\banners\\slider.css"
+    },
+    {
       "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\blog\\blog-card.css",
       "PackagePath": "staticwebassets\\css\\components\\blog\\blog-card.css"
     },
@@ -143,6 +151,10 @@
     {
       "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\product\\product-section.css",
       "PackagePath": "staticwebassets\\css\\components\\product\\product-section.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\product\\slider.css",
+      "PackagePath": "staticwebassets\\css\\components\\product\\slider.css"
     },
     {
       "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\section.css",
@@ -281,6 +293,22 @@
       "PackagePath": "staticwebassets\\fonts\\Roboto-ThinItalic.woff2"
     },
     {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\jpg\\ban1.jpg",
+      "PackagePath": "staticwebassets\\img\\jpg\\ban1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\jpg\\ban2.jpg",
+      "PackagePath": "staticwebassets\\img\\jpg\\ban2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\jpg\\ban3.jpg",
+      "PackagePath": "staticwebassets\\img\\jpg\\ban3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\jpg\\ban4.jpg",
+      "PackagePath": "staticwebassets\\img\\jpg\\ban4.jpg"
+    },
+    {
       "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\jpg\\monitor.jpg",
       "PackagePath": "staticwebassets\\img\\jpg\\monitor.jpg"
     },
@@ -417,8 +445,16 @@
       "PackagePath": "staticwebassets\\img\\svg\\star.svg"
     },
     {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\js\\loginreg.js",
+      "PackagePath": "staticwebassets\\js\\loginreg.js"
+    },
+    {
       "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\js\\main.js",
       "PackagePath": "staticwebassets\\js\\main.js"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\js\\slider.js",
+      "PackagePath": "staticwebassets\\js\\slider.js"
     },
     {
       "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.Online-Store.Microsoft.AspNetCore.StaticWebAssets.props",

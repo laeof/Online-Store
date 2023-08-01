@@ -27,4 +27,10 @@ header .nav{
         border-bottom: none;
         padding-bottom: 0;
     }
+
+    header .wrap-logo {
+        padding-right: 0;
+        justify-content: center;
+        width: auto;
+    }
 }
