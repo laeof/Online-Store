@@ -25,9 +25,10 @@ namespace Online_Store.Domain.Repository.EntityFramework
 		}
 		public async Task<bool> SaveRoleAsync(Role entity)
 		{
-			if (entity.Id == default)
-			{
+            if (entity.IsNew)
+            {
 				context.Entry(entity).State = EntityState.Added;
+				entity.IsNew = false;
 			}
 			else
 				context.Entry(entity).State = EntityState.Modified;

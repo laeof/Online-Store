@@ -4,13 +4,17 @@ namespace Online_Store.Models
 {
 	public class RegisterViewModel
 	{
-		[Required]
+		[Required(ErrorMessage = "Обов'язкове поле")]
 		public string Name { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Обов'язкове поле")]
+        public string Lastname { get; set; }
+        [Required(ErrorMessage = "Обов'язкове поле")]
+        [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "Невірний формат електронної пошти")]
         public string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Обов'язкове поле")]
         public string Password { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Обов'язкове поле")]
+        [RegularExpression(@"^\+380\d{9}$", ErrorMessage = "Невірний формат номеру телефону")]
         public string PhoneNumber { get; set; }
 	}
 }

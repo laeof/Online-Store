@@ -80,7 +80,7 @@ namespace Online_Store.Domain
 			{
 				Name= model.Name,
 				Email = model.Email,
-				Password = model.Password,
+				Password = SecurePasswordHasher.Hash(model.Password),
 				PhoneNumber = model.PhoneNumber,
 			};
 
@@ -99,6 +99,8 @@ namespace Online_Store.Domain
 			//save user role to db
 
 			await dataManager.UserRoles.SaveUserRoleAsync(userrole);
+
+			await SignInAsync(user.Email);
 
 			return true;
 		}

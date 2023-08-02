@@ -11,9 +11,11 @@
                 <button class="button white"><img class="icon" src="~/img/png/google.png">Google</button>
                 <button class="button white"><img class="icon" src="~/img/png/google.png">Google</button>
             </div>
-            <label for="email">Електронна пошта</label>
-            <input type="text" name="email" asp-for="Email">
+            <label for="Email">Електронна пошта</label>
+            <span asp-validation-for="Email"></span>
+            <input type="text" name="Email" asp-for="Email">
             <label for="password">Пароль</label>
+            <span asp-validation-for="Password"></span>
             <input type="password" name="password" asp-for="Password">
             <label asp-for="ErrorMessage"></label>
             <button class="button grayblack" type="submit">Увійти</button>

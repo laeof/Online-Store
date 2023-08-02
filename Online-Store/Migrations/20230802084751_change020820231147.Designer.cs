@@ -12,8 +12,8 @@ using Online_Store.Domain;
 namespace Online_Store.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230801144246__initial")]
-    partial class _initial
+    [Migration("20230802084751_change020820231147")]
+    partial class change020820231147
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,6 +30,15 @@ namespace Online_Store.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsNew")
+                        .HasColumnType("boolean");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
@@ -49,6 +58,15 @@ namespace Online_Store.Migrations
 
                     b.Property<Guid>("CartId")
                         .HasColumnType("uuid");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsNew")
+                        .HasColumnType("boolean");
 
                     b.Property<int>("ProductAmount")
                         .HasColumnType("integer");
@@ -74,6 +92,15 @@ namespace Online_Store.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsNew")
+                        .HasColumnType("boolean");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -92,8 +119,17 @@ namespace Online_Store.Migrations
                     b.Property<DateTime>("Begin")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<DateTime>("End")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsNew")
+                        .HasColumnType("boolean");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -116,6 +152,12 @@ namespace Online_Store.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsNew")
+                        .HasColumnType("boolean");
+
                     b.Property<int>("Status")
                         .HasColumnType("integer");
 
@@ -134,6 +176,15 @@ namespace Online_Store.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsNew")
+                        .HasColumnType("boolean");
 
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uuid");
@@ -160,6 +211,15 @@ namespace Online_Store.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsNew")
+                        .HasColumnType("boolean");
+
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uuid");
 
@@ -185,8 +245,17 @@ namespace Online_Store.Migrations
                     b.Property<int?>("Amount")
                         .HasColumnType("integer");
 
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Description")
                         .HasColumnType("text");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsNew")
+                        .HasColumnType("boolean");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -209,8 +278,17 @@ namespace Online_Store.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<int>("Grade")
                         .HasColumnType("integer");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsNew")
+                        .HasColumnType("boolean");
 
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uuid");
@@ -233,12 +311,39 @@ namespace Online_Store.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsNew")
+                        .HasColumnType("boolean");
+
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
                     b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("0ce25b9a-f187-475f-9867-77e63bb6455f"),
+                            Created = new DateTime(2023, 8, 2, 8, 47, 51, 684, DateTimeKind.Utc).AddTicks(5215),
+                            IsDeleted = false,
+                            IsNew = true,
+                            Name = "admin"
+                        },
+                        new
+                        {
+                            Id = new Guid("6b9b04bd-32e2-4b50-a623-b4f07b578860"),
+                            Created = new DateTime(2023, 8, 2, 8, 47, 51, 687, DateTimeKind.Utc).AddTicks(1405),
+                            IsDeleted = false,
+                            IsNew = true,
+                            Name = "user"
+                        });
                 });
 
             modelBuilder.Entity("Online_Store.Domain.Entities.User", b =>
@@ -263,6 +368,9 @@ namespace Online_Store.Migrations
                     b.Property<string>("Country")
                         .HasColumnType("text");
 
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("text");
@@ -279,6 +387,9 @@ namespace Online_Store.Migrations
                     b.Property<bool>("IsEmailConfirmed")
                         .HasColumnType("boolean");
 
+                    b.Property<bool>("IsNew")
+                        .HasColumnType("boolean");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -288,6 +399,7 @@ namespace Online_Store.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("PostalCode")
@@ -296,12 +408,26 @@ namespace Online_Store.Migrations
                     b.Property<string>("Region")
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("RegistrationDate")
-                        .HasColumnType("timestamp with time zone");
-
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("b1ddf756-1e38-46ea-9f9a-0f45ebef898d"),
+                            ApiKey = "xd",
+                            AvatarUrl = "../../../../img/Avatar/user.png",
+                            Created = new DateTime(2023, 8, 2, 8, 47, 51, 684, DateTimeKind.Utc).AddTicks(5217),
+                            Email = "Admin",
+                            IsActive = true,
+                            IsDeleted = false,
+                            IsEmailConfirmed = false,
+                            IsNew = true,
+                            Name = "Max",
+                            Password = "$HASH|V1$10000$AHI6vKnlp7FksrI1ROrIEYHS4OMgyRUAqeu7BnIsFWq7PDb9",
+                            PhoneNumber = "1234567890"
+                        });
                 });
 
             modelBuilder.Entity("Online_Store.Domain.Entities.UserRole", b =>
@@ -309,6 +435,15 @@ namespace Online_Store.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsNew")
+                        .HasColumnType("boolean");
 
                     b.Property<Guid>("RoleId")
                         .HasColumnType("uuid");
@@ -323,6 +458,17 @@ namespace Online_Store.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("740811a0-bce6-4238-9e99-9d22c5e29450"),
+                            Created = new DateTime(2023, 8, 2, 8, 47, 51, 687, DateTimeKind.Utc).AddTicks(1426),
+                            IsDeleted = false,
+                            IsNew = true,
+                            RoleId = new Guid("0ce25b9a-f187-475f-9867-77e63bb6455f"),
+                            UserId = new Guid("b1ddf756-1e38-46ea-9f9a-0f45ebef898d")
+                        });
                 });
 
             modelBuilder.Entity("Online_Store.Domain.Entities.Cart", b =>

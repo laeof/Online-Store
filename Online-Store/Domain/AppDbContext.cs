@@ -34,7 +34,8 @@ namespace Online_Store.Domain
                 Name = "Max",
                 Email = "Admin",
                 Password = SecurePasswordHasher.Hash("aspoqw12"),
-                ApiKey = "xd"
+                ApiKey = "xd",
+                PhoneNumber = "1234567890",
             };
 
 			modelBuilder.Entity<Role>().HasData(role);

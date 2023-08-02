@@ -1,0 +1,42 @@
+﻿@model RegisterViewModel
+<div id="myModal" class="loginreg" style="visibility: visible">
+    <div class="loginreg-content" id="modal-content" style="transform: translateY(0%)">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+        <form id="registerForm"
+              class="login"
+              asp-controller="Account"
+              asp-action="Register"
+              >
+            <h2 class="title">Реєстрація</h2>
+            <div class="alternate">
+                <button class="button white"><img class="icon" src="~/img/png/google.png">Google</button>
+                <button class="button white"><img class="icon" src="~/img/png/google.png">Google</button>
+            </div>
+
+            <label for="Name">Ім'я</label>
+            <input type="text" name="Name" asp-for="Name">
+            <span asp-validation-for="Name"></span>
+
+            <label for="Lastname">Прізвище</label>
+            <input type="text" name="Lastname" asp-for="Lastname">
+            <span asp-validation-for="Lastname"></span>
+
+            <label for="PhoneNumber">Номер телефону</label>
+            <input type="text" name="PhoneNumber" id="PhoneNumber" placeholder="+38 (999)-999-99-99">
+            <span asp-validation-for="PhoneNumber"></span>
+
+            <label for="Email">Електронна пошта</label>
+            <input type="text" name="Email" asp-for="Email">
+            <label for="password">Пароль</label>
+            <input type="password" name="password" asp-for="Password">
+            <button class="button grayblack" type="submit">Зареєструватися</button>
+            <p>Вже є акаунт? <a href="#" onclick="toggleForm()">Увійти</a></p>
+        </form>
+    </div>
+</div>
+        <script>
+            $(document).ready(function () {
+                const phoneNumberInput = $('#PhoneNumber');
+                phoneNumberInput.inputmask({ "mask": "+38 (999)-999-99-99" });
+            });
+        </script>

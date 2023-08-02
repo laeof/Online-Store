@@ -7,7 +7,6 @@ namespace Online_Store.Domain.Entities
 		public Guid UserId { get; set; }
 		[ForeignKey("UserId")]
 		public User User { get; set; }
-		public DateTime Created { get; set; }
 		public OrderStatus Status { get; set; }
 		public enum OrderStatus
 		{

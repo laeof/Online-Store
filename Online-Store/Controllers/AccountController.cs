@@ -2,19 +2,22 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Online_Store.Domain;
+using Online_Store.Domain.Repository.EntityFramework;
 using Online_Store.Models;
-using Online_Store.Service;
+using System.ComponentModel.DataAnnotations;
 
 namespace Online_Store.Controllers
 {
-	public class AccountController: Controller
+    public class AccountController: Controller
 	{
 		private readonly DataManager dataManager;
 		private readonly UserManager userManager;
-		public AccountController(DataManager dataManager, UserManager userManager)
+        private readonly ILogger<AccountController> logger;
+        public AccountController(DataManager dataManager, UserManager userManager, ILogger<AccountController> logger)
 		{
 			this.dataManager = dataManager;
 			this.userManager = userManager;
+			this.logger = logger;
 		}
 
 		[HttpGet]
@@ -36,6 +39,8 @@ namespace Online_Store.Controllers
 			{
 				if (await Extensions.ValidateUser(model.Email, model.Password, dataManager))
 				{
+					logger.LogInformation($"User with UserId {dataManager.Users.GetUsers().FirstOrDefault(x => x.Email.ToLower() == model.Email.ToLower()).Id} is signed in.");
+					
 					await userManager.SignInAsync(model.Email);
 
 					//редіректи
