@@ -1,5 +1,4 @@
 ﻿@model RegisterViewModel
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
 <form id="registerForm"
       class="login"
       asp-controller="Account"
@@ -12,28 +11,28 @@
     </div>
 
     <label for="Name">Ім'я</label>
+    <span asp-validation-for="Name" class="validation"></span>
     <input type="text" name="Name" asp-for="Name">
-    <span asp-validation-for="Name"></span>
 
     <label for="Lastname">Прізвище</label>
+    <span asp-validation-for="Lastname" class="validation"></span>
     <input type="text" name="Lastname" asp-for="Lastname">
-    <span asp-validation-for="Lastname"></span>
 
     <label for="PhoneNumber">Номер телефону</label>
+    <span asp-validation-for="PhoneNumber" class="validation"></span>
     <input type="text" name="PhoneNumber" id="PhoneNumber" placeholder="+38 (999)-999-99-99">
-    <span asp-validation-for="PhoneNumber"></span>
+
 
     <label for="Email">Електронна пошта</label>
+    <span asp-validation-for="Email" class="validation"></span>
     <input type="text" name="Email" asp-for="Email">
+
     <label for="password">Пароль</label>
-    <input type="password" name="password" asp-for="Password">
+    <span asp-validation-for="Password" class="validation"></span>
+    <input type="Password" name="Password" asp-for="Password">
+
+    <span class="validation">@Model.ErrorMessage</span>
+
     <button class="button grayblack" type="submit">Зареєструватися</button>
     <p>Вже є акаунт? <a href="#" onclick="toggleForm()">Увійти</a></p>
 </form>
-
-<script>
-    $(document).ready(function () {
-        const phoneNumberInput = $('#PhoneNumber');
-        phoneNumberInput.inputmask({ "mask": "+38 (999)-999-99-99" });
-    });
-</script>

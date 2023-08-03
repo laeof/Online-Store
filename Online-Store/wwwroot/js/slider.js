@@ -104,24 +104,26 @@ let touchEndX = 0;
 let isDragging = false;
 let dragStartX = 0;
 
-slidesContainer.addEventListener('touchstart', (event) => {
-    touchStartX = event.touches[0].clientX;
-});
+if (slidesContainer != null) {
+    slidesContainer.addEventListener('touchstart', (event) => {
+        touchStartX = event.touches[0].clientX;
+    });
 
-slidesContainer.addEventListener('touchmove', (event) => {
-    const touch = event.touches[0];
-    const touchMoveX = touch.clientX;
-    const deltaX = touchMoveX - touchStartX;
+    slidesContainer.addEventListener('touchmove', (event) => {
+        const touch = event.touches[0];
+        const touchMoveX = touch.clientX;
+        const deltaX = touchMoveX - touchStartX;
 
-    if ((currentSlide === 0 && deltaX > 0) || (currentSlide === slides.length - 1 && deltaX < 0)) {
-        event.preventDefault();
-    }
-});
+        if ((currentSlide === 0 && deltaX > 0) || (currentSlide === slides.length - 1 && deltaX < 0)) {
+            event.preventDefault();
+        }
+    });
 
-slidesContainer.addEventListener('touchend', (event) => {
-    touchEndX = event.changedTouches[0].clientX;
-    handleSwipe();
-});
+    slidesContainer.addEventListener('touchend', (event) => {
+        touchEndX = event.changedTouches[0].clientX;
+        handleSwipe();
+    });
+}
 
 function handleSwipe() {
     const SWIPE_THRESHOLD = 50; 
@@ -147,32 +149,35 @@ slides.forEach((slide) => {
     });
 });
 
-slidesContainer.addEventListener('mousedown', (event) => {
-    isDragging = true;
-    dragStartX = event.clientX;
-});
+if (slidesContainer != null) {
 
-slidesContainer.addEventListener('mousemove', (event) => {
-    if (!isDragging) {
-        return;
-    }
+    slidesContainer.addEventListener('mousedown', (event) => {
+        isDragging = true;
+        dragStartX = event.clientX;
+    });
 
-    const dragCurrentX = event.clientX;
-    const deltaX = dragCurrentX - dragStartX;
+    slidesContainer.addEventListener('mousemove', (event) => {
+        if (!isDragging) {
+            return;
+        }
 
-    if (deltaX > 0) {
-        prevSlide();
-        updateActiveDot();
-        updateActiveThumb();
-    } else if (deltaX < 0) {
-        nextSlide();
-        updateActiveDot();
-        updateActiveThumb();
-    }
+        const dragCurrentX = event.clientX;
+        const deltaX = dragCurrentX - dragStartX;
 
-    isDragging = false;
-});
+        if (deltaX > 0) {
+            prevSlide();
+            updateActiveDot();
+            updateActiveThumb();
+        } else if (deltaX < 0) {
+            nextSlide();
+            updateActiveDot();
+            updateActiveThumb();
+        }
 
-slidesContainer.addEventListener('mouseup', () => {
-    isDragging = false;
-});
+        isDragging = false;
+    });
+
+    slidesContainer.addEventListener('mouseup', () => {
+        isDragging = false;
+    });
+}

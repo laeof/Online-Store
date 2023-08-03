@@ -25,25 +25,39 @@ namespace Online_Store.Domain
             base.OnModelCreating(modelBuilder);
 
             var role = new Role
-			{
-				Name = "admin",
+            {
+                Name = "admin",
+                Priority = 1
 			};
 
             var user = new User
             {
-                Name = "Max",
+                FirstName = "Max",
+                LastName = "Admin",
                 Email = "Admin",
                 Password = SecurePasswordHasher.Hash("aspoqw12"),
                 ApiKey = "xd",
                 PhoneNumber = "1234567890",
             };
 
-			modelBuilder.Entity<Role>().HasData(role);
+			modelBuilder.Entity<Role>().HasData(role); modelBuilder.Entity<Role>().HasData(new Role
+            {
+                Name = "manager",
+                Priority = 2
+            });
 
-			modelBuilder.Entity<Role>().HasData(new Role
+            modelBuilder.Entity<Role>().HasData(new Role
+            {
+                Name = "supporter",
+                Priority = 3
+            });
+
+            modelBuilder.Entity<Role>().HasData(new Role
 			{
 				Name = "user",
+                Priority = 4
 			});
+
 			modelBuilder.Entity<User>().HasData(user);
 
             modelBuilder.Entity<UserRole>().HasData(new UserRole

@@ -181,6 +181,10 @@
       "PackagePath": "staticwebassets\\css\\components\\title.css"
     },
     {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\validation.css",
+      "PackagePath": "staticwebassets\\css\\components\\validation.css"
+    },
+    {
       "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\wrapper.css",
       "PackagePath": "staticwebassets\\css\\components\\wrapper.css"
     },
@@ -451,6 +455,10 @@
     {
       "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\js\\main.js",
       "PackagePath": "staticwebassets\\js\\main.js"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\js\\register.js",
+      "PackagePath": "staticwebassets\\js\\register.js"
     },
     {
       "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\js\\slider.js",

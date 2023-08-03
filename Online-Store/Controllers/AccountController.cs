@@ -47,9 +47,11 @@ namespace Online_Store.Controllers
 
 					return Redirect("/Home/");
 				}
-				model.ErrorMessage = "";
+
+                return View(new LoginViewModel() { ErrorMessage = "Невірно введено Email або пароль" });
             }
-            return View(new LoginViewModel());
+
+            return View(new LoginViewModel() { ErrorMessage = "Всі поля мають бути заповненими." });
         }
 
 		[Authorize]
@@ -78,11 +80,11 @@ namespace Online_Store.Controllers
 			if (ModelState.IsValid)
 			{
 				//check for existing
-				var existingUser = await dataManager.Users.GetUsers().FirstOrDefaultAsync(u => u.Email.ToLower() == model.Email.ToLower());
+				var existingUser = await dataManager.Users.GetUsers().FirstOrDefaultAsync(u => (u.Email.ToLower() == model.Email.ToLower()) || (u.PhoneNumber == model.PhoneNumber));
 				if (existingUser != null)
 				{
-					ModelState.AddModelError(string.Empty, "Користувач з таким логіном вже існує");
-					return View(model);
+                    model.ErrorMessage = "Такий користувач вже існує.";
+                    return View(model);
 				}
 
 				await userManager.SingUpAsync(model);
@@ -91,7 +93,21 @@ namespace Online_Store.Controllers
                 return Redirect("/Home/");
             }
 
-            return View(new RegisterViewModel());
+            return View(new RegisterViewModel() { ErrorMessage = "Всі поля мають бути заповненими." });
         }
+
+		[HttpGet]
+		[Authorize]
+		public IActionResult Cabinet()
+		{
+			return View(new CabinetViewModel()
+			{
+				FirstName = userManager.User.FirstName,
+				LastName = userManager.User.LastName,
+				Email = userManager.User.Email,
+				PhoneNumber = userManager.User.PhoneNumber,
+				Gender = userManager.User.Gender
+			});
+		}
 	}
 }

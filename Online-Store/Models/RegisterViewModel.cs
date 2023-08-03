@@ -14,7 +14,8 @@ namespace Online_Store.Models
         [Required(ErrorMessage = "Обов'язкове поле")]
         public string Password { get; set; }
         [Required(ErrorMessage = "Обов'язкове поле")]
-        [RegularExpression(@"^\+380\d{9}$", ErrorMessage = "Невірний формат номеру телефону")]
+        [RegularExpression(@"^\+38 \(\d{3}\)-\d{3}-\d{2}-\d{2}$", ErrorMessage = "Невірний формат номеру телефону")]
         public string PhoneNumber { get; set; }
-	}
+        public string? ErrorMessage { get; set; }
+    }
 }

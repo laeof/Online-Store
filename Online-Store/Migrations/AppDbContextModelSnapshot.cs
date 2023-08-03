@@ -318,7 +318,11 @@ namespace Online_Store.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<int>("Priority")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -327,19 +331,39 @@ namespace Online_Store.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("0ce25b9a-f187-475f-9867-77e63bb6455f"),
-                            Created = new DateTime(2023, 8, 2, 8, 47, 51, 684, DateTimeKind.Utc).AddTicks(5215),
+                            Id = new Guid("b8c34bc5-cccc-4b24-92c8-27ce5262546c"),
+                            Created = new DateTime(2023, 8, 3, 9, 37, 34, 724, DateTimeKind.Utc).AddTicks(7179),
                             IsDeleted = false,
                             IsNew = true,
-                            Name = "admin"
+                            Name = "admin",
+                            Priority = 1
                         },
                         new
                         {
-                            Id = new Guid("6b9b04bd-32e2-4b50-a623-b4f07b578860"),
-                            Created = new DateTime(2023, 8, 2, 8, 47, 51, 687, DateTimeKind.Utc).AddTicks(1405),
+                            Id = new Guid("c16075ab-9260-4699-880e-aae5e7bba5b4"),
+                            Created = new DateTime(2023, 8, 3, 9, 37, 34, 727, DateTimeKind.Utc).AddTicks(3517),
                             IsDeleted = false,
                             IsNew = true,
-                            Name = "user"
+                            Name = "manager",
+                            Priority = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("4f8ff642-4ed9-4f87-8287-c6fe10b1d6d1"),
+                            Created = new DateTime(2023, 8, 3, 9, 37, 34, 727, DateTimeKind.Utc).AddTicks(3523),
+                            IsDeleted = false,
+                            IsNew = true,
+                            Name = "supporter",
+                            Priority = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("f6ee87d5-b1bb-44ab-95e7-c6ff5d09fa08"),
+                            Created = new DateTime(2023, 8, 3, 9, 37, 34, 727, DateTimeKind.Utc).AddTicks(3529),
+                            IsDeleted = false,
+                            IsNew = true,
+                            Name = "user",
+                            Priority = 4
                         });
                 });
 
@@ -372,8 +396,12 @@ namespace Online_Store.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<bool?>("Gender")
-                        .HasColumnType("boolean");
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Gender")
+                        .HasColumnType("text");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean");
@@ -387,7 +415,7 @@ namespace Online_Store.Migrations
                     b.Property<bool>("IsNew")
                         .HasColumnType("boolean");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -412,17 +440,18 @@ namespace Online_Store.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("b1ddf756-1e38-46ea-9f9a-0f45ebef898d"),
+                            Id = new Guid("538854f3-f011-4147-9529-81f9305dfe15"),
                             ApiKey = "xd",
                             AvatarUrl = "../../../../img/Avatar/user.png",
-                            Created = new DateTime(2023, 8, 2, 8, 47, 51, 684, DateTimeKind.Utc).AddTicks(5217),
+                            Created = new DateTime(2023, 8, 3, 9, 37, 34, 724, DateTimeKind.Utc).AddTicks(7194),
                             Email = "Admin",
+                            FirstName = "Max",
                             IsActive = true,
                             IsDeleted = false,
                             IsEmailConfirmed = false,
                             IsNew = true,
-                            Name = "Max",
-                            Password = "$HASH|V1$10000$AHI6vKnlp7FksrI1ROrIEYHS4OMgyRUAqeu7BnIsFWq7PDb9",
+                            LastName = "Admin",
+                            Password = "$HASH|V1$10000$2EEFDX9bl3X+2+KpgCvy4hPG6Tqq9gkE5w74pS3sZ7PZL3FP",
                             PhoneNumber = "1234567890"
                         });
                 });
@@ -459,12 +488,12 @@ namespace Online_Store.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("740811a0-bce6-4238-9e99-9d22c5e29450"),
-                            Created = new DateTime(2023, 8, 2, 8, 47, 51, 687, DateTimeKind.Utc).AddTicks(1426),
+                            Id = new Guid("f362dae3-27f7-43df-95e7-851e2cf31ad5"),
+                            Created = new DateTime(2023, 8, 3, 9, 37, 34, 727, DateTimeKind.Utc).AddTicks(3578),
                             IsDeleted = false,
                             IsNew = true,
-                            RoleId = new Guid("0ce25b9a-f187-475f-9867-77e63bb6455f"),
-                            UserId = new Guid("b1ddf756-1e38-46ea-9f9a-0f45ebef898d")
+                            RoleId = new Guid("b8c34bc5-cccc-4b24-92c8-27ce5262546c"),
+                            UserId = new Guid("538854f3-f011-4147-9529-81f9305dfe15")
                         });
                 });
 

@@ -19,9 +19,9 @@ namespace Online_Store.Domain.Repository.EntityFramework
         {
             return await context.Roles.FirstOrDefaultAsync(x => x.Id == id);
         }
-        public async Task<Role> GetRoleByNameAsync(string name)
+        public async Task<Role> GetRoleByPriorityAsync(int priority)
 		{
-			return await context.Roles.FirstOrDefaultAsync(x => x.Name == name);
+			return await context.Roles.FirstOrDefaultAsync(x => x.Priority == priority);
 		}
 		public async Task<bool> SaveRoleAsync(Role entity)
 		{

@@ -6,7 +6,7 @@ namespace Online_Store.Domain.Repository.Abstract
 	{
 		IQueryable<Role> GetRole();
         Task<Role> GetRoleByIdAsync(Guid id);
-        Task<Role> GetRoleByNameAsync(string name);
+        Task<Role> GetRoleByPriorityAsync(int priority);
 		Task<bool> SaveRoleAsync(Role entity);
 		Task<bool> SoftDeleteRoleAsync(Role entity);
 	}
