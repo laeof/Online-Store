@@ -2,6 +2,8 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 .path-section .path{

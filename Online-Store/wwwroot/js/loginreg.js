@@ -28,13 +28,15 @@ function showRegisterForm() {
     loginForm.style.display = "none";
 }
 
-openModalBtn.addEventListener("click", openModal);
-closeModalBtn.addEventListener("click", closeModal);
-window.addEventListener("click", (event) => {
-    if (event.target === modal) {
-        closeModal();
-    }
-});
+if (openModalBtn != null) {
+    openModalBtn.addEventListener("click", openModal);
+    closeModalBtn.addEventListener("click", closeModal);
+    window.addEventListener("click", (event) => {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+}
 
 function toggleForm() {
     if (loginForm.style.display === "flex") {

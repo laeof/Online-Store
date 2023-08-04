@@ -25,9 +25,9 @@ namespace Online_Store.Controllers
 		public IActionResult Login()
 		{
 			if (userManager.User != null)
-			{
-				return Redirect("/Account/PersonalPage");
-			}
+            {
+                return Redirect("/Account/Cabinet");
+            }
 			return View(new LoginViewModel());
 		}
 
@@ -67,7 +67,7 @@ namespace Online_Store.Controllers
 		{
             if (userManager.User != null)
             {
-                return Redirect("/Account/PersonalPage");
+                return Redirect("/Account/Cabinet");
             }
             return View(new RegisterViewModel());
 		}

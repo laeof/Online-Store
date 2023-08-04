@@ -49,6 +49,22 @@
       "PackagePath": "staticwebassets\\css\\components\\button.css"
     },
     {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\cabinet\\cabinet-info.css",
+      "PackagePath": "staticwebassets\\css\\components\\cabinet\\cabinet-info.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\cabinet\\cabinet-sidebar.css",
+      "PackagePath": "staticwebassets\\css\\components\\cabinet\\cabinet-sidebar.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\cabinet\\cabinet.css",
+      "PackagePath": "staticwebassets\\css\\components\\cabinet\\cabinet.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\cabinet\\main.css",
+      "PackagePath": "staticwebassets\\css\\components\\cabinet\\main.css"
+    },
+    {
       "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\categories\\categories-section.css",
       "PackagePath": "staticwebassets\\css\\components\\categories\\categories-section.css"
     },
@@ -447,6 +463,10 @@
     {
       "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\svg\\star.svg",
       "PackagePath": "staticwebassets\\img\\svg\\star.svg"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\js\\cabinet.js",
+      "PackagePath": "staticwebassets\\js\\cabinet.js"
     },
     {
       "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\js\\loginreg.js",

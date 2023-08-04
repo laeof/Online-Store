@@ -40,3 +40,23 @@
 .button.grayblack:hover {
     background: rgb(92, 92, 92);
 }
+
+.button.red {
+    background: rgb(182, 46, 12);
+    transition: background-color 0.3s;
+    color: #fff;
+}
+
+.button.red:hover {
+    background: rgb(146, 37, 9);
+}
+
+.button.green {
+    background: rgb(11, 139, 65);
+    transition: background-color 0.3s;
+    color: #fff;
+}
+
+.button.green:hover {
+    background: rgb(9, 112, 52);
+}
