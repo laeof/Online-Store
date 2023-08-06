@@ -347,6 +347,35 @@ namespace Online_Store.Migrations
                     b.ToTable("Monitor");
                 });
 
+            modelBuilder.Entity("Online_Store.Domain.Entities.Products.ProductImages", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsNew")
+                        .HasColumnType("boolean");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductImages");
+                });
+
             modelBuilder.Entity("Online_Store.Domain.Entities.Review", b =>
                 {
                     b.Property<Guid>("Id")
@@ -409,8 +438,8 @@ namespace Online_Store.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("30736e29-a409-456e-b0f3-abddef63e117"),
-                            Created = new DateTime(2023, 8, 6, 19, 17, 43, 490, DateTimeKind.Utc).AddTicks(1667),
+                            Id = new Guid("dc3ab337-f058-4a57-b347-a05b026a0d8e"),
+                            Created = new DateTime(2023, 8, 6, 20, 35, 41, 981, DateTimeKind.Utc).AddTicks(521),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "admin",
@@ -418,8 +447,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("99d84225-4cec-435f-9f9f-17cf735f6c8d"),
-                            Created = new DateTime(2023, 8, 6, 19, 17, 43, 492, DateTimeKind.Utc).AddTicks(7767),
+                            Id = new Guid("d85a197e-a0bf-4f17-9de2-dd432f6f06d3"),
+                            Created = new DateTime(2023, 8, 6, 20, 35, 41, 984, DateTimeKind.Utc).AddTicks(7492),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "manager",
@@ -427,8 +456,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b1f765f4-30d7-4df5-8b50-d1236df79f35"),
-                            Created = new DateTime(2023, 8, 6, 19, 17, 43, 492, DateTimeKind.Utc).AddTicks(7776),
+                            Id = new Guid("d93d8206-99aa-481d-a54a-ec000d1faac2"),
+                            Created = new DateTime(2023, 8, 6, 20, 35, 41, 984, DateTimeKind.Utc).AddTicks(7502),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "supporter",
@@ -436,8 +465,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("7b26096d-7994-49a1-99aa-4dde7b27198a"),
-                            Created = new DateTime(2023, 8, 6, 19, 17, 43, 492, DateTimeKind.Utc).AddTicks(7782),
+                            Id = new Guid("aa6b842c-53db-44dc-a616-ee140bc6f6e0"),
+                            Created = new DateTime(2023, 8, 6, 20, 35, 41, 984, DateTimeKind.Utc).AddTicks(7508),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "user",
@@ -518,10 +547,10 @@ namespace Online_Store.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("36bcfa88-6e45-429d-b3a8-2a6fa4ada72c"),
+                            Id = new Guid("7658ae8e-0ab8-4408-a9bb-f37147b2437b"),
                             ApiKey = "xd",
                             AvatarUrl = "../../../../img/Avatar/user.png",
-                            Created = new DateTime(2023, 8, 6, 19, 17, 43, 490, DateTimeKind.Utc).AddTicks(1669),
+                            Created = new DateTime(2023, 8, 6, 20, 35, 41, 981, DateTimeKind.Utc).AddTicks(524),
                             Email = "Admin",
                             FirstName = "Max",
                             IsActive = true,
@@ -529,7 +558,7 @@ namespace Online_Store.Migrations
                             IsEmailConfirmed = false,
                             IsNew = true,
                             LastName = "Admin",
-                            Password = "$HASH|V1$10000$aoBF8Wx4REqieGVIhb0VAWR2hm2YyNMGysiERho3bmjAAGGb",
+                            Password = "$HASH|V1$10000$LDBhDFQqy5xZErqcrXuP5o5yQAt7xjE1IWJN0Dr93UIVRAkQ",
                             PhoneNumber = "1234567890"
                         });
                 });
@@ -566,12 +595,12 @@ namespace Online_Store.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("5a7ce9c8-4d7e-41b7-ad5e-1f033180a9df"),
-                            Created = new DateTime(2023, 8, 6, 19, 17, 43, 492, DateTimeKind.Utc).AddTicks(7812),
+                            Id = new Guid("d5d4e90e-4f33-4304-8651-1ab1eabdb6ed"),
+                            Created = new DateTime(2023, 8, 6, 20, 35, 41, 984, DateTimeKind.Utc).AddTicks(7533),
                             IsDeleted = false,
                             IsNew = true,
-                            RoleId = new Guid("30736e29-a409-456e-b0f3-abddef63e117"),
-                            UserId = new Guid("36bcfa88-6e45-429d-b3a8-2a6fa4ada72c")
+                            RoleId = new Guid("dc3ab337-f058-4a57-b347-a05b026a0d8e"),
+                            UserId = new Guid("7658ae8e-0ab8-4408-a9bb-f37147b2437b")
                         });
                 });
 
@@ -649,6 +678,17 @@ namespace Online_Store.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("Online_Store.Domain.Entities.Products.ProductImages", b =>
+                {
+                    b.HasOne("Online_Store.Domain.Entities.Product", "Product")
+                        .WithMany("Images")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("Online_Store.Domain.Entities.Review", b =>
                 {
                     b.HasOne("Online_Store.Domain.Entities.Product", "Product")
@@ -685,6 +725,11 @@ namespace Online_Store.Migrations
                     b.Navigation("Role");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Online_Store.Domain.Entities.Product", b =>
+                {
+                    b.Navigation("Images");
                 });
 
             modelBuilder.Entity("Online_Store.Domain.Entities.Role", b =>

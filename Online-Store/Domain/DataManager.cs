@@ -9,17 +9,20 @@ namespace Online_Store.Domain
 		public IUserRoleRepository UserRoles { get; set; }
 		public IOrderRepository Orders { get; set; }
 		public IProductRepository Products { get; set; }
+		public IProductImagesRepository ProductImages { get; set; }
 		public DataManager(IUserRepository Users,
 						   IRoleRepository Roles,
 						   IUserRoleRepository UserRoles,
 						   IOrderRepository Orders,
-						   IProductRepository Products) 
+						   IProductRepository Products,
+						   IProductImagesRepository ProductImages) 
 		{
 			this.Users = Users;
 			this.Roles = Roles;	
 			this.UserRoles = UserRoles;
 			this.Orders = Orders;
 			this.Products = Products;
+			this.ProductImages = ProductImages;
 		}
 	}
 }

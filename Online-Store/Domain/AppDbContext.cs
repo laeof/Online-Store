@@ -21,6 +21,7 @@ namespace Online_Store.Domain
         public DbSet<Category> Categories { get; set; }
         public DbSet<OrderItems> OrderItems { get; set; }
         public DbSet<CartItems> CartItems { get; set; }
+        public DbSet<ProductImages> ProductImages { get; set; }
         public DbSet<Entities.Products.Monitor> Monitor { get; set; }
         protected override async void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -30,7 +31,7 @@ namespace Online_Store.Domain
             {
                 Name = "admin",
                 Priority = 1
-			};
+            };
 
             var user = new User
             {
@@ -42,7 +43,7 @@ namespace Online_Store.Domain
                 PhoneNumber = "1234567890",
             };
 
-			modelBuilder.Entity<Role>().HasData(role); modelBuilder.Entity<Role>().HasData(new Role
+            modelBuilder.Entity<Role>().HasData(role); modelBuilder.Entity<Role>().HasData(new Role
             {
                 Name = "manager",
                 Priority = 2
@@ -55,12 +56,12 @@ namespace Online_Store.Domain
             });
 
             modelBuilder.Entity<Role>().HasData(new Role
-			{
-				Name = "user",
+            {
+                Name = "user",
                 Priority = 4
-			});
+            });
 
-			modelBuilder.Entity<User>().HasData(user);
+            modelBuilder.Entity<User>().HasData(user);
 
             modelBuilder.Entity<UserRole>().HasData(new UserRole
             {

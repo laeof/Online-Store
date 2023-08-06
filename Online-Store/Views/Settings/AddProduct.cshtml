@@ -5,7 +5,8 @@
         @await Html.PartialAsync("SettingsPartial")
         <div class="settings-info">
             <form asp-controller="Settings"
-                  asp-action="AddProduct">
+                  asp-action="AddProduct"
+                  enctype="multipart/form-data">
 
                 <label>Назва</label>
                 <span asp-validation-for="Name"></span>
@@ -26,6 +27,8 @@
                 <label>Кількість</label>
                 <span asp-validation-for="Amount"></span>
                 <input type="text" name="Amount" asp-for="Amount" />
+
+                <input type="file" name="imageFiles" id="imageUpload" accept=".jpg, .jpeg, .png" asp-for="Images" multiple>
 
                 <button type="submit">Створити продукт</button>
 

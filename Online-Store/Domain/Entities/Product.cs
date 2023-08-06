@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Online_Store.Domain.Entities.Products;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Online_Store.Domain.Entities
 {
@@ -16,5 +17,6 @@ namespace Online_Store.Domain.Entities
         public string? Guarantee { get; set; }
         public string? Additional { get; set; }
         public string? Kit { get; set; }
+        public ICollection<ProductImages> Images { get; set; } = new List<ProductImages>();
     }
 }

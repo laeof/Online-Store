@@ -28,10 +28,19 @@
 }
 
 .good-card:hover .up .good-img {
-    content: url(/img/jpg/monitor2.jpg);
+    display: none;
 }
 
-.good-card .up .good-img {
+.good-card .up .good-img2 {
+    display: none;
+}
+
+.good-card:hover .up .good-img2 {
+    display: flex;
+}
+
+.good-card .up .good-img,
+.good-card .up .good-img2 {
     height: 210px;
     width: 250px;
 }
@@ -94,7 +103,8 @@
         font-size: 14px;
     }
 
-    .good-card .up .good-img {
+    .good-card .up .good-img,
+    .good-card .up .good-img2 {
         height: 130px;
         width: 155px;
     }

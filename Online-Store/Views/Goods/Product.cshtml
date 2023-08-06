@@ -23,19 +23,19 @@
             <div class="pictures">
                 <div class="slider-nav">
                     <div class="thumbnails">
-                        <img class="thumb" src="~/img/jpg/monitor.jpg">
-                        <img class="thumb" src="~/img/jpg/monitor2.jpg">
-                        <img class="thumb" src="~/img/jpg/monitor.jpg">
-                        <img class="thumb" src="~/img/jpg/monitor2.jpg">
+                        @foreach(var img in Model.Images)
+                        {
+                            <img class="thumb" src="~/img/goods/@img.FileName">
+                        }
                     </div>
                 </div>
                 <div class="slider-container">
                     <button class="prev-btn">&#10094;</button>
                     <div class="slides">
-                        <img class="product-img" src="~/img/jpg/monitor.jpg">
-                        <img class="product-img" src="~/img/jpg/monitor2.jpg">
-                        <img class="product-img" src="~/img/jpg/monitor.jpg">
-                        <img class="product-img" src="~/img/jpg/monitor2.jpg">
+                        @foreach (var img in Model.Images)
+                        {
+                            <img class="product-img" src="~/img/goods/@img.FileName">
+                        }
                     </div>
                     <button class="next-btn">&#10095;</button>
                 </div>
