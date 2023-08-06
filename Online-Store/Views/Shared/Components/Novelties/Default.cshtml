@@ -1,0 +1,27 @@
+﻿@model ProductViewModel
+
+<section class="section goods-section">
+    <h2 class="title">Новинки</h2>
+    <nav class="nav">
+        <ul class="goods">
+            @foreach(var product in Model.Products)
+            {
+                <li class="good-card" onclick=" window.location.href='/Goods/Product/{@product.Id}';">
+                    <div class="up">
+                        <img class="good-img" src="~/img/jpg/monitor.jpg">
+                        <div class="top">
+                            <p class="good-name">@product.Name</p>
+                        </div>
+                        <div class="bottom">
+                            <p class="good-category">Монітори</p>
+                            <p class="good-cost">@product.Price</p>
+                        </div>
+                    </div>
+                    <div class="down">
+                        <p class="property">@product.Description</p>
+                    </div>
+                </li>
+            }
+        </ul>
+    </nav>
+</section>

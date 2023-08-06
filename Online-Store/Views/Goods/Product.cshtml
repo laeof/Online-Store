@@ -1,4 +1,6 @@
-﻿<section class="section path-section">
+﻿@model ProductViewModel
+
+<section class="section path-section">
     <div class="path">
         <p>Монітори/Apple/Монітор Apple Studio Display</p>
     </div>
@@ -6,7 +8,7 @@
 <section class="section product-section">
     <div class="product">
         <div class="wrap-title">
-            <h2 class="title">Монітор Apple Studio Display</h2>
+            <h2 class="title">@Model.Name</h2>
         </div>
         <nav class="nav">
             <ul class="list">
@@ -39,20 +41,27 @@
                 </div>
             </div>
             <div class="info">
-                <p class="property">Діагональ дисплея: 23.6"</p>
-                <p class="property">Максимальна роздільна здатність дисплея: 1920x1080 (FullHD)</p>
-                <p class="property">Час реакції матриці: 1 ms (MPRT), 4 ms (GTG)</p>
-                <p class="property">Тип матриці: VA</p>
+                <p class="property">@Model.Description</p>
             </div>
         </div>
         <div class="product-buy">
             <div class="buy">
-                <span class="available">
-                    <img class="icon" src="~/img/svg/available.svg">
-                    <p class="text">Є В наявності</p>
-                </span>
+                @if (Model.Amount > 0)
+                {
+                    <span class="available">
+                        <img class="icon" src="~/img/svg/available.svg">
+                        <p class="text">Є в наявності</p>
+                    </span>
+                }
+                else
+                {
+                    <span class="available">
+                        <img class="icon" src="~/img/svg/available.svg">
+                        <p class="text">Нема в наявності</p>
+                    </span>
+                }
                 <div class="cost">
-                    <p class="good-cost">87500</p>
+                    <p class="good-cost">@Model.Price</p>
                     <div class="good-buy">
                         <button class="button gray">
                             <img src="~/img/svg/basket.svg"

@@ -18,6 +18,6 @@
 		public bool IsEmailConfirmed { get; set; } = false;
 		public bool IsActive { get; set; } = true;
 		public ICollection<Order>? Order { get; set; }
-		public ICollection<UserRole>? UserRoles { get; set; }
+		public ICollection<UserRole> UserRoles { get; set; }
 	}
 }

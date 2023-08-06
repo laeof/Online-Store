@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Data;
 using Online_Store.Domain.Entities;
+using Online_Store.Domain.Entities.Products;
 using Microsoft.AspNetCore.SignalR;
 
 namespace Online_Store.Domain
@@ -20,7 +21,8 @@ namespace Online_Store.Domain
         public DbSet<Category> Categories { get; set; }
         public DbSet<OrderItems> OrderItems { get; set; }
         public DbSet<CartItems> CartItems { get; set; }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        public DbSet<Entities.Products.Monitor> Monitor { get; set; }
+        protected override async void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 

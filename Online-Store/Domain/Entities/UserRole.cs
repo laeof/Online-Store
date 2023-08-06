@@ -6,9 +6,9 @@ namespace Online_Store.Domain.Entities
 	{
 		public Guid RoleId { get; set; }
 		[ForeignKey("RoleId")]
-		public Role? Role { get; set; }
+		public Role Role { get; set; }
 		public Guid UserId { get; set; }
 		[ForeignKey("UserId")]
-		public User? User { get; set; }
+		public User User { get; set; }
 	}
 }

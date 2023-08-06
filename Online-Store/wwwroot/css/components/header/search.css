@@ -35,13 +35,13 @@
 
 @media screen and (max-width: 1366px){
     .wrap-search {
-        width: 65%;
+        width: 75%;
     }
 }
 
 @media screen and (max-width: 1024px){
     .wrap-search{
-        width: 70%;
+        width: 65%;
     }
 }
 
