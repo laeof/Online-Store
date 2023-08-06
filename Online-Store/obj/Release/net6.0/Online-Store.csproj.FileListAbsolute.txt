@@ -249,3 +249,5 @@ C:\Users\laoef\source\repos\Online-Store\Online-Store\obj\Release\net6.0\refint\
 C:\Users\laoef\source\repos\Online-Store\Online-Store\obj\Release\net6.0\Online-Store.pdb
 C:\Users\laoef\source\repos\Online-Store\Online-Store\obj\Release\net6.0\Online-Store.genruntimeconfig.cache
 C:\Users\laoef\source\repos\Online-Store\Online-Store\obj\Release\net6.0\ref\Online-Store.dll
+C:\Users\laoef\source\repos\Online-Store\Online-Store\bin\Release\net6.0\AutoMapper.dll
+C:\Users\laoef\source\repos\Online-Store\Online-Store\bin\Release\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

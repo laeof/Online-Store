@@ -1,0 +1,35 @@
+﻿@model ProductViewModel
+
+<section class="settings-section">
+    <div class="settings">
+        @await Html.PartialAsync("SettingsPartial")
+        <div class="settings-info">
+            <form asp-controller="Settings"
+                  asp-action="AddProduct">
+
+                <label>Назва</label>
+                <span asp-validation-for="Name"></span>
+                <input type="text" name="Name" asp-for="Name"/>
+
+                <label>Опис</label>
+                <span asp-validation-for="Description"></span>
+                <input type="text" name="Description" asp-for="Description" />
+
+                <label>Ціна</label>
+                <span asp-validation-for="Price"></span>
+                <input type="text" name="Price" asp-for="Price" />
+
+                <label>Ціна зі знижкою</label>
+                <span asp-validation-for="SalePrice"></span>
+                <input type="text" name="SalePrice" asp-for="SalePrice" />
+
+                <label>Кількість</label>
+                <span asp-validation-for="Amount"></span>
+                <input type="text" name="Amount" asp-for="Amount" />
+
+                <button type="submit">Створити продукт</button>
+
+            </form>
+        </div>
+    </div>
+</section>

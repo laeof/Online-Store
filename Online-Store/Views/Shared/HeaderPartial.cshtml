@@ -20,14 +20,7 @@
             </ul>
             <ul class="personal-icons">
                 <li class="item">
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <img class="icon" onclick="window.location.href='/Account/Cabinet';" src="~/img/svg/personal.svg">
-                    }
-                    else
-                    {
-                        <img class="icon" id="openModalBtn" src="~/img/svg/personal.svg">
-                    }
+                    <img class="icon" id="openModalBtn" src="~/img/svg/personal.svg">
                 </li>
                 <li class="item">
                     <img class="icon" src="~/img/svg/basket.svg">

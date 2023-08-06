@@ -12,8 +12,8 @@ using Online_Store.Domain;
 namespace Online_Store.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230802081250__initial")]
-    partial class _initial
+    [Migration("20230806161310_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -251,6 +251,10 @@ namespace Online_Store.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
 
@@ -270,6 +274,10 @@ namespace Online_Store.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Product");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Online_Store.Domain.Entities.Review", b =>
@@ -321,7 +329,11 @@ namespace Online_Store.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<int>("Priority")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -330,19 +342,39 @@ namespace Online_Store.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("f10af38e-1735-4dba-b0e2-1e057eb2b6ce"),
-                            Created = new DateTime(2023, 8, 2, 8, 12, 50, 81, DateTimeKind.Utc).AddTicks(6642),
+                            Id = new Guid("d0101fcd-ea66-44fe-b189-49b3b4b1085b"),
+                            Created = new DateTime(2023, 8, 6, 16, 13, 10, 249, DateTimeKind.Utc).AddTicks(8988),
                             IsDeleted = false,
                             IsNew = true,
-                            Name = "admin"
+                            Name = "admin",
+                            Priority = 1
                         },
                         new
                         {
-                            Id = new Guid("a6f89035-7048-46f4-915b-e256bcd5f5b8"),
-                            Created = new DateTime(2023, 8, 2, 8, 12, 50, 84, DateTimeKind.Utc).AddTicks(3254),
+                            Id = new Guid("70fd4302-aa59-4f31-b8e8-dd36b90610d4"),
+                            Created = new DateTime(2023, 8, 6, 16, 13, 10, 252, DateTimeKind.Utc).AddTicks(5508),
                             IsDeleted = false,
                             IsNew = true,
-                            Name = "user"
+                            Name = "manager",
+                            Priority = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("e1fb342e-9ecb-408d-9da5-74b020fe14a0"),
+                            Created = new DateTime(2023, 8, 6, 16, 13, 10, 252, DateTimeKind.Utc).AddTicks(5515),
+                            IsDeleted = false,
+                            IsNew = true,
+                            Name = "supporter",
+                            Priority = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("7d0812b7-e0b5-40c0-81e9-beeb70bfee20"),
+                            Created = new DateTime(2023, 8, 6, 16, 13, 10, 252, DateTimeKind.Utc).AddTicks(5521),
+                            IsDeleted = false,
+                            IsNew = true,
+                            Name = "user",
+                            Priority = 4
                         });
                 });
 
@@ -375,8 +407,12 @@ namespace Online_Store.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<bool?>("Gender")
-                        .HasColumnType("boolean");
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Gender")
+                        .HasColumnType("text");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean");
@@ -390,7 +426,7 @@ namespace Online_Store.Migrations
                     b.Property<bool>("IsNew")
                         .HasColumnType("boolean");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -399,6 +435,7 @@ namespace Online_Store.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("PostalCode")
@@ -414,17 +451,19 @@ namespace Online_Store.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("7967f78b-23da-4c90-a072-6840dad33c52"),
+                            Id = new Guid("473aadaa-a462-4716-ba93-f9cf1d80fa24"),
                             ApiKey = "xd",
                             AvatarUrl = "../../../../img/Avatar/user.png",
-                            Created = new DateTime(2023, 8, 2, 8, 12, 50, 81, DateTimeKind.Utc).AddTicks(6645),
+                            Created = new DateTime(2023, 8, 6, 16, 13, 10, 249, DateTimeKind.Utc).AddTicks(8990),
                             Email = "Admin",
+                            FirstName = "Max",
                             IsActive = true,
                             IsDeleted = false,
                             IsEmailConfirmed = false,
                             IsNew = true,
-                            Name = "Max",
-                            Password = "$HASH|V1$10000$0f/WyEZ/YZmunnZaU1APYcYG7IXJSHTZib8Pbih+1Nk7tIqE"
+                            LastName = "Admin",
+                            Password = "$HASH|V1$10000$jFdRF3G+5pPsHBKMdWaw0Vn8eIkXDcqtGifB0JRgRAfs3Yci",
+                            PhoneNumber = "1234567890"
                         });
                 });
 
@@ -460,13 +499,65 @@ namespace Online_Store.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("8135e784-6e80-4ca8-94d9-0cff43134125"),
-                            Created = new DateTime(2023, 8, 2, 8, 12, 50, 84, DateTimeKind.Utc).AddTicks(3276),
+                            Id = new Guid("ea6a193a-dd8e-46f2-ad2e-8c11b10568fc"),
+                            Created = new DateTime(2023, 8, 6, 16, 13, 10, 252, DateTimeKind.Utc).AddTicks(5547),
                             IsDeleted = false,
                             IsNew = true,
-                            RoleId = new Guid("f10af38e-1735-4dba-b0e2-1e057eb2b6ce"),
-                            UserId = new Guid("7967f78b-23da-4c90-a072-6840dad33c52")
+                            RoleId = new Guid("d0101fcd-ea66-44fe-b189-49b3b4b1085b"),
+                            UserId = new Guid("473aadaa-a462-4716-ba93-f9cf1d80fa24")
                         });
+                });
+
+            modelBuilder.Entity("Online_Store.Domain.Entities.MonitorCharacteristics", b =>
+                {
+                    b.HasBaseType("Online_Store.Domain.Entities.Product");
+
+                    b.Property<string>("Additional")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Brightness")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Color")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Contrast")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Country")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Diagonal")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Frequency")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Guarantee")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Interfaces")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Kit")
+                        .HasColumnType("text");
+
+                    b.Property<string>("MatrixType")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ratio")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Reaction")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Size")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Weight")
+                        .HasColumnType("text");
+
+                    b.HasDiscriminator().HasValue("MonitorCharacteristics");
                 });
 
             modelBuilder.Entity("Online_Store.Domain.Entities.Cart", b =>

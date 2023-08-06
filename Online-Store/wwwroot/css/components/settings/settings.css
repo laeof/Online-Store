@@ -1,0 +1,34 @@
+.settings-section{
+    display: flex;
+    justify-content: center;
+}
+
+.settings {
+    display: flex;
+    width: 65%;
+}
+
+.settings .icon {
+    margin-right: 15px;
+}
+
+@media screen and (max-width: 1600px){
+    .settings {
+        display: flex;
+        width: 85%;
+    }
+}
+
+@media screen and (max-width: 1366px){
+    .settings {
+        display: flex;
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 1024px){
+    .settings {
+        display: flex;
+        width: 95%;
+    }
+}

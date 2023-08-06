@@ -60,3 +60,10 @@
 .button.green:hover {
     background: rgb(9, 112, 52);
 }
+
+.button.transparent {
+    background: transparent;
+    border: 0;
+    width: 25px;
+    height: 25px;
+}

@@ -177,6 +177,22 @@
       "PackagePath": "staticwebassets\\css\\components\\section.css"
     },
     {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\settings\\main.css",
+      "PackagePath": "staticwebassets\\css\\components\\settings\\main.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\settings\\settings-info.css",
+      "PackagePath": "staticwebassets\\css\\components\\settings\\settings-info.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\settings\\settings-sidebar.css",
+      "PackagePath": "staticwebassets\\css\\components\\settings\\settings-sidebar.css"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\settings\\settings.css",
+      "PackagePath": "staticwebassets\\css\\components\\settings\\settings.css"
+    },
+    {
       "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\sidebar.css",
       "PackagePath": "staticwebassets\\css\\components\\sidebar.css"
     },
@@ -413,6 +429,10 @@
       "PackagePath": "staticwebassets\\img\\png\\tiktok.png"
     },
     {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\svg\\admin.svg",
+      "PackagePath": "staticwebassets\\img\\svg\\admin.svg"
+    },
+    {
       "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\svg\\available.svg",
       "PackagePath": "staticwebassets\\img\\svg\\available.svg"
     },
@@ -431,6 +451,10 @@
     {
       "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\svg\\courier.svg",
       "PackagePath": "staticwebassets\\img\\svg\\courier.svg"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\svg\\exit.svg",
+      "PackagePath": "staticwebassets\\img\\svg\\exit.svg"
     },
     {
       "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\svg\\guarantee.svg",

@@ -4,6 +4,7 @@ using Online_Store.Domain.Entities;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 using Online_Store.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Online_Store.Domain
 {
@@ -19,7 +20,9 @@ namespace Online_Store.Domain
 			if (httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
 			{
 				this.User = dataManager.Users.GetUsers()
-				.AsNoTracking()
+				.Include(ur => ur.UserRoles)
+					.ThenInclude(r => r.Role)
+                .AsNoTracking()
 				.FirstOrDefault(u => u.Id ==
 					Guid.Parse(httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value));
 			}
@@ -32,8 +35,7 @@ namespace Online_Store.Domain
 
 			var User = await dataManager.Users.GetUsers().FirstOrDefaultAsync(u => u.Email.ToLower() == login.ToLower());
 
-			var Role = await dataManager.Roles.GetRoleByIdAsync(
-				dataManager.UserRoles.GetUserRole().FirstOrDefault(ur => ur.UserId == User.Id).RoleId);
+			var Role = User.UserRoles.OrderBy(x => x.Role.Priority).FirstOrDefault().Role;
 
 			var claims = new List<Claim>
 			{
@@ -90,11 +92,11 @@ namespace Online_Store.Domain
 
 			var role = await dataManager.Roles.GetRoleByPriorityAsync(4);
 
-            // create role for user
-            var userrole = new UserRole
+			// create role for user
+			var userrole = new UserRole
 			{
 				UserId = user.Id,
-				RoleId = role.Id,
+				RoleId = role.Id
 			};
 
 			//save user role to db

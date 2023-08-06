@@ -8,15 +8,18 @@ namespace Online_Store.Domain
 		public IRoleRepository Roles { get; set; }
 		public IUserRoleRepository UserRoles { get; set; }
 		public IOrderRepository Orders { get; set; }
+		public IProductRepository Products { get; set; }
 		public DataManager(IUserRepository Users,
 						   IRoleRepository Roles,
 						   IUserRoleRepository UserRoles,
-						   IOrderRepository Orders) 
+						   IOrderRepository Orders,
+						   IProductRepository Products) 
 		{
 			this.Users = Users;
 			this.Roles = Roles;	
 			this.UserRoles = UserRoles;
 			this.Orders = Orders;
+			this.Products = Products;
 		}
 	}
 }

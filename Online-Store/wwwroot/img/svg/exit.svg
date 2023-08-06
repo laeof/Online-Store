@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="16" height="16" x="0" y="0" viewBox="0 0 682.667 682.667" style="enable-background:new 0 0 16 16" xml:space="preserve" class="">
+  <g>
+    <defs>
+      <clipPath id="b" clipPathUnits="userSpaceOnUse">
+        <path d="M0 512h512V0H0Z" fill="#ffffff" data-original="#000000"></path>
+      </clipPath>
+    </defs>
+    <mask id="a">
+      <rect width="100%" height="100%" fill="#ffffff" data-original="#ffffff"></rect>
+    </mask>
+    <g mask="url(#a)">
+      <g clip-path="url(#b)" transform="matrix(1.33333 0 0 -1.33333 0 682.667)">
+        <path d="M0 0v-60c0-22.092-17.908-40-40-40h-241c-22.092 0-40 17.908-40 40v392c0 22.092 17.908 40 40 40h241c22.092 0 40-17.908 40-40v-60" style="stroke-width:40;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" transform="translate(341 120)" fill="none" stroke="#ffffff" stroke-width="40" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="none" stroke-opacity="" data-original="#000000" class=""></path>
+        <path d="M0 0h-271" style="stroke-width:40;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" transform="translate(468 256)" fill="none" stroke="#ffffff" stroke-width="40" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="10" stroke-dasharray="none" stroke-opacity="" data-original="#000000" class=""></path>
+        <path d="m0 0 66-66-66-66" style="stroke-width:40;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" transform="translate(418 322)" fill="none" stroke="#ffffff" stroke-width="40" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="none" stroke-opacity="" data-original="#000000" class=""></path>
+      </g>
+    </g>
+  </g>
+</svg>

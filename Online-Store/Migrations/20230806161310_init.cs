@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Online_Store.Migrations
 {
     /// <inheritdoc />
-    public partial class _initial : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -56,6 +56,22 @@ namespace Online_Store.Migrations
                     Price = table.Column<decimal>(type: "numeric", nullable: false),
                     SalePrice = table.Column<decimal>(type: "numeric", nullable: true),
                     Amount = table.Column<int>(type: "integer", nullable: true),
+                    Discriminator = table.Column<string>(type: "text", nullable: false),
+                    Diagonal = table.Column<string>(type: "text", nullable: true),
+                    Frequency = table.Column<string>(type: "text", nullable: true),
+                    Reaction = table.Column<string>(type: "text", nullable: true),
+                    Brightness = table.Column<string>(type: "text", nullable: true),
+                    MatrixType = table.Column<string>(type: "text", nullable: true),
+                    Interfaces = table.Column<string>(type: "text", nullable: true),
+                    Contrast = table.Column<string>(type: "text", nullable: true),
+                    Ratio = table.Column<string>(type: "text", nullable: true),
+                    Size = table.Column<string>(type: "text", nullable: true),
+                    Weight = table.Column<string>(type: "text", nullable: true),
+                    Color = table.Column<string>(type: "text", nullable: true),
+                    Country = table.Column<string>(type: "text", nullable: true),
+                    Guarantee = table.Column<string>(type: "text", nullable: true),
+                    Additional = table.Column<string>(type: "text", nullable: true),
+                    Kit = table.Column<string>(type: "text", nullable: true),
                     Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     IsNew = table.Column<bool>(type: "boolean", nullable: false),
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
@@ -70,7 +86,8 @@ namespace Online_Store.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: true),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Priority = table.Column<int>(type: "integer", nullable: false),
                     Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     IsNew = table.Column<bool>(type: "boolean", nullable: false),
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
@@ -85,18 +102,19 @@ namespace Online_Store.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false),
+                    FirstName = table.Column<string>(type: "text", nullable: false),
+                    LastName = table.Column<string>(type: "text", nullable: false),
                     Email = table.Column<string>(type: "text", nullable: false),
                     Password = table.Column<string>(type: "text", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "text", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "text", nullable: false),
                     Address = table.Column<string>(type: "text", nullable: true),
                     City = table.Column<string>(type: "text", nullable: true),
                     Region = table.Column<string>(type: "text", nullable: true),
                     PostalCode = table.Column<string>(type: "text", nullable: true),
                     Country = table.Column<string>(type: "text", nullable: true),
                     AvatarUrl = table.Column<string>(type: "text", nullable: false),
+                    Gender = table.Column<string>(type: "text", nullable: true),
                     ApiKey = table.Column<string>(type: "text", nullable: true),
-                    Gender = table.Column<bool>(type: "boolean", nullable: true),
                     IsEmailConfirmed = table.Column<bool>(type: "boolean", nullable: false),
                     IsActive = table.Column<bool>(type: "boolean", nullable: false),
                     Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
@@ -287,22 +305,24 @@ namespace Online_Store.Migrations
 
             migrationBuilder.InsertData(
                 table: "Roles",
-                columns: new[] { "Id", "Created", "IsDeleted", "IsNew", "Name" },
+                columns: new[] { "Id", "Created", "IsDeleted", "IsNew", "Name", "Priority" },
                 values: new object[,]
                 {
-                    { new Guid("a6f89035-7048-46f4-915b-e256bcd5f5b8"), new DateTime(2023, 8, 2, 8, 12, 50, 84, DateTimeKind.Utc).AddTicks(3254), false, true, "user" },
-                    { new Guid("f10af38e-1735-4dba-b0e2-1e057eb2b6ce"), new DateTime(2023, 8, 2, 8, 12, 50, 81, DateTimeKind.Utc).AddTicks(6642), false, true, "admin" }
+                    { new Guid("70fd4302-aa59-4f31-b8e8-dd36b90610d4"), new DateTime(2023, 8, 6, 16, 13, 10, 252, DateTimeKind.Utc).AddTicks(5508), false, true, "manager", 2 },
+                    { new Guid("7d0812b7-e0b5-40c0-81e9-beeb70bfee20"), new DateTime(2023, 8, 6, 16, 13, 10, 252, DateTimeKind.Utc).AddTicks(5521), false, true, "user", 4 },
+                    { new Guid("d0101fcd-ea66-44fe-b189-49b3b4b1085b"), new DateTime(2023, 8, 6, 16, 13, 10, 249, DateTimeKind.Utc).AddTicks(8988), false, true, "admin", 1 },
+                    { new Guid("e1fb342e-9ecb-408d-9da5-74b020fe14a0"), new DateTime(2023, 8, 6, 16, 13, 10, 252, DateTimeKind.Utc).AddTicks(5515), false, true, "supporter", 3 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "Address", "ApiKey", "AvatarUrl", "City", "Country", "Created", "Email", "Gender", "IsActive", "IsDeleted", "IsEmailConfirmed", "IsNew", "Name", "Password", "PhoneNumber", "PostalCode", "Region" },
-                values: new object[] { new Guid("7967f78b-23da-4c90-a072-6840dad33c52"), null, "xd", "../../../../img/Avatar/user.png", null, null, new DateTime(2023, 8, 2, 8, 12, 50, 81, DateTimeKind.Utc).AddTicks(6645), "Admin", null, true, false, false, true, "Max", "$HASH|V1$10000$0f/WyEZ/YZmunnZaU1APYcYG7IXJSHTZib8Pbih+1Nk7tIqE", null, null, null });
+                columns: new[] { "Id", "Address", "ApiKey", "AvatarUrl", "City", "Country", "Created", "Email", "FirstName", "Gender", "IsActive", "IsDeleted", "IsEmailConfirmed", "IsNew", "LastName", "Password", "PhoneNumber", "PostalCode", "Region" },
+                values: new object[] { new Guid("473aadaa-a462-4716-ba93-f9cf1d80fa24"), null, "xd", "../../../../img/Avatar/user.png", null, null, new DateTime(2023, 8, 6, 16, 13, 10, 249, DateTimeKind.Utc).AddTicks(8990), "Admin", "Max", null, true, false, false, true, "Admin", "$HASH|V1$10000$jFdRF3G+5pPsHBKMdWaw0Vn8eIkXDcqtGifB0JRgRAfs3Yci", "1234567890", null, null });
 
             migrationBuilder.InsertData(
                 table: "UserRoles",
                 columns: new[] { "Id", "Created", "IsDeleted", "IsNew", "RoleId", "UserId" },
-                values: new object[] { new Guid("8135e784-6e80-4ca8-94d9-0cff43134125"), new DateTime(2023, 8, 2, 8, 12, 50, 84, DateTimeKind.Utc).AddTicks(3276), false, true, new Guid("f10af38e-1735-4dba-b0e2-1e057eb2b6ce"), new Guid("7967f78b-23da-4c90-a072-6840dad33c52") });
+                values: new object[] { new Guid("ea6a193a-dd8e-46f2-ad2e-8c11b10568fc"), new DateTime(2023, 8, 6, 16, 13, 10, 252, DateTimeKind.Utc).AddTicks(5547), false, true, new Guid("d0101fcd-ea66-44fe-b189-49b3b4b1085b"), new Guid("473aadaa-a462-4716-ba93-f9cf1d80fa24") });
 
             migrationBuilder.CreateIndex(
                 name: "IX_CartItems_CartId",

@@ -7,6 +7,9 @@
     using Online_Store.Domain;
 	using Online_Store.Domain.Repository.Abstract;
 	using Online_Store.Domain.Repository.EntityFramework;
+    using AutoMapper;
+    using Online_Store.Domain.Entities;
+    using Online_Store.Models;
 
 	public class Startup
     {
@@ -24,6 +27,7 @@
             services.AddTransient<IRoleRepository, EFRoleRepository>();
             services.AddTransient<IUserRoleRepository, EFUserRoleRepository>();
             services.AddTransient<IOrderRepository, EFOrderRepository>();
+            services.AddTransient<IProductRepository, EFProductRepository>();
 
             services.AddTransient<DataManager>();
             services.AddTransient<UserManager>();
@@ -55,6 +59,7 @@
             {
                 options.Cookie.Name = "Session";
                 options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.MaxAge = TimeSpan.FromMinutes(30);
             });
 
             services.AddDistributedMemoryCache();
@@ -64,6 +69,8 @@
             //add mvc
             services.AddControllersWithViews()
                 .AddSessionStateTempDataProvider();
+
+            services.AddAutoMapper(typeof(MappingProfile));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -91,6 +98,7 @@
             {
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
+
         }
     }
 }
