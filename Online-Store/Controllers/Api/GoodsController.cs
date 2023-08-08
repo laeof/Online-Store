@@ -7,7 +7,6 @@ namespace Online_Store.Controllers.Api
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin, Manager")]
     public class GoodsController : ControllerBase
     {
         private DataManager dataManager;
