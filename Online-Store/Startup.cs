@@ -33,6 +33,12 @@
             services.AddTransient<DataManager>();
             services.AddTransient<UserManager>();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAnyOrigin",
+                    builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+            });
+
             //cookie
             services.ConfigureApplicationCookie(options =>
             {
@@ -93,6 +99,8 @@
 
             //static files css html etc
             app.UseStaticFiles();
+
+            app.UseCors("AllowAnyOrigin");
 
             //routes
             app.UseEndpoints(endpoints =>
