@@ -6,7 +6,7 @@ namespace Online_Store.Domain.Repository.Abstract
     public interface IProductImagesRepository
     {
         IQueryable<ProductImages> GetProductImages();
-        Task<ProductImages> GetProductImagesByIdAsync(Guid id);
+        IQueryable<ProductImages> GetProductImagesById(Guid id);
         Task<bool> SaveProductImagesAsync(ProductImages entity);
         Task<bool> SoftDeleteProductImagesAsync(ProductImages entity);
     }

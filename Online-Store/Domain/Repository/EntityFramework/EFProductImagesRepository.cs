@@ -16,9 +16,9 @@ namespace Online_Store.Domain.Repository.EntityFramework
         {
             return context.ProductImages;
         }
-        public async Task<ProductImages> GetProductImagesByIdAsync(Guid id)
+        public IQueryable<ProductImages> GetProductImagesById(Guid id)
         {
-            return await context.ProductImages.FirstOrDefaultAsync(x => x.Id == id);
+            return context.ProductImages.Where(x => x.ProductId == id);
         }
         public async Task<bool> SaveProductImagesAsync(ProductImages entity)
         {

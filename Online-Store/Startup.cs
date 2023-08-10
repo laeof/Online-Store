@@ -10,6 +10,7 @@
     using AutoMapper;
     using Online_Store.Domain.Entities;
     using Online_Store.Models;
+    using Microsoft.Extensions.FileProviders;
 
 	public class Startup
     {
@@ -101,6 +102,7 @@
             app.UseStaticFiles();
 
             app.UseCors("AllowAnyOrigin");
+
 
             //routes
             app.UseEndpoints(endpoints =>
