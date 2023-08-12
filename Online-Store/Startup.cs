@@ -11,8 +11,11 @@
     using Online_Store.Domain.Entities;
     using Online_Store.Models;
     using Microsoft.Extensions.FileProviders;
+    using System.Text;
+    using Microsoft.AspNetCore.Authentication.JwtBearer;
+    using Microsoft.IdentityModel.Tokens;
 
-	public class Startup
+    public class Startup
     {
         public IConfiguration Configuration { get; }
         public Startup(IConfiguration configuration) => Configuration = configuration;
@@ -34,34 +37,8 @@
             services.AddTransient<DataManager>();
             services.AddTransient<UserManager>();
 
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowAnyOrigin",
-                    builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
-            });
-
-            //cookie
-            services.ConfigureApplicationCookie(options =>
-            {
-                options.Cookie.Name = "default";
-                options.Cookie.HttpOnly = true;
-                options.LoginPath = "/Account/Login";
-                options.AccessDeniedPath = "/Home";
-                options.SlidingExpiration = true;
-            });
-
-            //auth policy for admin area
-            services.AddAuthorization(x =>
-            {
-                x.AddPolicy("AdminArea", policy => { policy.RequireRole("admin"); });
-            });
-
-            services.AddAuthentication(options =>
-            {
-                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            }).AddCookie();
+            services.AddCors();
+            
 
             services.AddSession(options =>
             {
@@ -74,6 +51,8 @@
 
             services.AddHttpContextAccessor();
 
+            services.AddScoped<JwtService>();
+            
             //add mvc
             services.AddControllersWithViews()
                 .AddSessionStateTempDataProvider();
@@ -93,18 +72,19 @@
 
             app.UseRouting();
 
-            //auth and cookie
-            app.UseCookiePolicy();
-            app.UseAuthentication();
             app.UseAuthorization();
 
             //static files css html etc
             app.UseStaticFiles();
 
-            app.UseCors("AllowAnyOrigin");
+            app.UseCors(options => options
+                .WithOrigins(new[] { "http://localhost:3000", "http://localhost:8080", "http://localhost:4200" })
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials()
+            );
 
-
-            //routes
+            //routes 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");

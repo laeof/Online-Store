@@ -251,3 +251,10 @@ C:\Users\laoef\source\repos\Online-Store\Online-Store\obj\Release\net6.0\Online-
 C:\Users\laoef\source\repos\Online-Store\Online-Store\obj\Release\net6.0\ref\Online-Store.dll
 C:\Users\laoef\source\repos\Online-Store\Online-Store\bin\Release\net6.0\AutoMapper.dll
 C:\Users\laoef\source\repos\Online-Store\Online-Store\bin\Release\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\laoef\source\repos\Online-Store\Online-Store\bin\Release\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\laoef\source\repos\Online-Store\Online-Store\bin\Release\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\laoef\source\repos\Online-Store\Online-Store\bin\Release\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\laoef\source\repos\Online-Store\Online-Store\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\laoef\source\repos\Online-Store\Online-Store\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\laoef\source\repos\Online-Store\Online-Store\bin\Release\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\laoef\source\repos\Online-Store\Online-Store\bin\Release\net6.0\System.IdentityModel.Tokens.Jwt.dll

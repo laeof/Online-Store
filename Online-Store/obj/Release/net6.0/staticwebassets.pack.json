@@ -329,6 +329,10 @@
       "PackagePath": "staticwebassets\\fonts\\Roboto-ThinItalic.woff2"
     },
     {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\goods\\0i4cnvss.hx2_18307074.jpg",
+      "PackagePath": "staticwebassets\\img\\goods\\0i4cnvss.hx2_18307074.jpg"
+    },
+    {
       "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\goods\\4iyedbrq.odf_monitor.jpg",
       "PackagePath": "staticwebassets\\img\\goods\\4iyedbrq.odf_monitor.jpg"
     },
@@ -339,6 +343,14 @@
     {
       "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\goods\\4rrat1w0.r52_monitor.jpg",
       "PackagePath": "staticwebassets\\img\\goods\\4rrat1w0.r52_monitor.jpg"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\goods\\dsxh4oqb.d4q_18307112.jpg",
+      "PackagePath": "staticwebassets\\img\\goods\\dsxh4oqb.d4q_18307112.jpg"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\goods\\epifqzui.pri_331411684.озп.jpg",
+      "PackagePath": "staticwebassets\\img\\goods\\epifqzui.pri_331411684.озп.jpg"
     },
     {
       "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\goods\\gbftymep.ncx_monitor2.jpg",
@@ -367,6 +379,10 @@
     {
       "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\goods\\rynfc2x0.tuz_322631324.jpg",
       "PackagePath": "staticwebassets\\img\\goods\\rynfc2x0.tuz_322631324.jpg"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\goods\\sva2dh2r.kcz_331411683.jpg",
+      "PackagePath": "staticwebassets\\img\\goods\\sva2dh2r.kcz_331411683.jpg"
     },
     {
       "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\goods\\wu5s4kda.yl5_322631323.jpg",
@@ -515,6 +531,10 @@
     {
       "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\svg\\mail.svg",
       "PackagePath": "staticwebassets\\img\\svg\\mail.svg"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\svg\\next.svg",
+      "PackagePath": "staticwebassets\\img\\svg\\next.svg"
     },
     {
       "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\svg\\personal.svg",
