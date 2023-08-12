@@ -72,26 +72,25 @@ namespace Online_Store.Controllers.Api
             });
         }
 
-        [HttpGet("user")]
-        public async Task<IActionResult> User()
+        [HttpGet("checkToken")]
+        public IActionResult CheckToken()
         {
-            var jwt = Request.Cookies["jwt"];
-            if (jwt != null)
+            var jwtToken = Request.Cookies["jwtToken"];
+
+            if (string.IsNullOrEmpty(jwtToken))
             {
-                var token = jwtService.Verify(jwt);
-
-                Guid userId = Guid.Parse(token.Issuer);
-
-                var user = await dataManager.Users.GetUserByIdAsync(userId);
-
-                return Ok(user);
-            }
-            else
-            {
-                logger.LogInformation("No jwt token, need to authorize");
-                return BadRequest();
+                return Unauthorized(new { message = "Токен отсутствует" });
             }
 
+            try
+            {
+                var validatedToken = jwtService.Verify(jwtToken);
+                return Ok(new { message = "Токен действительный" });
+            }
+            catch (Exception)
+            {
+                return Forbid(new { message = "Недействительный токен" }.ToString());
+            }
         }
 
         [HttpPost("logout")]
