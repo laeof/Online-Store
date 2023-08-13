@@ -38,7 +38,12 @@
             services.AddTransient<UserManager>();
 
             services.AddCors();
-            
+
+            services.AddAuthentication("MyAuthScheme") // Укажите имя схемы аутентификации
+                .AddCookie("MyAuthScheme", options =>
+                {
+                    options.Cookie.HttpOnly = true;
+                });
 
             services.AddSession(options =>
             {

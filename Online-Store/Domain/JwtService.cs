@@ -7,33 +7,56 @@ namespace Online_Store.Domain
 {
     public class JwtService
     {
-        private string secureKey = "this is a very secure key";
-
+        public JwtService() 
+        {
+            
+        }
         public string Generate(Guid id)
         {
-            var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secureKey));
+            var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your_secret_key_here"));
             var credentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256Signature);
             var header = new JwtHeader(credentials);
 
-            var payload = new JwtPayload(id.ToString(), null, null, null, DateTime.Today.AddDays(1));
+            var payload = new JwtPayload
+            {
+                { "id", id.ToString() }, // Добавляем ID пользователя в полезную нагрузку
+                { JwtRegisteredClaimNames.Exp, DateTime.Today.AddMinutes(1) } // Время истечения токена
+            };
+
             var securityToken = new JwtSecurityToken(header, payload);
 
             return new JwtSecurityTokenHandler().WriteToken(securityToken);
         }
-
-        public JwtSecurityToken Verify(string jwt)
+        public bool Verify(string jwt)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(secureKey);
-            tokenHandler.ValidateToken(jwt, new TokenValidationParameters
+            var tokenValidationParameters = new TokenValidationParameters
             {
-                IssuerSigningKey = new SymmetricSecurityKey(key),
                 ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your_secret_key_here")),
                 ValidateIssuer = false,
                 ValidateAudience = false
-            }, out SecurityToken validatedToken);
+            };
 
-            return (JwtSecurityToken)validatedToken;
+            try
+            {
+                var claimsPrincipal = tokenHandler.ValidateToken(jwt, tokenValidationParameters, out _);
+                var idClaim = claimsPrincipal.FindFirst("id");
+                if (idClaim != null && Guid.TryParse(idClaim.Value, out Guid userId))
+                {
+                    return true;
+                }
+                else
+                {
+                    // Invalid token or missing ID claim
+                    return false; // Или выбросьте исключение в зависимости от вашей логики
+                }
+            }
+            catch (Exception ex)
+            {
+                // Обработка ошибок при валидации токена
+                return false; // Или выбросьте исключение в зависимости от вашей логики
+            }
         }
     }
 }

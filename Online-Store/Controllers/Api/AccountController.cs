@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using NuGet.Common;
 using NuGet.Protocol.Core.Types;
 using NuGet.Protocol.Plugins;
 using Online_Store.Domain;
@@ -19,7 +20,6 @@ namespace Online_Store.Controllers.Api
     {
         private DataManager dataManager;
         private ILogger<AccountController> logger;
-        private UserManager userManager;
         private JwtService jwtService;
 
         [HttpPost("register")]
@@ -28,12 +28,12 @@ namespace Online_Store.Controllers.Api
             return Ok();
         }
 
-        public AccountController(DataManager dataManager, ILogger<AccountController> logger, UserManager userManager,
-            JwtService jwtService)
+        public AccountController(DataManager dataManager,
+                                ILogger<AccountController> logger,
+                                JwtService jwtService)
         {
             this.dataManager = dataManager;
             this.logger = logger;
-            this.userManager = userManager;
             this.jwtService = jwtService;
         }
 
@@ -59,49 +59,42 @@ namespace Online_Store.Controllers.Api
 
             var jwt = jwtService.Generate(User.Id);
 
-            Response.Cookies.Append("jwt", jwt, new CookieOptions
-            {
-                HttpOnly = true,
-            });
-
             logger.LogInformation("Successful login, " + User.Id);
 
-            return Ok(new
+            Response.Cookies.Append("jwtToken", jwt, new CookieOptions
             {
-                message = "success"
+                HttpOnly = true,
+                Expires = DateTimeOffset.UtcNow.AddDays(2)
             });
-        }
 
-        [HttpGet("checkToken")]
-        public IActionResult CheckToken()
-        {
-            var jwtToken = Request.Cookies["jwtToken"];
-
-            if (string.IsNullOrEmpty(jwtToken))
-            {
-                return Unauthorized(new { message = "Токен отсутствует" });
-            }
-
-            try
-            {
-                var validatedToken = jwtService.Verify(jwtToken);
-                return Ok(new { message = "Токен действительный" });
-            }
-            catch (Exception)
-            {
-                return Forbid(new { message = "Недействительный токен" }.ToString());
-            }
+            return Ok();
         }
 
         [HttpPost("logout")]
         public IActionResult LogOut()
         {
-            Response.Cookies.Delete("jwt");
             logger.LogInformation("User logged out");
-            return Ok(new
+            Response.Cookies.Delete("jwtToken");
+            return Ok();
+        }
+        [HttpGet("check-auth")]
+        public IActionResult CheckAuthorization()
+        {
+            if (!HttpContext.Request.Cookies.TryGetValue("jwtToken", out var jwtToken))
             {
-                message = "logout"
-            });
+                return Unauthorized();
+            }
+
+            try
+            {
+                var validatedToken = jwtService.Verify(jwtToken);
+
+                return Ok(true);
+            }
+            catch
+            {
+                return Ok(false);
+            }
         }
 
     }
