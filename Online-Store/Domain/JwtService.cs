@@ -1,7 +1,9 @@
 ﻿using System;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
+using NuGet.Common;
 
 namespace Online_Store.Domain
 {
@@ -48,15 +50,29 @@ namespace Online_Store.Domain
                 }
                 else
                 {
-                    // Invalid token or missing ID claim
-                    return false; // Или выбросьте исключение в зависимости от вашей логики
+                    return false;
                 }
             }
             catch (Exception ex)
             {
-                // Обработка ошибок при валидации токена
-                return false; // Или выбросьте исключение в зависимости от вашей логики
+                return false;
             }
+        }
+
+        public Guid? GetUserIdFromToken(string jwtToken)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var token = tokenHandler.ReadJwtToken(jwtToken);
+
+            if (token.Payload.TryGetValue("id", out var idClaimValue) && idClaimValue is string idString)
+            {
+                if (Guid.TryParse(idString, out var id))
+                {
+                    return id;
+                }
+            }
+
+            return null;
         }
     }
 }

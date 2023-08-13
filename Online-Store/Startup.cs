@@ -57,7 +57,7 @@
             services.AddHttpContextAccessor();
 
             services.AddScoped<JwtService>();
-            
+
             //add mvc
             services.AddControllersWithViews()
                 .AddSessionStateTempDataProvider();

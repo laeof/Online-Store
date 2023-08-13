@@ -17,7 +17,7 @@ namespace Online_Store.Domain.Repository.EntityFramework
         }
         public IQueryable<UserRole> GetUserRole()
 		{
-			return context.UserRoles.AsNoTracking();
+			return context.UserRoles.AsNoTracking().Include(r => r.Role);
 		}
 		public async Task<UserRole> GetUserRoleByIdAsync(Guid id)
 		{

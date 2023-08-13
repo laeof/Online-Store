@@ -1,7 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration.UserSecrets;
+using Microsoft.IdentityModel.Tokens;
 using Online_Store.Domain;
+using Online_Store.Models;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Text;
 
 namespace Online_Store.Controllers.Api
 {
@@ -10,34 +15,40 @@ namespace Online_Store.Controllers.Api
     public class UserController: ControllerBase
     {
         private DataManager _dataManager { get; set; }
-        public UserController(DataManager dataManager) 
+        private JwtService _jwtService { get; set; }
+        public UserController(DataManager dataManager, JwtService jwtService) 
         {
             _dataManager = dataManager;
+            _jwtService = jwtService;
         }
 
         [HttpGet("current-user")]
-        [Authorize]
         public async Task<IActionResult> GetCurrentUserInfo()
         {
-            var userIdClaim = User.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.NameIdentifier);
-
-            if (userIdClaim != null && Guid.TryParse(userIdClaim.Value, out Guid userId))
+            if (!HttpContext.Request.Cookies.TryGetValue("jwtToken", out var jwtToken))
             {
-                var user = await _dataManager.Users.GetUserByIdAsync(userId);
-                var Role = user.UserRoles.OrderBy(x => x.Role.Priority).FirstOrDefault().Role;
-
-                return Ok(new
-                {
-                    email = user.Email,
-                    firstname = user.FirstName,
-                    lastname = user.LastName,
-                    gender = user.Gender
-                });
+                return Unauthorized();
             }
-            else
+
+            var userId = _jwtService.GetUserIdFromToken(jwtToken);
+
+            if (userId == null)
             {
                 return BadRequest("Unable to retrieve current user information.");
             }
+
+            var user = await _dataManager.Users.GetUserByIdAsync((Guid)userId);
+            var Role = _dataManager.UserRoles.GetUserRole().Where(x => x.UserId == user.Id).OrderBy(x => x.Role.Priority).FirstOrDefault().Role;
+
+            return Ok(new CabinetViewModel
+            {
+                Role = Role.Name,
+                Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Gender = user.Gender,
+                PhoneNumber = user.PhoneNumber,
+            });
         }
     }
 }
