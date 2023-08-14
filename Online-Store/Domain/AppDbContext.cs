@@ -22,6 +22,7 @@ namespace Online_Store.Domain
         public DbSet<CartItems> CartItems { get; set; }
         public DbSet<ProductImages> ProductImages { get; set; }
         public DbSet<Entities.Products.Monitor> Monitors { get; set; }
+        public DbSet<Keyboard> Keyboards { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -49,19 +50,6 @@ namespace Online_Store.Domain
                 Name = "user",
                 Priority = 4
             });
-
-            var user = new User
-            {
-                FirstName = "Max",
-                LastName = "Admin",
-                Email = "Admin",
-                Password = SecurePasswordHasher.Hash("aspoqw12"),
-                ApiKey = "xd",
-                PhoneNumber = "1234567890",
-                RoleId = role.Id
-            };
-
-            modelBuilder.Entity<User>().HasData(user);
         }
 
     }

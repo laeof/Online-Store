@@ -1,6 +1,6 @@
 ﻿using System.Security.Cryptography;
 
-public static class SecurePasswordHasher
+public class SecurePasswordHasher
 {
 	/// <summary>
 	/// Size of salt.
@@ -18,7 +18,7 @@ public static class SecurePasswordHasher
 	/// <param name="password">The password.</param>
 	/// <param name="iterations">Number of iterations.</param>
 	/// <returns>The hash.</returns>
-	public static string Hash(string password, int iterations)
+	public string Hash(string password, int iterations)
 	{
 		// Create salt
 		using (var rng = new RNGCryptoServiceProvider())
@@ -47,7 +47,7 @@ public static class SecurePasswordHasher
 	/// </summary>
 	/// <param name="password">The password.</param>
 	/// <returns>The hash.</returns>
-	public static string Hash(string password)
+	public string Hash(string password)
 	{
 		return Hash(password, 10000);
 	}
@@ -57,7 +57,7 @@ public static class SecurePasswordHasher
 	/// </summary>
 	/// <param name="hashString">The hash.</param>
 	/// <returns>Is supported?</returns>
-	public static bool IsHashSupported(string hashString)
+	public bool IsHashSupported(string hashString)
 	{
 		return hashString.Contains("HASH|V1$");
 	}
@@ -68,7 +68,7 @@ public static class SecurePasswordHasher
 	/// <param name="password">The password.</param>
 	/// <param name="hashedPassword">The hash.</param>
 	/// <returns>Could be verified?</returns>
-	public static bool Verify(string password, string hashedPassword)
+	public bool Verify(string password, string hashedPassword)
 	{
 		// Check hash
 		if (!IsHashSupported(hashedPassword))

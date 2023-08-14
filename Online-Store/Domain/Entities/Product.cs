@@ -17,9 +17,9 @@ namespace Online_Store.Domain.Entities
         public string? Guarantee { get; set; }
         public string? Additional { get; set; }
         public string? Kit { get; set; }
-        public Guid? MonitorId { get; set; }
-        [ForeignKey("MonitorId")]
-        public Products.Monitor? Monitor { get; set; }
+        public Guid CategoryId { get; set; }
+        [ForeignKey("CategoryId")]
+        public virtual Category Category { get; set; }
         public ICollection<ProductImages> Images { get; set; } = new List<ProductImages>();
     }
 }

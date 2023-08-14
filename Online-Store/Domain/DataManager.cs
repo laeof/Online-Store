@@ -9,17 +9,26 @@ namespace Online_Store.Domain
 		public IOrderRepository Orders { get; set; }
 		public IProductRepository Products { get; set; }
 		public IProductImagesRepository ProductImages { get; set; }
+		public ICategoryRepository Categories { get; set; }
+		public IMonitorRepository Monitors { get; set; }
+		public IKeyboardRepository Keyboards { get; set; }
 		public DataManager(IUserRepository Users,
 						   IRoleRepository Roles,
 						   IOrderRepository Orders,
 						   IProductRepository Products,
-						   IProductImagesRepository ProductImages) 
+						   IProductImagesRepository ProductImages,
+						   ICategoryRepository Categories,
+						   IMonitorRepository Monitors,
+						   IKeyboardRepository Keyboards) 
 		{
 			this.Users = Users;
 			this.Roles = Roles;
 			this.Orders = Orders;
 			this.Products = Products;
 			this.ProductImages = ProductImages;
+			this.Categories = Categories;
+			this.Monitors = Monitors;
+			this.Keyboards = Keyboards;
 		}
 	}
 }

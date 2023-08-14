@@ -55,7 +55,6 @@ namespace Online_Store.Service
             }
             return false;
         }
-
         public Guid? GetUserIdFromToken(string jwtToken)
         {
             var tokenHandler = new JwtSecurityTokenHandler();

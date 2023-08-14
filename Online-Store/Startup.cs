@@ -6,6 +6,8 @@
     using Online_Store.Domain;
     using Online_Store.Domain.Repository.Abstract;
     using Online_Store.Domain.Repository.EntityFramework;
+    using Factories;
+    using Online_Store.Domain.Entities.Products;
 
     public class Startup
     {
@@ -24,7 +26,9 @@
             services.AddTransient<IOrderRepository, EFOrderRepository>();
             services.AddTransient<IProductRepository, EFProductRepository>();
             services.AddTransient<IProductImagesRepository, EFProductImagesRepository>();
-
+            services.AddTransient<ICategoryRepository , EFCategoryRepository>();
+            services.AddTransient<IMonitorRepository, EFMonitorRepository>();
+            services.AddTransient<IKeyboardRepository, EFKeyboardRepository>();
             services.AddTransient<DataManager>();
 
             services.AddCors();
@@ -42,9 +46,13 @@
                 options.Cookie.MaxAge = TimeSpan.FromMinutes(30);
             });
 
-            services.AddScoped<JwtService>();
+            //services
+            services.AddTransient<JwtService>();
             services.AddScoped<AuthService>();
-
+            services.AddScoped<SecurePasswordHasher>();
+            services.AddScoped<ProductFactoryMapping>();
+            services.AddScoped<ProductFactory<Monitor>, MonitorFactory>()
+                    .AddScoped<ProductFactory<Keyboard>, KeyboardFactory>();
             //add mvc
             services.AddControllersWithViews()
                 .AddSessionStateTempDataProvider();

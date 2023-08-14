@@ -2,7 +2,8 @@
 
 namespace Online_Store.Domain.Entities.Products
 {
-    public class Monitor: AbstractModel 
+    [Table("Monitors")]
+    public class Monitor: Product 
     {
         public string Diagonal { get; set; }
         public string Frequency { get; set; }
@@ -12,6 +13,6 @@ namespace Online_Store.Domain.Entities.Products
         public string Interfaces { get; set; }
         public string Contrast { get; set; }
         public string Ratio { get; set; }
-        public Product Product { get; set; }
+        public ICollection<Product> Products { get; set; } = new List<Product>();
     }
 }

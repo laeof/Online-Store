@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "sLFfB6oTmQGX3BjJlY5s88TvRStNc/DFxSfEOjcwlM4=",
+  "Hash": "YT0io/wN0v4kN3Q6HH7l8+lRHUPyvU+5zUiEiY46IsI=",
   "Source": "Online-Store",
   "BasePath": "_content/Online-Store",
   "Mode": "Default",
@@ -221,23 +221,6 @@
       "OriginalItemSpec": "wwwroot\\css\\components\\button.css"
     },
     {
-      "Identity": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\cabinet\\cabinet.css",
-      "SourceId": "Online-Store",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\",
-      "BasePath": "_content/Online-Store",
-      "RelativePath": "css/components/cabinet/cabinet.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\components\\cabinet\\cabinet.css"
-    },
-    {
       "Identity": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\cabinet\\cabinet-info.css",
       "SourceId": "Online-Store",
       "SourceType": "Discovered",
@@ -270,6 +253,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\components\\cabinet\\cabinet-sidebar.css"
+    },
+    {
+      "Identity": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\cabinet\\cabinet.css",
+      "SourceId": "Online-Store",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\",
+      "BasePath": "_content/Online-Store",
+      "RelativePath": "css/components/cabinet/cabinet.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\components\\cabinet\\cabinet.css"
     },
     {
       "Identity": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\cabinet\\main.css",
@@ -782,23 +782,6 @@
       "OriginalItemSpec": "wwwroot\\css\\components\\settings\\main.css"
     },
     {
-      "Identity": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\settings\\settings.css",
-      "SourceId": "Online-Store",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\",
-      "BasePath": "_content/Online-Store",
-      "RelativePath": "css/components/settings/settings.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\components\\settings\\settings.css"
-    },
-    {
       "Identity": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\settings\\settings-info.css",
       "SourceId": "Online-Store",
       "SourceType": "Discovered",
@@ -831,6 +814,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\components\\settings\\settings-sidebar.css"
+    },
+    {
+      "Identity": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\settings\\settings.css",
+      "SourceId": "Online-Store",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\",
+      "BasePath": "_content/Online-Store",
+      "RelativePath": "css/components/settings/settings.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\components\\settings\\settings.css"
     },
     {
       "Identity": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\css\\components\\sidebar.css",

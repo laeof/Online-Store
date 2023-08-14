@@ -12,6 +12,7 @@ namespace Online_Store.Service
         private readonly DataManager _dataManager;
         private readonly JwtService _jwtService;
         private readonly ILogger<AuthService> _logger;
+        private readonly SecurePasswordHasher _passwordHasher;
 
         public AuthService(DataManager dataManager, JwtService jwtService, ILogger<AuthService> logger) 
         {
@@ -23,7 +24,7 @@ namespace Online_Store.Service
         {
             try
             {
-                User user = _dataManager.Users.GetUsers().AsEnumerable().FirstOrDefault(u => u.Email.ToLower() == login.ToLower() && SecurePasswordHasher.Verify(password, u.Password));
+                User user = _dataManager.Users.GetUsers().AsEnumerable().FirstOrDefault(u => u.Email.ToLower() == login.ToLower() && _passwordHasher.Verify(password, u.Password));
 
                 if (user != null)
                 {
@@ -84,7 +85,7 @@ namespace Online_Store.Service
                 FirstName = register.FirstName,
                 LastName = register.LastName,
                 PhoneNumber = register.PhoneNumber,
-                Password = SecurePasswordHasher.Hash(register.Password),
+                Password = _passwordHasher.Hash(register.Password),
                 RoleId = role.Id
             };
 
