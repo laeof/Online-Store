@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Online_Store.Domain;
@@ -11,9 +12,11 @@ using Online_Store.Domain;
 namespace Online_Store.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230814134416_changes140820231644")]
+    partial class changes140820231644
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -299,58 +302,8 @@ namespace Online_Store.Migrations
                         .IsUnique();
 
                     b.ToTable("Products");
-                });
 
-            modelBuilder.Entity("Online_Store.Domain.Entities.Products.Monitor", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("Brightness")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Contrast")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("Diagonal")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Frequency")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Interfaces")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("IsNew")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("MatrixType")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Ratio")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Reaction")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Monitors");
+                    b.UseTptMappingStrategy();
                 });
 
             modelBuilder.Entity("Online_Store.Domain.Entities.Products.ProductImages", b =>
@@ -444,8 +397,8 @@ namespace Online_Store.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("f084e972-47ae-4124-bcbf-e190fbf42ebc"),
-                            Created = new DateTime(2023, 8, 14, 13, 53, 50, 969, DateTimeKind.Utc).AddTicks(3209),
+                            Id = new Guid("c00e5a05-1f44-4e1f-aebb-8b021b1e54e3"),
+                            Created = new DateTime(2023, 8, 14, 13, 44, 16, 841, DateTimeKind.Utc).AddTicks(7239),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "admin",
@@ -453,8 +406,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d2d7401d-24e2-44ce-a208-abd731890a76"),
-                            Created = new DateTime(2023, 8, 14, 13, 53, 50, 969, DateTimeKind.Utc).AddTicks(3250),
+                            Id = new Guid("ecf17ca4-8bb0-44b4-98aa-d5f90edb96fa"),
+                            Created = new DateTime(2023, 8, 14, 13, 44, 16, 841, DateTimeKind.Utc).AddTicks(7271),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "manager",
@@ -462,8 +415,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("da661b42-dd50-448a-8592-2669237d6f76"),
-                            Created = new DateTime(2023, 8, 14, 13, 53, 50, 969, DateTimeKind.Utc).AddTicks(3257),
+                            Id = new Guid("84a19b03-659e-4025-9a4c-4ee388697f1c"),
+                            Created = new DateTime(2023, 8, 14, 13, 44, 16, 841, DateTimeKind.Utc).AddTicks(7278),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "supporter",
@@ -471,8 +424,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a5591a40-a218-443b-8462-98abc494bac6"),
-                            Created = new DateTime(2023, 8, 14, 13, 53, 50, 969, DateTimeKind.Utc).AddTicks(3264),
+                            Id = new Guid("23f5cba4-f55f-426e-9b30-8fa8c46bc2a7"),
+                            Created = new DateTime(2023, 8, 14, 13, 44, 16, 841, DateTimeKind.Utc).AddTicks(7284),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "user",
@@ -558,10 +511,10 @@ namespace Online_Store.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("74b84c9c-9079-48f2-9028-212d448991c6"),
+                            Id = new Guid("940735c6-ef83-45eb-bb66-cc552e022516"),
                             ApiKey = "xd",
                             AvatarUrl = "../../../../img/Avatar/user.png",
-                            Created = new DateTime(2023, 8, 14, 13, 53, 50, 969, DateTimeKind.Utc).AddTicks(3277),
+                            Created = new DateTime(2023, 8, 14, 13, 44, 16, 841, DateTimeKind.Utc).AddTicks(7286),
                             Email = "Admin",
                             FirstName = "Max",
                             IsActive = true,
@@ -569,10 +522,49 @@ namespace Online_Store.Migrations
                             IsEmailConfirmed = false,
                             IsNew = true,
                             LastName = "Admin",
-                            Password = "$HASH|V1$10000$JMDpDSpf8Yl4f1nv8SiRvfxT9o675cFIvihcMCEKueqxj7rs",
+                            Password = "$HASH|V1$10000$YJciWuFhhoiYlZsKrtRV97GjtzXZ2lM4YAdiAB1DI/2ALLfE",
                             PhoneNumber = "1234567890",
-                            RoleId = new Guid("f084e972-47ae-4124-bcbf-e190fbf42ebc")
+                            RoleId = new Guid("c00e5a05-1f44-4e1f-aebb-8b021b1e54e3")
                         });
+                });
+
+            modelBuilder.Entity("Online_Store.Domain.Entities.Products.Monitor", b =>
+                {
+                    b.HasBaseType("Online_Store.Domain.Entities.Product");
+
+                    b.Property<string>("Brightness")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Contrast")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Diagonal")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Frequency")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Interfaces")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("MatrixType")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ratio")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Reaction")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.ToTable("Monitors", (string)null);
                 });
 
             modelBuilder.Entity("Online_Store.Domain.Entities.Cart", b =>
@@ -692,6 +684,15 @@ namespace Online_Store.Migrations
                     b.Navigation("Role");
                 });
 
+            modelBuilder.Entity("Online_Store.Domain.Entities.Products.Monitor", b =>
+                {
+                    b.HasOne("Online_Store.Domain.Entities.Product", null)
+                        .WithOne()
+                        .HasForeignKey("Online_Store.Domain.Entities.Products.Monitor", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Online_Store.Domain.Entities.Category", b =>
                 {
                     b.Navigation("Products");
@@ -702,12 +703,6 @@ namespace Online_Store.Migrations
                     b.Navigation("Images");
                 });
 
-            modelBuilder.Entity("Online_Store.Domain.Entities.Products.Monitor", b =>
-                {
-                    b.Navigation("Product")
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Online_Store.Domain.Entities.Role", b =>
                 {
                     b.Navigation("Users");
@@ -716,6 +711,12 @@ namespace Online_Store.Migrations
             modelBuilder.Entity("Online_Store.Domain.Entities.User", b =>
                 {
                     b.Navigation("Order");
+                });
+
+            modelBuilder.Entity("Online_Store.Domain.Entities.Products.Monitor", b =>
+                {
+                    b.Navigation("Product")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

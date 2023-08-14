@@ -11,8 +11,6 @@
 <body>
     <div class="wrapper">
         @await Html.PartialAsync("LoginRegPartial")
-        @if(User.Identity.IsAuthenticated)
-        @await Html.PartialAsync("HeaderPartial")
         @await Html.PartialAsync("SideBarPartial")
         <main>
             @RenderBody()

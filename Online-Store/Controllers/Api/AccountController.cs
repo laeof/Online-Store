@@ -19,10 +19,10 @@ namespace Online_Store.Controllers.Api
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private DataManager _dataManager;
-        private ILogger<AccountController> _logger;
-        private JwtService _jwtService;
-        private AuthService _authService;
+        private readonly DataManager _dataManager;
+        private readonly ILogger<AccountController> _logger;
+        private readonly JwtService _jwtService;
+        private readonly AuthService _authService;
 
         public AccountController(DataManager dataManager,
                                 ILogger<AccountController> logger,
@@ -72,7 +72,6 @@ namespace Online_Store.Controllers.Api
 
             return Ok();
         }
-
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginViewModel login)
         {
@@ -96,7 +95,6 @@ namespace Online_Store.Controllers.Api
 
             return Ok();
         }
-
         [HttpPost("logout")]
         public IActionResult LogOut()
         {
@@ -114,15 +112,12 @@ namespace Online_Store.Controllers.Api
 
             try
             {
-                var validatedToken = _jwtService.Verify(jwtToken);
-
-                return Ok(true);
+                return Ok(_jwtService.Verify(jwtToken));
             }
             catch
             {
                 return Ok(false);
             }
         }
-
     }
 }

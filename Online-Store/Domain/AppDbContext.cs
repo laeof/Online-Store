@@ -21,8 +21,8 @@ namespace Online_Store.Domain
         public DbSet<OrderItems> OrderItems { get; set; }
         public DbSet<CartItems> CartItems { get; set; }
         public DbSet<ProductImages> ProductImages { get; set; }
-        public DbSet<Entities.Products.Monitor> Monitor { get; set; }
-        protected override async void OnModelCreating(ModelBuilder modelBuilder)
+        public DbSet<Entities.Products.Monitor> Monitors { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 

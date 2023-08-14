@@ -19,7 +19,7 @@ namespace Online_Store.Domain.Repository.EntityFramework
 		{
             return context.Users.Where(x => x.IsDeleted != true);
 		}
-		public async Task<User> GetUserByIdAsync(Guid id)
+		public async Task<User?> GetUserByIdAsync(Guid id)
 		{
 			return await context.Users.FirstOrDefaultAsync(x => x.Id == id);
 		}
