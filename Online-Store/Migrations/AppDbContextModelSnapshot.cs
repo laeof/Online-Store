@@ -438,8 +438,8 @@ namespace Online_Store.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("dc3ab337-f058-4a57-b347-a05b026a0d8e"),
-                            Created = new DateTime(2023, 8, 6, 20, 35, 41, 981, DateTimeKind.Utc).AddTicks(521),
+                            Id = new Guid("38151a62-bc6c-4077-a44c-2933306f8d75"),
+                            Created = new DateTime(2023, 8, 13, 18, 4, 24, 417, DateTimeKind.Utc).AddTicks(8462),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "admin",
@@ -447,8 +447,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d85a197e-a0bf-4f17-9de2-dd432f6f06d3"),
-                            Created = new DateTime(2023, 8, 6, 20, 35, 41, 984, DateTimeKind.Utc).AddTicks(7492),
+                            Id = new Guid("0d9b1d4d-b526-413c-9107-7dc43fb71301"),
+                            Created = new DateTime(2023, 8, 13, 18, 4, 24, 417, DateTimeKind.Utc).AddTicks(8509),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "manager",
@@ -456,8 +456,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d93d8206-99aa-481d-a54a-ec000d1faac2"),
-                            Created = new DateTime(2023, 8, 6, 20, 35, 41, 984, DateTimeKind.Utc).AddTicks(7502),
+                            Id = new Guid("617ed921-823b-4547-b84d-74395f98b504"),
+                            Created = new DateTime(2023, 8, 13, 18, 4, 24, 417, DateTimeKind.Utc).AddTicks(8526),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "supporter",
@@ -465,8 +465,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("aa6b842c-53db-44dc-a616-ee140bc6f6e0"),
-                            Created = new DateTime(2023, 8, 6, 20, 35, 41, 984, DateTimeKind.Utc).AddTicks(7508),
+                            Id = new Guid("b338bdb9-8e49-4472-82a3-a73967ef30f9"),
+                            Created = new DateTime(2023, 8, 13, 18, 4, 24, 417, DateTimeKind.Utc).AddTicks(8533),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "user",
@@ -540,17 +540,22 @@ namespace Online_Store.Migrations
                     b.Property<string>("Region")
                         .HasColumnType("text");
 
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
 
                     b.ToTable("Users");
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("7658ae8e-0ab8-4408-a9bb-f37147b2437b"),
+                            Id = new Guid("99fe6bc3-5a7a-4e40-8c6b-64d1180e578f"),
                             ApiKey = "xd",
                             AvatarUrl = "../../../../img/Avatar/user.png",
-                            Created = new DateTime(2023, 8, 6, 20, 35, 41, 981, DateTimeKind.Utc).AddTicks(524),
+                            Created = new DateTime(2023, 8, 13, 18, 4, 24, 417, DateTimeKind.Utc).AddTicks(8535),
                             Email = "Admin",
                             FirstName = "Max",
                             IsActive = true,
@@ -558,49 +563,9 @@ namespace Online_Store.Migrations
                             IsEmailConfirmed = false,
                             IsNew = true,
                             LastName = "Admin",
-                            Password = "$HASH|V1$10000$LDBhDFQqy5xZErqcrXuP5o5yQAt7xjE1IWJN0Dr93UIVRAkQ",
-                            PhoneNumber = "1234567890"
-                        });
-                });
-
-            modelBuilder.Entity("Online_Store.Domain.Entities.UserRole", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("IsNew")
-                        .HasColumnType("boolean");
-
-                    b.Property<Guid>("RoleId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RoleId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("d5d4e90e-4f33-4304-8651-1ab1eabdb6ed"),
-                            Created = new DateTime(2023, 8, 6, 20, 35, 41, 984, DateTimeKind.Utc).AddTicks(7533),
-                            IsDeleted = false,
-                            IsNew = true,
-                            RoleId = new Guid("dc3ab337-f058-4a57-b347-a05b026a0d8e"),
-                            UserId = new Guid("7658ae8e-0ab8-4408-a9bb-f37147b2437b")
+                            Password = "$HASH|V1$10000$pcreQMO4YcBxaqPvq0e2BQaafaA1zADyijvj1sc8Hz9ukXs2",
+                            PhoneNumber = "1234567890",
+                            RoleId = new Guid("38151a62-bc6c-4077-a44c-2933306f8d75")
                         });
                 });
 
@@ -708,23 +673,15 @@ namespace Online_Store.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Online_Store.Domain.Entities.UserRole", b =>
+            modelBuilder.Entity("Online_Store.Domain.Entities.User", b =>
                 {
                     b.HasOne("Online_Store.Domain.Entities.Role", "Role")
-                        .WithMany("UserRoles")
+                        .WithMany("Users")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Online_Store.Domain.Entities.User", "User")
-                        .WithMany("UserRoles")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Role");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Online_Store.Domain.Entities.Product", b =>
@@ -734,14 +691,12 @@ namespace Online_Store.Migrations
 
             modelBuilder.Entity("Online_Store.Domain.Entities.Role", b =>
                 {
-                    b.Navigation("UserRoles");
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("Online_Store.Domain.Entities.User", b =>
                 {
                     b.Navigation("Order");
-
-                    b.Navigation("UserRoles");
                 });
 #pragma warning restore 612, 618
         }

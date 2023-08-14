@@ -17,7 +17,7 @@ namespace Online_Store.Domain.Repository.EntityFramework
         }
         public IQueryable<User> GetUsers() 
 		{
-			return context.Users.Where(x => x.IsDeleted != true).Include(ur => ur.UserRoles).ThenInclude(r => r.Role);
+            return context.Users.Where(x => x.IsDeleted != true);
 		}
 		public async Task<User> GetUserByIdAsync(Guid id)
 		{

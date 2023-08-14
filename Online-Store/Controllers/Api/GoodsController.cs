@@ -10,16 +10,16 @@ namespace Online_Store.Controllers.Api
     [ApiController]
     public class GoodsController : ControllerBase
     {
-        private DataManager dataManager;
+        private DataManager _dataManager;
         public GoodsController(DataManager dataManager) 
         {
-            this.dataManager = dataManager;
+            _dataManager = dataManager;
         }
 
         [HttpGet("product")]
         public IActionResult GetProducts()
         {
-            var products = dataManager.Products.GetProducts().Select(product => new
+            var products = _dataManager.Products.GetProducts().Select(product => new
             {
                 product.Name,
                 product.Description,
@@ -39,8 +39,8 @@ namespace Online_Store.Controllers.Api
         [HttpGet("product/{id}")]
         public async Task<IActionResult> GetProductById(Guid id)
         {
-            var product = await dataManager.Products.GetProductByIdAsync(id);
-            var productImages = dataManager.ProductImages.GetProductImagesById(id);
+            var product = await _dataManager.Products.GetProductByIdAsync(id);
+            var productImages = _dataManager.ProductImages.GetProductImagesById(id);
 
             if (product == null)
             {

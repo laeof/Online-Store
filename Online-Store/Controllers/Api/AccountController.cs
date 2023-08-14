@@ -8,6 +8,7 @@ using NuGet.Protocol.Plugins;
 using Online_Store.Domain;
 using Online_Store.Domain.Entities;
 using Online_Store.Models;
+using Online_Store.Service;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -18,48 +19,74 @@ namespace Online_Store.Controllers.Api
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private DataManager dataManager;
-        private ILogger<AccountController> logger;
-        private JwtService jwtService;
-
-        [HttpPost("register")]
-        public async Task<IActionResult> Register(Guid id)
-        {
-            return Ok();
-        }
+        private DataManager _dataManager;
+        private ILogger<AccountController> _logger;
+        private JwtService _jwtService;
+        private AuthService _authService;
 
         public AccountController(DataManager dataManager,
                                 ILogger<AccountController> logger,
-                                JwtService jwtService)
+                                JwtService jwtService,
+                                AuthService authService)
         {
-            this.dataManager = dataManager;
-            this.logger = logger;
-            this.jwtService = jwtService;
+            _dataManager = dataManager;
+            _logger = logger;
+            _jwtService = jwtService;
+            _authService = authService;
+        }
+
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterViewModel register)
+        {
+            //user exists
+
+            if (_authService.IsUserExist(register.Email))
+            {
+                _logger.LogError("Register error (user exists)");
+                return BadRequest();
+            }
+
+            //singup and login
+
+            LoginViewModel? login = await _authService.SignUpAsync(register);
+
+            if(login == null)
+            {
+                _logger.LogError("Register error (fail to save user)");
+                return BadRequest();
+            }
+
+            //login with jwt
+            
+            string jwt = await _authService.GetLoginJWTAsync(login);
+
+            var User = await _dataManager.Users.GetUsers().FirstOrDefaultAsync(u => u.Email.ToLower() == login.Email);
+
+            _logger.LogInformation("Successful login, " + User.Id);
+
+            Response.Cookies.Append("jwtToken", jwt, new CookieOptions
+            {
+                HttpOnly = true,
+                Expires = DateTimeOffset.UtcNow.AddDays(2)
+            });
+
+            return Ok();
         }
 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginViewModel login)
         {
-            if (!(await Extensions.ValidateUser(login.Email, login.Password, dataManager)))
+            if (!_authService.ValidateUser(login.Email, login.Password))
             {
-                logger.LogError("Login error");
+                _logger.LogError("Login error (password incorrect or user with this email does not exist)");
                 return BadRequest();
             }
 
-            var User = await dataManager.Users.GetUsers().FirstOrDefaultAsync(u => u.Email.ToLower() == login.Email.ToLower());
+            string jwt = await _authService.GetLoginJWTAsync(login);
 
-            var Role = User.UserRoles.OrderBy(x => x.Role.Priority).FirstOrDefault().Role;
+            User User = await _dataManager.Users.GetUsers().FirstOrDefaultAsync(u => u.Email.ToLower() == login.Email);
 
-            var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.NameIdentifier, User.Id.ToString()),
-                new Claim(ClaimTypes.Name, User.Email),
-                new Claim(ClaimTypes.Role, Role.Name)
-            };
-
-            var jwt = jwtService.Generate(User.Id);
-
-            logger.LogInformation("Successful login, " + User.Id);
+            _logger.LogInformation("Successful login, " + User.Id);
 
             Response.Cookies.Append("jwtToken", jwt, new CookieOptions
             {
@@ -73,7 +100,7 @@ namespace Online_Store.Controllers.Api
         [HttpPost("logout")]
         public IActionResult LogOut()
         {
-            logger.LogInformation("User logged out");
+            _logger.LogInformation("User logged out");
             Response.Cookies.Delete("jwtToken");
             return Ok();
         }
@@ -87,7 +114,7 @@ namespace Online_Store.Controllers.Api
 
             try
             {
-                var validatedToken = jwtService.Verify(jwtToken);
+                var validatedToken = _jwtService.Verify(jwtToken);
 
                 return Ok(true);
             }

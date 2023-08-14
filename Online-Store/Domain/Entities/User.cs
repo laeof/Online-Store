@@ -1,4 +1,6 @@
-﻿namespace Online_Store.Domain.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Online_Store.Domain.Entities
 {
 	public class User: AbstractModel
 	{
@@ -15,9 +17,11 @@
 		public string AvatarUrl { get; set; } = "../../../../img/Avatar/user.png";
         public string? Gender { get; set; }
         public string? ApiKey { get; set; }
+		public Guid RoleId { get; set; }
 		public bool IsEmailConfirmed { get; set; } = false;
 		public bool IsActive { get; set; } = true;
 		public ICollection<Order>? Order { get; set; }
-		public ICollection<UserRole> UserRoles { get; set; }
+		[ForeignKey("RoleId")]
+		public Role Role { get; set; }
 	}
 }

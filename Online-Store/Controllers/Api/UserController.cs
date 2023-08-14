@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration.UserSecrets;
 using Microsoft.IdentityModel.Tokens;
 using Online_Store.Domain;
 using Online_Store.Models;
+using Online_Store.Service;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -38,11 +39,10 @@ namespace Online_Store.Controllers.Api
             }
 
             var user = await _dataManager.Users.GetUserByIdAsync((Guid)userId);
-            var Role = _dataManager.UserRoles.GetUserRole().Where(x => x.UserId == user.Id).OrderBy(x => x.Role.Priority).FirstOrDefault().Role;
-
+            var role = await _dataManager.Roles.GetRoleByIdAsync(user.RoleId);
             return Ok(new CabinetViewModel
             {
-                Role = Role.Name,
+                Role = role.Name,
                 Email = user.Email,
                 FirstName = user.FirstName,
                 LastName = user.LastName,

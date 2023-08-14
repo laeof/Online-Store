@@ -11,7 +11,6 @@ namespace Online_Store.Domain
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
-        public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Review> Reviews { get; set; }
@@ -33,16 +32,6 @@ namespace Online_Store.Domain
                 Priority = 1
             };
 
-            var user = new User
-            {
-                FirstName = "Max",
-                LastName = "Admin",
-                Email = "Admin",
-                Password = SecurePasswordHasher.Hash("aspoqw12"),
-                ApiKey = "xd",
-                PhoneNumber = "1234567890",
-            };
-
             modelBuilder.Entity<Role>().HasData(role); modelBuilder.Entity<Role>().HasData(new Role
             {
                 Name = "manager",
@@ -61,13 +50,18 @@ namespace Online_Store.Domain
                 Priority = 4
             });
 
-            modelBuilder.Entity<User>().HasData(user);
-
-            modelBuilder.Entity<UserRole>().HasData(new UserRole
+            var user = new User
             {
-                RoleId = role.Id,
-                UserId = user.Id
-            });
+                FirstName = "Max",
+                LastName = "Admin",
+                Email = "Admin",
+                Password = SecurePasswordHasher.Hash("aspoqw12"),
+                ApiKey = "xd",
+                PhoneNumber = "1234567890",
+                RoleId = role.Id
+            };
+
+            modelBuilder.Entity<User>().HasData(user);
         }
 
     }

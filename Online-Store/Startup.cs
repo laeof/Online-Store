@@ -2,18 +2,10 @@
 {
     using Microsoft.EntityFrameworkCore;
     using System;
-    using Microsoft.AspNetCore.Authentication.Cookies;
     using Online_Store.Service;
     using Online_Store.Domain;
-	using Online_Store.Domain.Repository.Abstract;
-	using Online_Store.Domain.Repository.EntityFramework;
-    using AutoMapper;
-    using Online_Store.Domain.Entities;
-    using Online_Store.Models;
-    using Microsoft.Extensions.FileProviders;
-    using System.Text;
-    using Microsoft.AspNetCore.Authentication.JwtBearer;
-    using Microsoft.IdentityModel.Tokens;
+    using Online_Store.Domain.Repository.Abstract;
+    using Online_Store.Domain.Repository.EntityFramework;
 
     public class Startup
     {
@@ -29,17 +21,15 @@
 
             services.AddTransient<IUserRepository, EFUserRepository>();
             services.AddTransient<IRoleRepository, EFRoleRepository>();
-            services.AddTransient<IUserRoleRepository, EFUserRoleRepository>();
             services.AddTransient<IOrderRepository, EFOrderRepository>();
             services.AddTransient<IProductRepository, EFProductRepository>();
             services.AddTransient<IProductImagesRepository, EFProductImagesRepository>();
 
             services.AddTransient<DataManager>();
-            services.AddTransient<UserManager>();
 
             services.AddCors();
 
-            services.AddAuthentication("MyAuthScheme") // Укажите имя схемы аутентификации
+            services.AddAuthentication("MyAuthScheme")
                 .AddCookie("MyAuthScheme", options =>
                 {
                     options.Cookie.HttpOnly = true;
@@ -52,11 +42,8 @@
                 options.Cookie.MaxAge = TimeSpan.FromMinutes(30);
             });
 
-            services.AddDistributedMemoryCache();
-
-            services.AddHttpContextAccessor();
-
             services.AddScoped<JwtService>();
+            services.AddScoped<AuthService>();
 
             //add mvc
             services.AddControllersWithViews()
