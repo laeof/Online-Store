@@ -9,4 +9,9 @@ Api possibilities:
   <li>Get all product✅</li>
   <li>Create product❌</li>
   <li>Edit product❌</li>
+  <li>Add product to a cart❌</li>
+  <li>Good checkout❌</li>
+  <li>Admin panel❌</li>
+  <li>Add a review❌</li>
+  <li>Wish list❌</li>
 </ul>
