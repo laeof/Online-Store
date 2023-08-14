@@ -6,7 +6,7 @@ Api possibilities:
   <li>Get current user✅</li>
   <li>Edit current user❌</li>
   <li>Get product✅</li>
-  <li>Get all product✅</li>
+  <li>Get all products✅</li>
   <li>Create product❌</li>
   <li>Edit product❌</li>
   <li>Add product to a cart❌</li>
