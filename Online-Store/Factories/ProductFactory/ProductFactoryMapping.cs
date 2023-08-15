@@ -1,39 +1,55 @@
-﻿using Online_Store.Domain.Entities;
+﻿using AutoMapper.Configuration.Annotations;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.Extensions.DependencyInjection;
+using Online_Store.Domain;
+using Online_Store.Domain.Entities;
+using Online_Store.Domain.Entities.Products;
+using System;
+using System.Reflection;
 
-namespace Factories
+namespace Online_Store
 {
-    public static class ProductFactoryMapping
+    public class CategoryProductTypeMapper
     {
-        public static class CategoryProductTypeMapper
+        private DataManager _dataManager { get; set; }
+        private readonly Dictionary<Type, IProductFactory> _factories = new Dictionary<Type, IProductFactory>();
+        public CategoryProductTypeMapper(DataManager dataManager)
         {
-            private static Dictionary<Guid, Type> _categoryProductTypes = new Dictionary<Guid, Type>();
-            private static Dictionary<Type, Func<ProductFactory<Product>>> _categoryFactories = new Dictionary<Type, Func<ProductFactory<Product>>>();
+            _dataManager = dataManager;
+            RegisterFactories();
+        }
 
-            public static void RegisterCategoryType(Guid categoryId, Type productType, Func<ProductFactory<Product>> factoryFunc)
+        public async Task<Type> GetProductType(Guid categoryId)
+        {
+            var category = await _dataManager.Categories.GetCategoryByIdAsync(categoryId);
+            var product = category.Products.FirstOrDefault();
+            if (product != null)
             {
-                _categoryProductTypes[categoryId] = productType;
-                _categoryFactories[productType] = factoryFunc;
+                return product.GetType();
             }
 
-            public static Type GetProductType(Guid categoryId)
+            throw new ArgumentException("Category not found.");
+        }
+
+        public void RegisterFactories()
+        {
+            RegisterFactory<Domain.Entities.Products.Monitor>(new MonitorFactory(_dataManager));
+            RegisterFactory<Keyboard>(new KeyboardFactory(_dataManager));
+        }
+
+        public void RegisterFactory<TProduct>(IProductFactory factory) where TProduct : Product
+        {
+            _factories[typeof(TProduct)] = factory;
+        }
+
+        public IProductFactory GetFactory(Type productType)
+        {
+            if (_factories.TryGetValue(productType, out var factory))
             {
-                if (_categoryProductTypes.TryGetValue(categoryId, out Type productType))
-                {
-                    return productType;
-                }
-
-                throw new ArgumentException("Category not found.");
+                return factory;
             }
-
-            public static ProductFactory<Product> GetProductFactory(Type productType)
-            {
-                if (_categoryFactories.TryGetValue(productType, out Func<ProductFactory<Product>> factoryFunc))
-                {
-                    return factoryFunc();
-                }
-
-                throw new ArgumentException("Factory not found.");
-            }
+            throw new ArgumentException("Factory not found.");
         }
     }
 }

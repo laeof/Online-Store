@@ -6,8 +6,8 @@
     using Online_Store.Domain;
     using Online_Store.Domain.Repository.Abstract;
     using Online_Store.Domain.Repository.EntityFramework;
-    using Factories;
     using Online_Store.Domain.Entities.Products;
+    using Microsoft.Extensions.DependencyInjection;
 
     public class Startup
     {
@@ -27,8 +27,6 @@
             services.AddTransient<IProductRepository, EFProductRepository>();
             services.AddTransient<IProductImagesRepository, EFProductImagesRepository>();
             services.AddTransient<ICategoryRepository , EFCategoryRepository>();
-            services.AddTransient<IMonitorRepository, EFMonitorRepository>();
-            services.AddTransient<IKeyboardRepository, EFKeyboardRepository>();
             services.AddTransient<DataManager>();
 
             services.AddCors();
@@ -50,14 +48,13 @@
             services.AddTransient<JwtService>();
             services.AddScoped<AuthService>();
             services.AddScoped<SecurePasswordHasher>();
-            services.AddScoped<ProductFactoryMapping>();
-            services.AddScoped<ProductFactory<Monitor>, MonitorFactory>()
-                    .AddScoped<ProductFactory<Keyboard>, KeyboardFactory>();
+
+            services.AddScoped<CategoryProductTypeMapper>();
+            services.AddScoped<IProductFactory, MonitorFactory>();
+            services.AddScoped<IProductFactory, KeyboardFactory>();
             //add mvc
             services.AddControllersWithViews()
                 .AddSessionStateTempDataProvider();
-
-            services.AddAutoMapper(typeof(MappingProfile));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

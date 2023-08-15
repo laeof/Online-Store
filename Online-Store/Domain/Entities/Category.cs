@@ -6,6 +6,6 @@ namespace Online_Store.Domain.Entities
     {
         public string Name { get; set; }
         public string ImgPath { get; set; }
-        public ICollection<Product> Products { get; set; } = new List<Product>();
+        public ICollection<Product> Products { get; } = new List<Product>();
     }
 }

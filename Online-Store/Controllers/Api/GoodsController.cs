@@ -1,14 +1,7 @@
-﻿using Factories;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Mvc;
 using Online_Store.Domain;
 using Online_Store.Domain.Entities;
-using Online_Store.Domain.Entities.Products;
 using Online_Store.Models;
-using static Factories.ProductFactoryMapping;
-using System;
 
 namespace Online_Store.Controllers.Api
 {
@@ -16,8 +9,8 @@ namespace Online_Store.Controllers.Api
     [ApiController]
     public class GoodsController : ControllerBase
     {
-        private DataManager _dataManager;
-        private ProductFactoryMapping _productFactoryMapping;
+        private readonly DataManager _dataManager;
+        private readonly CategoryProductTypeMapper _productFactoryMapping;
         public GoodsController(DataManager dataManager) 
         {
             _dataManager = dataManager;
@@ -73,26 +66,34 @@ namespace Online_Store.Controllers.Api
         [HttpPost("product/create")]
         public async Task<IActionResult> CreateProduct(ProductViewModel model)
         {
-            /**/
+            //get product type by category id
+            Type productType = await _productFactoryMapping.GetProductType(model.CategoryId);
 
-            Type productType = CategoryProductTypeMapper.GetProductType(model.CategoryId);
-            ProductFactory<Product> factory = CategoryProductTypeMapper.GetProductFactory(productType);
+            //get factory by product type
+            IProductFactory factory = _productFactoryMapping.GetFactory(productType);
 
-            Product product = await factory.CreateProduct(model);
-
-            return Ok();
-        }
-        [HttpPost("category/create")]
-        public async Task<IActionResult> CreateCategory(Category model)
-        {
-            var category = new Category{
+            /*var product = new ProductViewModel
+            {
                 Name = model.Name,
-                ImgPath = model.ImgPath
-            };
+                Description = model.Description,
+                Price = model.Price,
+                SalePrice = model.SalePrice,
+                Amount = model.Amount,
+                CategoryId = model.CategoryId,
+                Color = model.Color,
+                Weight = model.Weight,
+                Size = model.Size,
+                Created = model.Created,
+                Guarantee = model.Guarantee,
+                Kit = model.Kit,
+                Country = model.Country,
+                Additional = model.Additional
+            };*/
 
-            await _dataManager.Categories.SaveCategoryAsync(category);
+            factory.CreateProduct(model);
 
             return Ok();
         }
+        
     }
 }

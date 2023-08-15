@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Online_Store.Domain.Entities
 {
-    public class Product: AbstractModel
+    public abstract class Product: AbstractModel
     {
         public string Name { get; set; }
         public string? Description { get; set; }
@@ -19,7 +19,7 @@ namespace Online_Store.Domain.Entities
         public string? Kit { get; set; }
         public Guid CategoryId { get; set; }
         [ForeignKey("CategoryId")]
-        public virtual Category Category { get; set; }
+        public Category Category { get; set; }
         public ICollection<ProductImages> Images { get; set; } = new List<ProductImages>();
     }
 }

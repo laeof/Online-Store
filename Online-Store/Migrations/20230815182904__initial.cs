@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Online_Store.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class _initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -45,6 +45,57 @@ namespace Online_Store.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Discounts", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Keyboards",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    IsNew = table.Column<bool>(type: "boolean", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Keyboards", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Monitors",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Diagonal = table.Column<string>(type: "text", nullable: true),
+                    Frequency = table.Column<string>(type: "text", nullable: true),
+                    Reaction = table.Column<string>(type: "text", nullable: true),
+                    Brightness = table.Column<string>(type: "text", nullable: true),
+                    MatrixType = table.Column<string>(type: "text", nullable: true),
+                    Interfaces = table.Column<string>(type: "text", nullable: true),
+                    Contrast = table.Column<string>(type: "text", nullable: true),
+                    Ratio = table.Column<string>(type: "text", nullable: true),
+                    Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    IsNew = table.Column<bool>(type: "boolean", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Monitors", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductImages",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    FileName = table.Column<string>(type: "text", nullable: false),
+                    Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    IsNew = table.Column<bool>(type: "boolean", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductImages", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -143,12 +194,56 @@ namespace Online_Store.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Reviews",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    UserId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Grade = table.Column<int>(type: "integer", nullable: false),
+                    Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    IsNew = table.Column<bool>(type: "boolean", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reviews", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Reviews_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CartItems",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    CartId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ProductAmount = table.Column<int>(type: "integer", nullable: false),
+                    ProductPrice = table.Column<decimal>(type: "numeric", nullable: false),
+                    Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    IsNew = table.Column<bool>(type: "boolean", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CartItems", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CartItems_Carts_CartId",
+                        column: x => x.CartId,
+                        principalTable: "Carts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "OrderItems",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     OrderId = table.Column<Guid>(type: "uuid", nullable: false),
-                    ProductId = table.Column<Guid>(type: "uuid", nullable: false),
                     ProductAmount = table.Column<int>(type: "integer", nullable: false),
                     Price = table.Column<decimal>(type: "numeric", nullable: false),
                     Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
@@ -189,164 +284,21 @@ namespace Online_Store.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "CartItems",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    CartId = table.Column<Guid>(type: "uuid", nullable: false),
-                    ProductId = table.Column<Guid>(type: "uuid", nullable: false),
-                    ProductAmount = table.Column<int>(type: "integer", nullable: false),
-                    ProductPrice = table.Column<decimal>(type: "numeric", nullable: false),
-                    Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    IsNew = table.Column<bool>(type: "boolean", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CartItems", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_CartItems_Carts_CartId",
-                        column: x => x.CartId,
-                        principalTable: "Carts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Monitors",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Diagonal = table.Column<string>(type: "text", nullable: false),
-                    Frequency = table.Column<string>(type: "text", nullable: false),
-                    Reaction = table.Column<string>(type: "text", nullable: false),
-                    Brightness = table.Column<string>(type: "text", nullable: false),
-                    MatrixType = table.Column<string>(type: "text", nullable: false),
-                    Interfaces = table.Column<string>(type: "text", nullable: false),
-                    Contrast = table.Column<string>(type: "text", nullable: false),
-                    Ratio = table.Column<string>(type: "text", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Monitors", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Products",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    Description = table.Column<string>(type: "text", nullable: true),
-                    Price = table.Column<decimal>(type: "numeric", nullable: false),
-                    SalePrice = table.Column<decimal>(type: "numeric", nullable: true),
-                    Amount = table.Column<int>(type: "integer", nullable: true),
-                    Size = table.Column<string>(type: "text", nullable: true),
-                    Weight = table.Column<string>(type: "text", nullable: true),
-                    Color = table.Column<string>(type: "text", nullable: true),
-                    Country = table.Column<string>(type: "text", nullable: true),
-                    Guarantee = table.Column<string>(type: "text", nullable: true),
-                    Additional = table.Column<string>(type: "text", nullable: true),
-                    Kit = table.Column<string>(type: "text", nullable: true),
-                    CategoryId = table.Column<Guid>(type: "uuid", nullable: false),
-                    MonitorId = table.Column<Guid>(type: "uuid", nullable: true),
-                    Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    IsNew = table.Column<bool>(type: "boolean", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Products", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Products_Categories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Categories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Products_Monitors_MonitorId",
-                        column: x => x.MonitorId,
-                        principalTable: "Monitors",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProductImages",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    ProductId = table.Column<Guid>(type: "uuid", nullable: false),
-                    FileName = table.Column<string>(type: "text", nullable: false),
-                    Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    IsNew = table.Column<bool>(type: "boolean", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductImages", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ProductImages_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Reviews",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    UserId = table.Column<Guid>(type: "uuid", nullable: false),
-                    ProductId = table.Column<Guid>(type: "uuid", nullable: false),
-                    Grade = table.Column<int>(type: "integer", nullable: false),
-                    Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    IsNew = table.Column<bool>(type: "boolean", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Reviews", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Reviews_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Reviews_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.InsertData(
                 table: "Roles",
                 columns: new[] { "Id", "Created", "IsDeleted", "IsNew", "Name", "Priority" },
                 values: new object[,]
                 {
-                    { new Guid("717bbc72-1e33-4bcc-b8f7-7e80f85b7797"), new DateTime(2023, 8, 14, 17, 30, 43, 801, DateTimeKind.Utc).AddTicks(7222), false, true, "manager", 2 },
-                    { new Guid("8db542b9-58a5-4b6e-bb8c-0c3a13a98e4f"), new DateTime(2023, 8, 14, 17, 30, 43, 801, DateTimeKind.Utc).AddTicks(7297), false, true, "user", 4 },
-                    { new Guid("a5de9791-26ca-42e3-895a-5e8c15c0e4bc"), new DateTime(2023, 8, 14, 17, 30, 43, 801, DateTimeKind.Utc).AddTicks(7231), false, true, "supporter", 3 },
-                    { new Guid("ac886564-89b1-41f5-b9c2-bb8092b6fd68"), new DateTime(2023, 8, 14, 17, 30, 43, 801, DateTimeKind.Utc).AddTicks(7178), false, true, "admin", 1 }
+                    { new Guid("0892c5de-72e4-4628-a027-a85904661345"), new DateTime(2023, 8, 15, 18, 29, 4, 856, DateTimeKind.Utc).AddTicks(8819), false, true, "user", 4 },
+                    { new Guid("0c671e52-883b-4944-84f9-e8e6b9cdb58f"), new DateTime(2023, 8, 15, 18, 29, 4, 856, DateTimeKind.Utc).AddTicks(8806), false, true, "manager", 2 },
+                    { new Guid("79bb8c2b-0253-4c6e-9758-ec36df3d6ae2"), new DateTime(2023, 8, 15, 18, 29, 4, 856, DateTimeKind.Utc).AddTicks(8756), false, true, "admin", 1 },
+                    { new Guid("a1dad193-2a7c-47bf-bacc-dab05d7174cc"), new DateTime(2023, 8, 15, 18, 29, 4, 856, DateTimeKind.Utc).AddTicks(8812), false, true, "supporter", 3 }
                 });
-
-            migrationBuilder.InsertData(
-                table: "Users",
-                columns: new[] { "Id", "Address", "ApiKey", "AvatarUrl", "City", "Country", "Created", "Email", "FirstName", "Gender", "IsActive", "IsDeleted", "IsEmailConfirmed", "IsNew", "LastName", "Password", "PhoneNumber", "PostalCode", "Region", "RoleId" },
-                values: new object[] { new Guid("54c610a1-1215-4a3c-aa62-d996868c71bd"), null, "xd", "../../../../img/Avatar/user.png", null, null, new DateTime(2023, 8, 14, 17, 30, 43, 801, DateTimeKind.Utc).AddTicks(7300), "Admin", "Max", null, true, false, false, true, "Admin", "$HASH|V1$10000$m7xeDL5kxtHvZX56iaBxNQ/wmQEgdzduvYdApT14/yhmwM11", "1234567890", null, null, new Guid("ac886564-89b1-41f5-b9c2-bb8092b6fd68") });
 
             migrationBuilder.CreateIndex(
                 name: "IX_CartItems_CartId",
                 table: "CartItems",
                 column: "CartId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CartItems_ProductId",
-                table: "CartItems",
-                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Carts_UserId",
@@ -369,26 +321,6 @@ namespace Online_Store.Migrations
                 column: "OrderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductImages_ProductId",
-                table: "ProductImages",
-                column: "ProductId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Products_CategoryId",
-                table: "Products",
-                column: "CategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Products_MonitorId",
-                table: "Products",
-                column: "MonitorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Reviews_ProductId",
-                table: "Reviews",
-                column: "ProductId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Reviews_UserId",
                 table: "Reviews",
                 column: "UserId");
@@ -397,36 +329,25 @@ namespace Online_Store.Migrations
                 name: "IX_Users_RoleId",
                 table: "Users",
                 column: "RoleId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_CartItems_Products_ProductId",
-                table: "CartItems",
-                column: "ProductId",
-                principalTable: "Products",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Monitors_Products_Id",
-                table: "Monitors",
-                column: "Id",
-                principalTable: "Products",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Monitors_Products_Id",
-                table: "Monitors");
-
             migrationBuilder.DropTable(
                 name: "CartItems");
 
             migrationBuilder.DropTable(
+                name: "Categories");
+
+            migrationBuilder.DropTable(
                 name: "Discounts");
+
+            migrationBuilder.DropTable(
+                name: "Keyboards");
+
+            migrationBuilder.DropTable(
+                name: "Monitors");
 
             migrationBuilder.DropTable(
                 name: "OrderItems");
@@ -451,15 +372,6 @@ namespace Online_Store.Migrations
 
             migrationBuilder.DropTable(
                 name: "Roles");
-
-            migrationBuilder.DropTable(
-                name: "Products");
-
-            migrationBuilder.DropTable(
-                name: "Categories");
-
-            migrationBuilder.DropTable(
-                name: "Monitors");
         }
     }
 }

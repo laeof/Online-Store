@@ -7,7 +7,7 @@
             Id = Guid.NewGuid();
             Created = DateTime.UtcNow;
         }
-        public Guid Id { get; protected set; }
+        public Guid Id { get; set; }
         public DateTime Created { get; set; }
         public bool IsNew { get; set; } = true;
         public bool IsDeleted { get; set; } = false;

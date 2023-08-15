@@ -25,7 +25,7 @@ namespace Online_Store.Controllers
         }
         [HttpPost]
         public async Task<IActionResult> AddProduct(ProductViewModel model, ICollection<IFormFile> ImageFiles)
-        {
+        {/*
             if (ImageFiles != null && ImageFiles.Count > 0)
             {
                 foreach(var imageFile in ImageFiles)
@@ -49,14 +49,15 @@ namespace Online_Store.Controllers
                 }
             }
 
-            await dataManager.Products.SaveProductAsync(model);
+            //await dataManager.Products.SaveProductAsync(model);
 
             foreach(var productImage in model.Images)
             {
                 await dataManager.ProductImages.SaveProductImagesAsync(productImage);
             }
 
-            return RedirectToAction("Product", "Goods", new { id = model.Id });
+            return RedirectToAction("Product", "Goods", new { id = model.Id });*/
+            return View();
         }
     }
 }

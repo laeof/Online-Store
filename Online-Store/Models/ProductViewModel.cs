@@ -5,8 +5,8 @@ namespace Online_Store.Models
 {
     public class ProductViewModel: Product
     {
-        public Domain.Entities.Products.Monitor? Monitor { get; set; }
-        public Keyboard? Keyboard { get; set; }
-        //public ICollection<Product> Products { get; set; } = new List<Product>();
+        public Domain.Entities.Products.Monitor? Monitor { get; set; } = new Domain.Entities.Products.Monitor();
+        public Keyboard? Keyboard { get; set; } = new Keyboard();
+        public ICollection<Product> Products { get; set; } = new List<Product>();
     }
 }

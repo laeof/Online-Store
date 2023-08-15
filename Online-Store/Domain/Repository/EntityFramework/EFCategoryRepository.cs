@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Online_Store.Domain.Entities;
+using Online_Store.Domain.Entities.Products;
 using Online_Store.Domain.Repository.Abstract;
 using System.Data.Common;
+using Monitor = Online_Store.Domain.Entities.Products.Monitor;
 
 namespace Online_Store.Domain.Repository.EntityFramework
 {
@@ -17,11 +19,11 @@ namespace Online_Store.Domain.Repository.EntityFramework
         }
         public IQueryable<Category> GetCategories()
         {
-            return context.Categories;
+            return context.Categories.Include(x => x.Products).Where(c => !c.IsDeleted);
         }
-        public async Task<Category> GetCategoryByIdAsync(Guid id)
+        public async Task<Category?> GetCategoryByIdAsync(Guid id)
         {
-            return await context.Categories.FirstOrDefaultAsync(x => x.Id == id);
+            return await context.Categories.Include(x => x.Products).FirstOrDefaultAsync(x => x.Id == id);
         }
         public async Task<bool> SaveCategoryAsync(Category entity)
         {

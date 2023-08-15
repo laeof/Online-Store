@@ -17,7 +17,7 @@ namespace Online_Store.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.9")
+                .HasAnnotation("ProductVersion", "7.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -273,14 +273,8 @@ namespace Online_Store.Migrations
                     b.Property<bool>("IsNew")
                         .HasColumnType("boolean");
 
-                    b.Property<Guid?>("KeyboardId")
-                        .HasColumnType("uuid");
-
                     b.Property<string>("Kit")
                         .HasColumnType("text");
-
-                    b.Property<Guid?>("MonitorId")
-                        .HasColumnType("uuid");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -288,6 +282,10 @@ namespace Online_Store.Migrations
 
                     b.Property<decimal>("Price")
                         .HasColumnType("numeric");
+
+                    b.Property<string>("Product")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<decimal?>("SalePrice")
                         .HasColumnType("numeric");
@@ -302,13 +300,11 @@ namespace Online_Store.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("KeyboardId");
-
-                    b.HasIndex("MonitorId");
-
                     b.ToTable("Products");
 
-                    b.UseTptMappingStrategy();
+                    b.HasDiscriminator<string>("Product").HasValue("Product");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Online_Store.Domain.Entities.Products.ProductImages", b =>
@@ -402,8 +398,8 @@ namespace Online_Store.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("747c58c1-3c40-4644-9e5a-22d1f609e796"),
-                            Created = new DateTime(2023, 8, 14, 18, 31, 51, 714, DateTimeKind.Utc).AddTicks(7500),
+                            Id = new Guid("6dd9caca-5f2b-4049-aaf1-de337a549409"),
+                            Created = new DateTime(2023, 8, 15, 20, 25, 1, 534, DateTimeKind.Utc).AddTicks(1568),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "admin",
@@ -411,8 +407,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("76dfeb9e-2e85-4cdb-993e-1cd8e1ffc90c"),
-                            Created = new DateTime(2023, 8, 14, 18, 31, 51, 714, DateTimeKind.Utc).AddTicks(7553),
+                            Id = new Guid("eba6c703-0ef7-494d-864a-cc377fbc3dfa"),
+                            Created = new DateTime(2023, 8, 15, 20, 25, 1, 534, DateTimeKind.Utc).AddTicks(1606),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "manager",
@@ -420,8 +416,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("1adf8e56-847c-47bd-b8a7-37f119b98180"),
-                            Created = new DateTime(2023, 8, 14, 18, 31, 51, 714, DateTimeKind.Utc).AddTicks(7560),
+                            Id = new Guid("558363bb-a69a-4e08-8d25-f718330caed6"),
+                            Created = new DateTime(2023, 8, 15, 20, 25, 1, 534, DateTimeKind.Utc).AddTicks(1613),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "supporter",
@@ -429,8 +425,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("69e6d115-eb2d-4755-9511-1f7d95a811a7"),
-                            Created = new DateTime(2023, 8, 14, 18, 31, 51, 714, DateTimeKind.Utc).AddTicks(7566),
+                            Id = new Guid("21f8650a-fbe8-462f-b20e-22d732e45242"),
+                            Created = new DateTime(2023, 8, 15, 20, 25, 1, 534, DateTimeKind.Utc).AddTicks(1619),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "user",
@@ -518,7 +514,7 @@ namespace Online_Store.Migrations
                 {
                     b.HasBaseType("Online_Store.Domain.Entities.Product");
 
-                    b.ToTable("Keyboards");
+                    b.HasDiscriminator().HasValue("Keyboard");
                 });
 
             modelBuilder.Entity("Online_Store.Domain.Entities.Products.Monitor", b =>
@@ -526,38 +522,30 @@ namespace Online_Store.Migrations
                     b.HasBaseType("Online_Store.Domain.Entities.Product");
 
                     b.Property<string>("Brightness")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Contrast")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Diagonal")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Frequency")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Interfaces")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("MatrixType")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Ratio")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Reaction")
-                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.ToTable("Monitors");
+                    b.HasDiscriminator().HasValue("Monitor");
                 });
 
             modelBuilder.Entity("Online_Store.Domain.Entities.Cart", b =>
@@ -631,14 +619,6 @@ namespace Online_Store.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Online_Store.Domain.Entities.Products.Keyboard", null)
-                        .WithMany("Products")
-                        .HasForeignKey("KeyboardId");
-
-                    b.HasOne("Online_Store.Domain.Entities.Products.Monitor", null)
-                        .WithMany("Products")
-                        .HasForeignKey("MonitorId");
-
                     b.Navigation("Category");
                 });
 
@@ -683,24 +663,6 @@ namespace Online_Store.Migrations
                     b.Navigation("Role");
                 });
 
-            modelBuilder.Entity("Online_Store.Domain.Entities.Products.Keyboard", b =>
-                {
-                    b.HasOne("Online_Store.Domain.Entities.Product", null)
-                        .WithOne()
-                        .HasForeignKey("Online_Store.Domain.Entities.Products.Keyboard", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Online_Store.Domain.Entities.Products.Monitor", b =>
-                {
-                    b.HasOne("Online_Store.Domain.Entities.Product", null)
-                        .WithOne()
-                        .HasForeignKey("Online_Store.Domain.Entities.Products.Monitor", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Online_Store.Domain.Entities.Category", b =>
                 {
                     b.Navigation("Products");
@@ -719,16 +681,6 @@ namespace Online_Store.Migrations
             modelBuilder.Entity("Online_Store.Domain.Entities.User", b =>
                 {
                     b.Navigation("Order");
-                });
-
-            modelBuilder.Entity("Online_Store.Domain.Entities.Products.Keyboard", b =>
-                {
-                    b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("Online_Store.Domain.Entities.Products.Monitor", b =>
-                {
-                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

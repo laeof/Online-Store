@@ -3,18 +3,29 @@ using Online_Store.Domain.Entities;
 using Online_Store.Models;
 using Online_Store.Domain;
 
-namespace Factories
+namespace Online_Store
 {
-    public class KeyboardFactory: ProductFactory<Keyboard>
+    
+    public class KeyboardFactory: IProductFactory
     {
-        public KeyboardFactory(DataManager dataManager) : base(dataManager)
+        private readonly DataManager _dataManager;
+        public KeyboardFactory(DataManager dataManager)
         {
-
+            _dataManager = dataManager;
         }
 
-        public override async Task<Product> CreateProduct(ProductViewModel model)
+        public async Task<Product> CreateProduct(ProductViewModel model)
         {
-            return new Keyboard();
+            var product = new Keyboard
+            {
+                Name = model.Name,
+                Price = model.Price,
+                CategoryId = model.CategoryId,
+            };
+
+            await _dataManager.Products.SaveProductAsync(product);
+
+            return product;
         }
     }
 }

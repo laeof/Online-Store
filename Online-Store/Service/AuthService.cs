@@ -14,11 +14,12 @@ namespace Online_Store.Service
         private readonly ILogger<AuthService> _logger;
         private readonly SecurePasswordHasher _passwordHasher;
 
-        public AuthService(DataManager dataManager, JwtService jwtService, ILogger<AuthService> logger) 
+        public AuthService(DataManager dataManager, JwtService jwtService, ILogger<AuthService> logger, SecurePasswordHasher securePasswordHasher) 
         {
             _dataManager = dataManager;
             _jwtService = jwtService;
             _logger = logger;
+            _passwordHasher = securePasswordHasher;
         }
         public bool ValidateUser(string login, string password)
         {

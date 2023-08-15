@@ -1,13 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration.UserSecrets;
-using Microsoft.IdentityModel.Tokens;
 using Online_Store.Domain;
 using Online_Store.Models;
 using Online_Store.Service;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 
 namespace Online_Store.Controllers.Api
 {
@@ -15,8 +10,8 @@ namespace Online_Store.Controllers.Api
     [ApiController]
     public class UserController: ControllerBase
     {
-        private DataManager _dataManager { get; set; }
-        private JwtService _jwtService { get; set; }
+        private readonly DataManager _dataManager;
+        private readonly JwtService _jwtService;
         public UserController(DataManager dataManager, JwtService jwtService) 
         {
             _dataManager = dataManager;

@@ -3,20 +3,22 @@ using Online_Store.Domain;
 using Online_Store.Domain.Entities;
 using Online_Store.Models;
 
-namespace Factories
+namespace Online_Store
 {
-    public class MonitorFactory: ProductFactory<Online_Store.Domain.Entities.Products.Monitor>
+    public class MonitorFactory: IProductFactory
     {
         private DataManager _dataManager { get; set; }
-        public MonitorFactory(DataManager dataManager): base(dataManager)
+        public MonitorFactory(DataManager dataManager)
         {
             _dataManager = dataManager;
         }
 
-        public override async Task<Product> CreateProduct(ProductViewModel model)
+        public async Task<Product> CreateProduct(ProductViewModel model)
         {
-            var product = new Online_Store.Domain.Entities.Products.Monitor
+            var product = new Domain.Entities.Products.Monitor
             {
+                Name = model.Name,
+                Price = model.Price,
                 Diagonal = model.Monitor.Diagonal,
                 Brightness = model.Monitor.Brightness,
                 CategoryId = model.CategoryId,

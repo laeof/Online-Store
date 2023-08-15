@@ -15,11 +15,11 @@ namespace Online_Store.Domain.Repository.EntityFramework
             this.context = context;
             this.logger = logger;
         }
-        virtual public IQueryable<Product> GetProducts()
+        public virtual IQueryable<Product> GetProducts()
         {
             return context.Products;
         }
-        virtual public async Task<Product> GetProductByIdAsync(Guid id)
+        public virtual async Task<Product> GetProductByIdAsync(Guid id)
         {
             return await context.Products.FirstOrDefaultAsync(x => x.Id == id);
         }
@@ -55,6 +55,11 @@ namespace Online_Store.Domain.Repository.EntityFramework
             catch (DbException ex)
             {
                 logger.LogError($"Error to save a product. ProductId: {entity.Id}. Message: {ex.Message}");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex.Message);
                 return false;
             }
         }
