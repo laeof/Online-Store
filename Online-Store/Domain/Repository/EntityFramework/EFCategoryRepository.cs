@@ -19,11 +19,11 @@ namespace Online_Store.Domain.Repository.EntityFramework
         }
         public IQueryable<Category> GetCategories()
         {
-            return context.Categories.Include(x => x.Products).Where(c => !c.IsDeleted);
+            return context.Categories.Where(c => !c.IsDeleted);
         }
         public async Task<Category?> GetCategoryByIdAsync(Guid id)
         {
-            return await context.Categories.Include(x => x.Products).FirstOrDefaultAsync(x => x.Id == id);
+            return await context.Categories.Where(c => c.Id == id).FirstOrDefaultAsync();
         }
         public async Task<bool> SaveCategoryAsync(Category entity)
         {

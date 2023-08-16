@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "sLFfB6oTmQGX3BjJlY5s88TvRStNc/DFxSfEOjcwlM4=",
+  "Hash": "hMLdbbISveY03FuhyVjYbFVmJTL8X4vXRErKchggcZo=",
   "Source": "Online-Store",
   "BasePath": "_content/Online-Store",
   "Mode": "Default",
@@ -1409,6 +1409,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\fonts\\Roboto-ThinItalic.woff2"
+    },
+    {
+      "Identity": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\category\\File.jpg",
+      "SourceId": "Online-Store",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\",
+      "BasePath": "_content/Online-Store",
+      "RelativePath": "img/category/File.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\category\\File.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\category\\File1.jpg",
+      "SourceId": "Online-Store",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\",
+      "BasePath": "_content/Online-Store",
+      "RelativePath": "img/category/File1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\category\\File1.jpg"
     },
     {
       "Identity": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\goods\\0i4cnvss.hx2_18307074.jpg",

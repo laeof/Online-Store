@@ -329,6 +329,14 @@
       "PackagePath": "staticwebassets\\fonts\\Roboto-ThinItalic.woff2"
     },
     {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\category\\File.jpg",
+      "PackagePath": "staticwebassets\\img\\category\\File.jpg"
+    },
+    {
+      "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\category\\File1.jpg",
+      "PackagePath": "staticwebassets\\img\\category\\File1.jpg"
+    },
+    {
       "Id": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\goods\\0i4cnvss.hx2_18307074.jpg",
       "PackagePath": "staticwebassets\\img\\goods\\0i4cnvss.hx2_18307074.jpg"
     },
