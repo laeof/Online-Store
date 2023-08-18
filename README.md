@@ -5,9 +5,10 @@ Api possibilities:
   <li>Register✅</li>
   <li>Get current user✅</li>
   <li>Edit current user❌</li>
+  <li>Catalog✅</li>
   <li>Get product✅</li>
   <li>Get all products✅</li>
-  <li>Create product❌</li>
+  <li>Create product✅</li>
   <li>Edit product❌</li>
   <li>Add product to a cart❌</li>
   <li>Good checkout❌</li>
