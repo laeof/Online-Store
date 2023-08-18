@@ -27,6 +27,7 @@ namespace Online_Store.Controllers.Api
                 product.Amount,
                 product.Id,
                 product.Created,
+                product.CategoryId,
                 Images = product.Images.Select(image => new
                 {
                     image.FileName
@@ -55,6 +56,7 @@ namespace Online_Store.Controllers.Api
                 product.Amount,
                 product.Id,
                 product.Created,
+                product.CategoryId,
                 Images = productImages.Select(image => new
                 {
                     image.FileName

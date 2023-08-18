@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hMLdbbISveY03FuhyVjYbFVmJTL8X4vXRErKchggcZo=",
+  "Hash": "tmrzaaA6qyr1gZm/z9mtav/bfuMbQhsGev2z87o2hKU=",
   "Source": "Online-Store",
   "BasePath": "_content/Online-Store",
   "Mode": "Default",
@@ -1460,6 +1460,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\goods\\0i4cnvss.hx2_18307074.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\goods\\218161522.jpg",
+      "SourceId": "Online-Store",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\",
+      "BasePath": "_content/Online-Store",
+      "RelativePath": "img/goods/218161522.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\goods\\218161522.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\goods\\218161528.jpg",
+      "SourceId": "Online-Store",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\",
+      "BasePath": "_content/Online-Store",
+      "RelativePath": "img/goods/218161528.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\goods\\218161528.jpg"
     },
     {
       "Identity": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\goods\\4iyedbrq.odf_monitor.jpg",
