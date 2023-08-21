@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Online_Store.Domain;
 using Online_Store.Domain.Entities;
+using Online_Store.Domain.Entities.Products;
 using Online_Store.Models;
 
 namespace Online_Store.Controllers.Api
@@ -11,9 +12,10 @@ namespace Online_Store.Controllers.Api
     {
         private readonly DataManager _dataManager;
         private readonly CategoryProductTypeMapper _productFactoryMapping;
-        public GoodsController(DataManager dataManager) 
+        public GoodsController(DataManager dataManager, CategoryProductTypeMapper productTypeMapper) 
         {
             _dataManager = dataManager;
+            _productFactoryMapping = productTypeMapper;
         }
 
         [HttpGet("product")]
@@ -43,27 +45,19 @@ namespace Online_Store.Controllers.Api
             var product = await _dataManager.Products.GetProductByIdAsync(id);
             var productImages = _dataManager.ProductImages.GetProductImagesById(id);
 
+            var images = productImages.Select(image => new ProductImages
+            {
+                FileName = image.FileName
+            }).ToList();
+
+            product.Images = images;
+
             if (product == null)
             {
                 return NotFound();
             }
 
-            var responseProduct = new
-            {
-                product.Name,
-                product.Description,
-                product.Price,
-                product.Amount,
-                product.Id,
-                product.Created,
-                product.CategoryId,
-                Images = productImages.Select(image => new
-                {
-                    image.FileName
-                }).ToList()
-            };
-
-            return Ok(responseProduct);
+            return Ok(product);
         }
         [HttpPost("product/create")]
         public async Task<IActionResult> CreateProduct(ProductViewModel model)
@@ -92,7 +86,7 @@ namespace Online_Store.Controllers.Api
                 Additional = model.Additional
             };*/
 
-            factory.CreateProduct(model);
+            await factory.CreateProduct(model);
 
             return Ok();
         }

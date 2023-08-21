@@ -20,6 +20,6 @@ namespace Online_Store.Domain.Entities
         public Guid CategoryId { get; set; }
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
-        public ICollection<ProductImages> Images { get; set; } = new List<ProductImages>();
+        public List<ProductImages> Images { get; set; } = new List<ProductImages>();
     }
 }

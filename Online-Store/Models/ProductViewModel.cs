@@ -7,6 +7,5 @@ namespace Online_Store.Models
     {
         public Domain.Entities.Products.Monitor? Monitor { get; set; } = new Domain.Entities.Products.Monitor();
         public Keyboard? Keyboard { get; set; } = new Keyboard();
-        public ICollection<Product> Products { get; set; } = new List<Product>();
     }
 }
