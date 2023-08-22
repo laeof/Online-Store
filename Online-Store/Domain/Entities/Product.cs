@@ -5,7 +5,7 @@ namespace Online_Store.Domain.Entities
 {
     public abstract class Product: AbstractModel
     {
-        public string Name { get; set; }
+        public string? Name { get; set; }
         public string? Description { get; set; }
         public decimal Price { get; set; }
         public decimal? SalePrice { get; set; }
@@ -19,7 +19,7 @@ namespace Online_Store.Domain.Entities
         public string? Kit { get; set; }
         public Guid CategoryId { get; set; }
         [ForeignKey("CategoryId")]
-        public Category Category { get; set; }
-        public List<ProductImages> Images { get; set; } = new List<ProductImages>();
+        public Category? Category { get; set; }
+        public List<ProductImages>? Images { get; set; } = new List<ProductImages>();
     }
 }

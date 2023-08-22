@@ -23,7 +23,7 @@ namespace Online_Store.Domain.Repository.EntityFramework
         }
         public async Task<Category?> GetCategoryByIdAsync(Guid id)
         {
-            return await context.Categories.Where(c => c.Id == id).FirstOrDefaultAsync();
+            return await context.Categories.Where(c => c.Id == id).Include(c => c.Products).FirstOrDefaultAsync();
         }
         public async Task<bool> SaveCategoryAsync(Category entity)
         {

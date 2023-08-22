@@ -59,8 +59,8 @@ namespace Online_Store.Controllers.Api
 
             return Ok(product);
         }
-        [HttpPost("product/create")]
-        public async Task<IActionResult> CreateProduct(ProductViewModel model)
+        [HttpPost("create")]
+        public async Task<IActionResult> CreateProduct(ProductViewModel model, [FromForm] List<IFormFile> images)
         {
             //get product type by category id
             Type productType = await _productFactoryMapping.GetProductType(model.CategoryId);
@@ -68,25 +68,12 @@ namespace Online_Store.Controllers.Api
             //get factory by product type
             IProductFactory factory = _productFactoryMapping.GetFactory(productType);
 
-            /*var product = new ProductViewModel
-            {
-                Name = model.Name,
-                Description = model.Description,
-                Price = model.Price,
-                SalePrice = model.SalePrice,
-                Amount = model.Amount,
-                CategoryId = model.CategoryId,
-                Color = model.Color,
-                Weight = model.Weight,
-                Size = model.Size,
-                Created = model.Created,
-                Guarantee = model.Guarantee,
-                Kit = model.Kit,
-                Country = model.Country,
-                Additional = model.Additional
-            };*/
-
             await factory.CreateProduct(model);
+
+            foreach(IFormFile file in images)
+            {
+
+            }
 
             return Ok();
         }
