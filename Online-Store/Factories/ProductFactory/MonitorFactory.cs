@@ -19,6 +19,8 @@ namespace Online_Store
             {
                 Name = model.Name,
                 Price = model.Price,
+                Amount = model.Amount,
+                Description = model.Description,
                 Diagonal = model.Monitor.Diagonal,
                 Brightness = model.Monitor.Brightness,
                 CategoryId = model.CategoryId,

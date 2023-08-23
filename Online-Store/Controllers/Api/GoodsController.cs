@@ -12,10 +12,12 @@ namespace Online_Store.Controllers.Api
     {
         private readonly DataManager _dataManager;
         private readonly CategoryProductTypeMapper _productFactoryMapping;
-        public GoodsController(DataManager dataManager, CategoryProductTypeMapper productTypeMapper) 
+        private readonly IWebHostEnvironment _environment;
+        public GoodsController(DataManager dataManager, CategoryProductTypeMapper productTypeMapper, IWebHostEnvironment environment)
         {
             _dataManager = dataManager;
             _productFactoryMapping = productTypeMapper;
+            _environment = environment;
         }
 
         [HttpGet("product")]
@@ -60,23 +62,53 @@ namespace Online_Store.Controllers.Api
             return Ok(product);
         }
         [HttpPost("create")]
-        public async Task<IActionResult> CreateProduct(ProductViewModel model, [FromForm] List<IFormFile> images)
+        public async Task<IActionResult> CreateProduct(ProductViewModel productData)
         {
             //get product type by category id
-            Type productType = await _productFactoryMapping.GetProductType(model.CategoryId);
+            Type productType = await _productFactoryMapping.GetProductType(productData.CategoryId);
 
             //get factory by product type
             IProductFactory factory = _productFactoryMapping.GetFactory(productType);
 
-            await factory.CreateProduct(model);
+            //create product
+            var product = await factory.CreateProduct(productData);
 
-            foreach(IFormFile file in images)
+            foreach (var a in productData.Images)
             {
-
+                var imgs = new ProductImages
+                {
+                    ProductId = product.Id,
+                    FileName = a.FileName,
+                };
+                await _dataManager.ProductImages.SaveProductImagesAsync(imgs);
             }
 
             return Ok();
         }
-        
+        [HttpPost("uploadimg")]
+        public async Task<IActionResult> UploadImg([FromForm] List<IFormFile> file)
+        {
+            var files = file;
+            var uploadedFiles = new List<string>();
+            var uploadDirectory = Path.Combine(_environment.WebRootPath, "img", "goods");
+
+            foreach (var f in files)
+            {
+                if (f.Length > 0)
+                {
+                    var fileName = Path.GetFileName(f.FileName);
+                    var filePath = Path.Combine(uploadDirectory, fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await f.CopyToAsync(stream);
+                    }
+
+                    uploadedFiles.Add(fileName);
+                }
+            }
+
+            return Ok();
+        }
     }
 }

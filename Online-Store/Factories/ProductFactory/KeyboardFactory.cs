@@ -21,6 +21,8 @@ namespace Online_Store
                 Name = model.Name,
                 Price = model.Price,
                 CategoryId = model.CategoryId,
+                Description = model.Description,
+                Amount = model.Amount,
             };
 
             await _dataManager.Products.SaveProductAsync(product);
