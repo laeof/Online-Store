@@ -28,13 +28,15 @@ namespace Online_Store.Controllers.Api
 
             var userId = _jwtService.GetUserIdFromToken(jwtToken);
 
-            if (userId == null)
+            var user = await _dataManager.Users.GetUserByIdAsync((Guid)userId);
+
+            if (user == null)
             {
-                return BadRequest("Unable to retrieve current user information.");
+                return Unauthorized();
             }
 
-            var user = await _dataManager.Users.GetUserByIdAsync((Guid)userId);
             var role = await _dataManager.Roles.GetRoleByIdAsync(user.RoleId);
+
             return Ok(new CabinetViewModel
             {
                 Role = role.Name,

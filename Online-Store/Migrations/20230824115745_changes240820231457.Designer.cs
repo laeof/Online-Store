@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Online_Store.Domain;
@@ -11,9 +12,11 @@ using Online_Store.Domain;
 namespace Online_Store.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230824115745_changes240820231457")]
+    partial class changes240820231457
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,8 +45,7 @@ namespace Online_Store.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
+                    b.HasIndex("UserId");
 
                     b.ToTable("Carts");
                 });
@@ -398,8 +400,8 @@ namespace Online_Store.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("7ec235e1-2741-4fe2-8ede-9d1925e171b3"),
-                            Created = new DateTime(2023, 8, 24, 11, 58, 33, 258, DateTimeKind.Utc).AddTicks(5345),
+                            Id = new Guid("8df41fa0-1969-4dac-892d-cf940666c7e3"),
+                            Created = new DateTime(2023, 8, 24, 11, 57, 44, 917, DateTimeKind.Utc).AddTicks(1065),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "admin",
@@ -407,8 +409,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("de7e6ae9-9708-4964-a6bc-478acf6a611e"),
-                            Created = new DateTime(2023, 8, 24, 11, 58, 33, 258, DateTimeKind.Utc).AddTicks(5363),
+                            Id = new Guid("9dd7a10d-43ac-4156-9a5b-434b607f7aca"),
+                            Created = new DateTime(2023, 8, 24, 11, 57, 44, 917, DateTimeKind.Utc).AddTicks(1080),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "manager",
@@ -416,8 +418,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b7b2f40c-6bb3-4046-9060-825cde40f9d1"),
-                            Created = new DateTime(2023, 8, 24, 11, 58, 33, 258, DateTimeKind.Utc).AddTicks(5371),
+                            Id = new Guid("1efb81a2-b564-4ff1-a70b-811e4074855d"),
+                            Created = new DateTime(2023, 8, 24, 11, 57, 44, 917, DateTimeKind.Utc).AddTicks(1088),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "supporter",
@@ -425,8 +427,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ce3f6a8c-8315-4ed1-bc04-99f8d282d11b"),
-                            Created = new DateTime(2023, 8, 24, 11, 58, 33, 258, DateTimeKind.Utc).AddTicks(5377),
+                            Id = new Guid("e173e1f2-da88-4d86-ae8c-ab6dd6020010"),
+                            Created = new DateTime(2023, 8, 24, 11, 57, 44, 917, DateTimeKind.Utc).AddTicks(1094),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "user",
@@ -508,6 +510,8 @@ namespace Online_Store.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CartId");
+
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
@@ -554,8 +558,8 @@ namespace Online_Store.Migrations
             modelBuilder.Entity("Online_Store.Domain.Entities.Cart", b =>
                 {
                     b.HasOne("Online_Store.Domain.Entities.User", "User")
-                        .WithOne("Cart")
-                        .HasForeignKey("Online_Store.Domain.Entities.Cart", "UserId")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -655,11 +659,19 @@ namespace Online_Store.Migrations
 
             modelBuilder.Entity("Online_Store.Domain.Entities.User", b =>
                 {
+                    b.HasOne("Online_Store.Domain.Entities.Cart", "Cart")
+                        .WithMany()
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Online_Store.Domain.Entities.Role", "Role")
                         .WithMany("Users")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Cart");
 
                     b.Navigation("Role");
                 });
@@ -686,9 +698,6 @@ namespace Online_Store.Migrations
 
             modelBuilder.Entity("Online_Store.Domain.Entities.User", b =>
                 {
-                    b.Navigation("Cart")
-                        .IsRequired();
-
                     b.Navigation("Order");
                 });
 #pragma warning restore 612, 618

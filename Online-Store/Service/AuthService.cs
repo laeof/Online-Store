@@ -90,9 +90,17 @@ namespace Online_Store.Service
                 RoleId = role.Id
             };
 
+            var cart = new Cart
+            {
+                UserId = user.Id,
+            };
+
             if(await _dataManager.Users.SaveUserAsync(user))
             {
                 _logger.LogInformation($"Successful register! UserId: {user.Id}");
+
+                await _dataManager.Carts.SaveCartAsync(cart);
+
                 return new LoginViewModel
                 {
                     Email = user.Email,

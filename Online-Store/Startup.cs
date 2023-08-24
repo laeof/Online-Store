@@ -27,6 +27,7 @@
             services.AddTransient<IProductRepository, EFProductRepository>();
             services.AddTransient<IProductImagesRepository, EFProductImagesRepository>();
             services.AddTransient<ICategoryRepository , EFCategoryRepository>();
+            services.AddTransient<ICartRepository , EFCartRepository>();
             services.AddTransient<DataManager>();
 
             services.AddCors();

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7CsZYWp2D65WGckWKvXkGAYENRwIvorxYI/TDE6JKGo=",
+  "Hash": "c4VAVcjkWzEnjgDGlfY23mSaWYDk3pdbXoRlRsK02UE=",
   "Source": "Online-Store",
   "BasePath": "_content/Online-Store",
   "Mode": "Default",
@@ -1494,6 +1494,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\goods\\1692818156879_ettrcs.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\goods\\1692819504182_0sp6qi.jpg",
+      "SourceId": "Online-Store",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\",
+      "BasePath": "_content/Online-Store",
+      "RelativePath": "img/goods/1692819504182_0sp6qi.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\goods\\1692819504182_0sp6qi.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\goods\\1692819504182_hrl69y.jpg",
+      "SourceId": "Online-Store",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\",
+      "BasePath": "_content/Online-Store",
+      "RelativePath": "img/goods/1692819504182_hrl69y.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\goods\\1692819504182_hrl69y.jpg"
     },
     {
       "Identity": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\wwwroot\\img\\goods\\218161522.jpg",

@@ -30,13 +30,13 @@ namespace Online_Store.Domain
 
             base.OnModelCreating(modelBuilder);
 
-            var role = new Role
+            modelBuilder.Entity<Role>().HasData(new Role
             {
                 Name = "admin",
                 Priority = 1
-            };
+            });
 
-            modelBuilder.Entity<Role>().HasData(role); modelBuilder.Entity<Role>().HasData(new Role
+            modelBuilder.Entity<Role>().HasData(new Role
             {
                 Name = "manager",
                 Priority = 2

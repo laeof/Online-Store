@@ -4,7 +4,6 @@ using Online_Store.Domain.Entities;
 using Online_Store.Domain.Entities.Products;
 using Online_Store.Domain.Repository.Abstract;
 using System.Data.Common;
-using Monitor = Online_Store.Domain.Entities.Products.Monitor;
 
 namespace Online_Store.Domain.Repository.EntityFramework
 {
