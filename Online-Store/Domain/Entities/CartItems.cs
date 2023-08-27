@@ -10,7 +10,7 @@ namespace Online_Store.Domain.Entities
         public Guid ProductId { get; set; }
         [ForeignKey("ProductId")]
         public Product Product { get; set; }
-        public int ProductAmount { get; set; }
+        public int ProductAmount { get; set; } = 0;
         public decimal ProductPrice { get; set; }
     }
 }

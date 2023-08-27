@@ -95,6 +95,8 @@ namespace Online_Store.Service
                 UserId = user.Id,
             };
 
+            user.CartId = cart.Id;
+
             if(await _dataManager.Users.SaveUserAsync(user))
             {
                 _logger.LogInformation($"Successful register! UserId: {user.Id}");

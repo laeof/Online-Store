@@ -39,6 +39,7 @@ namespace Online_Store.Controllers.Api
 
             return Ok(new CabinetViewModel
             {
+                Id = user.Id,
                 Role = role.Name,
                 Email = user.Email,
                 FirstName = user.FirstName,

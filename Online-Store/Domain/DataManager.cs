@@ -11,13 +11,15 @@ namespace Online_Store.Domain
 		public IProductImagesRepository ProductImages { get; set; }
 		public ICategoryRepository Categories { get; set; }
 		public ICartRepository Carts { get; set; }
+		public ICartItemsRepository CartItems { get; set; }
 		public DataManager(IUserRepository Users,
 						   IRoleRepository Roles,
 						   IOrderRepository Orders,
 						   IProductRepository Products,
 						   IProductImagesRepository ProductImages,
 						   ICategoryRepository Categories,
-						   ICartRepository Carts) 
+						   ICartRepository Carts,
+						   ICartItemsRepository cartItems) 
 		{
 			this.Users = Users;
 			this.Roles = Roles;
@@ -26,6 +28,7 @@ namespace Online_Store.Domain
 			this.ProductImages = ProductImages;
 			this.Categories = Categories;
 			this.Carts = Carts;
+			this.CartItems = cartItems;
 		}
 	}
 }

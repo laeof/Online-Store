@@ -398,8 +398,8 @@ namespace Online_Store.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("7ec235e1-2741-4fe2-8ede-9d1925e171b3"),
-                            Created = new DateTime(2023, 8, 24, 11, 58, 33, 258, DateTimeKind.Utc).AddTicks(5345),
+                            Id = new Guid("10c0e58b-bb87-4b49-ae4e-3b327a9a64b1"),
+                            Created = new DateTime(2023, 8, 27, 9, 14, 53, 50, DateTimeKind.Utc).AddTicks(1858),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "admin",
@@ -407,8 +407,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("de7e6ae9-9708-4964-a6bc-478acf6a611e"),
-                            Created = new DateTime(2023, 8, 24, 11, 58, 33, 258, DateTimeKind.Utc).AddTicks(5363),
+                            Id = new Guid("7729119f-3632-48c9-b151-0e41a1a8f894"),
+                            Created = new DateTime(2023, 8, 27, 9, 14, 53, 50, DateTimeKind.Utc).AddTicks(1873),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "manager",
@@ -416,8 +416,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b7b2f40c-6bb3-4046-9060-825cde40f9d1"),
-                            Created = new DateTime(2023, 8, 24, 11, 58, 33, 258, DateTimeKind.Utc).AddTicks(5371),
+                            Id = new Guid("09bae7e8-1a44-4157-adb7-70ab0518e9a1"),
+                            Created = new DateTime(2023, 8, 27, 9, 14, 53, 50, DateTimeKind.Utc).AddTicks(1880),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "supporter",
@@ -425,8 +425,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ce3f6a8c-8315-4ed1-bc04-99f8d282d11b"),
-                            Created = new DateTime(2023, 8, 24, 11, 58, 33, 258, DateTimeKind.Utc).AddTicks(5377),
+                            Id = new Guid("a4186f17-48bc-4fd4-848c-abca4e538899"),
+                            Created = new DateTime(2023, 8, 27, 9, 14, 53, 50, DateTimeKind.Utc).AddTicks(1886),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "user",
