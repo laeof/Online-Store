@@ -20,7 +20,7 @@ namespace Online_Store.Domain.Repository.EntityFramework
         }
         public async Task<CartItems?> GetCartItemByIdAsync(Guid id)
         {
-            return await context.CartItems.Where(c => c.Id == id).FirstOrDefaultAsync();
+            return await context.CartItems.FirstOrDefaultAsync(ci => ci.Id == id);
         }
         public async Task<bool> SaveCartItemAsync(CartItems entity)
         {
@@ -59,10 +59,9 @@ namespace Online_Store.Domain.Repository.EntityFramework
         }
         public async Task<bool> DeleteCartItemAsync(CartItems entity)
         {
-            var cartItem = await context.Users.FirstOrDefaultAsync(r => r.Id == entity.Id);
-            if (cartItem != null)
+            if (entity != null)
             {
-                context.Remove(cartItem);
+                context.Remove(entity);
 
                 await context.SaveChangesAsync();
 

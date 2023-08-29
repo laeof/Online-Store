@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Converters;
 using Online_Store.Domain;
 using Online_Store.Domain.Entities;
 using Online_Store.Domain.Entities.Products;
@@ -32,6 +33,7 @@ namespace Online_Store.Controllers.Api
                 product.Id,
                 product.Created,
                 product.CategoryId,
+                product.ClickCount,
                 Images = product.Images.Select(image => new
                 {
                     image.FileName
@@ -45,6 +47,20 @@ namespace Online_Store.Controllers.Api
         public async Task<IActionResult> GetProductById(Guid id)
         {
             var product = await _dataManager.Products.GetProductByIdAsync(id);
+
+            if(product == null)
+            {
+                return NotFound();
+            }
+
+            //popularity
+
+            product.ClickCount++;
+
+            await _dataManager.Products.SaveProductAsync(product);
+
+            //get product:
+
             var productImages = _dataManager.ProductImages.GetProductImagesById(id);
 
             var images = productImages.Select(image => new ProductImages
@@ -53,11 +69,6 @@ namespace Online_Store.Controllers.Api
             }).ToList();
 
             product.Images = images;
-
-            if (product == null)
-            {
-                return NotFound();
-            }
 
             return Ok(product);
         }

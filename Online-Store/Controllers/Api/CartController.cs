@@ -20,7 +20,7 @@ namespace Online_Store.Controllers.Api
         {
             //get product
 
-            var product = await _dataManager.Products.GetProductByIdAsync(model.ProductId);
+            var product = await _dataManager.Products.GetProductByIdAsync((Guid)model.ProductId);
 
             //if product does not exist
 
@@ -29,7 +29,7 @@ namespace Online_Store.Controllers.Api
 
             //get user
 
-            var user = await _dataManager.Users.GetUserByIdAsync(model.UserId);
+            var user = await _dataManager.Users.GetUserByIdAsync((Guid)model.UserId);
 
             //if user does not exist
 
@@ -66,6 +66,103 @@ namespace Online_Store.Controllers.Api
             cartItem.ProductAmount++;
 
             await _dataManager.CartItems.SaveCartItemAsync(cartItem);
+
+            return Ok();
+        }
+        [HttpGet("getcart")]
+        public async Task<IActionResult> GetCart(Guid id)
+        {
+            //get user
+
+            var user = await _dataManager.Users.GetUserByIdAsync(id);
+
+            //if user does not exist
+
+            if (user == null)
+                return BadRequest();
+
+            //get cart
+
+            Cart cart = await _dataManager.Carts.GetCartByIdAsync(user.CartId);
+
+            //if cart does not exist
+
+            if (cart == null)
+                return BadRequest();
+
+            List<CartItems>? cartItems = _dataManager.CartItems.GetCartItems()
+                .Where(cid => cid.CartId == cart.Id)
+                .Select(ci => new CartItems
+                {
+                    Id = ci.Id,
+                    ProductId = ci.ProductId,
+                    ProductAmount = ci.ProductAmount,
+                    ProductPrice = ci.ProductPrice,
+                    CartId = cart.Id
+                }).ToList();
+
+            return Ok(cartItems);
+        }
+        [HttpPost("deletefromcart")]
+        public async Task<IActionResult> DeleteCartItem(CartItemsViewModel cart)
+        {
+            if (cart == null)
+                return BadRequest();
+
+            if (cart.Id == null)
+                return BadRequest();
+
+            var cartitem = await _dataManager.CartItems.GetCartItemByIdAsync(cart.Id);
+
+            if(cartitem == null) 
+                return BadRequest();
+
+            await _dataManager.CartItems.DeleteCartItemAsync(cartitem);
+
+            return Ok();
+        }
+        [HttpPost("minusfromcart")]
+        public async Task<IActionResult> MinusCartItem(CartItemsViewModel cart)
+        {
+            if (cart == null)
+                return BadRequest();
+
+            if (cart.Id == null)
+                return BadRequest();
+
+            var cartitem = await _dataManager.CartItems.GetCartItemByIdAsync(cart.Id);
+
+            if (cartitem == null)
+                return BadRequest();
+
+            if (cartitem.ProductAmount < 2)
+            {
+                await DeleteCartItem(cart);
+            }
+            else
+            {
+                cartitem.ProductAmount--;
+                await _dataManager.CartItems.SaveCartItemAsync(cartitem);
+            }
+            return Ok();
+        }
+        [HttpPost("addcartitem")]
+        public async Task<IActionResult> AddCartItem(CartItemsViewModel cart)
+        {
+            if (cart == null)
+                return BadRequest();
+
+            if (cart.Id == null)
+                return BadRequest();
+
+            var cartitem = await _dataManager.CartItems.GetCartItemByIdAsync(cart.Id);
+
+            if (cartitem == null)
+                return BadRequest();
+
+            cartitem.ProductAmount++;
+
+            await _dataManager.CartItems.SaveCartItemAsync(cartitem);
 
             return Ok();
         }
