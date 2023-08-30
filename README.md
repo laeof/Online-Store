@@ -10,7 +10,7 @@ Api possibilities:
   <li>Get all products✅</li>
   <li>Create product✅</li>
   <li>Edit product❌</li>
-  <li>Add product to a cart❌</li>
+  <li>Add product to a cart✅</li>
   <li>Good checkout❌</li>
   <li>Admin panel❌</li>
   <li>Add a review❌</li>
