@@ -8,17 +8,8 @@ namespace Online_Store.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly CategoryProductTypeMapper _productFactoryMapping;
-        private readonly DataManager _dataManager;
-
-        public HomeController(CategoryProductTypeMapper productFactoryMapping, DataManager dataManager)
+        public IActionResult Index()
         {
-            _productFactoryMapping = productFactoryMapping;
-            _dataManager = dataManager;
-        }
-        public async Task<IActionResult> Index()
-        {
-            
             return View();
         }
     }

@@ -1,23 +1,12 @@
 ﻿<!DOCTYPE html>
-<html lang="en" cache-control="no-cache">
+<html lang="en">
 
 <head>
-    @await Html.PartialAsync("MetatagsPartial")
-    @await Html.PartialAsync("CssPartial")
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
-    <div class="wrapper">
-        @await Html.PartialAsync("LoginRegPartial")
-        @await Html.PartialAsync("SideBarPartial")
-        <main>
-            @RenderBody()
-        </main>
-        @await Html.PartialAsync("FooterPartial")
-    </div>
-    @await Html.PartialAsync("ScriptsPartial")
+    @RenderBody()
 </body>
 
 </html>
