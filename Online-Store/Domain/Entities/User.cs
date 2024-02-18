@@ -25,5 +25,6 @@ namespace Online_Store.Domain.Entities
 		[ForeignKey("RoleId")]
 		public Role Role { get; set; }
 		public Cart Cart { get; set; }
+		public List<Review> Reviews { get; set; }
 	}
 }
