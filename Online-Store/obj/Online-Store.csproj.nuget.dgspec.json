@@ -1,28 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\Online-Store.csproj": {}
+    "/home/hope/Online-Store/Online-Store/Online-Store.csproj": {}
   },
   "projects": {
-    "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\Online-Store.csproj": {
+    "/home/hope/Online-Store/Online-Store/Online-Store.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\Online-Store.csproj",
+        "projectUniqueName": "/home/hope/Online-Store/Online-Store/Online-Store.csproj",
         "projectName": "Online-Store",
-        "projectPath": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\Online-Store.csproj",
-        "packagesPath": "C:\\Users\\laoef\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\laoef\\source\\repos\\Online-Store\\Online-Store\\obj\\",
+        "projectPath": "/home/hope/Online-Store/Online-Store/Online-Store.csproj",
+        "packagesPath": "/home/hope/.nuget/packages/",
+        "outputPath": "/home/hope/Online-Store/Online-Store/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\laoef\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/hope/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -35,6 +32,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -99,7 +101,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.203/RuntimeIdentifierGraph.json"
         }
       }
     }

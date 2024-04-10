@@ -15,11 +15,11 @@ namespace Online_Store.Domain.Repository.EntityFramework
             this.context = context;
             this.logger = logger;
         }
-        public virtual IQueryable<Product> GetProducts()
+        public IQueryable<Product> GetProducts()
         {
             return context.Products;
         }
-        public virtual async Task<Product> GetProductByIdAsync(Guid id)
+        public async Task<Product> GetProductByIdAsync(Guid id)
         {
             return await context.Products.FirstOrDefaultAsync(x => x.Id == id);
         }

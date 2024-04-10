@@ -98,7 +98,7 @@ namespace Online_Store.Controllers.Api
         [HttpPost("logout")]
         public IActionResult LogOut()
         {
-            _logger.LogInformation("User logged out");
+            //_logger.LogInformation("User logged out");
             Response.Cookies.Delete("jwtToken");
             return Ok();
         }

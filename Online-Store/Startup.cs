@@ -8,6 +8,10 @@
     using Online_Store.Domain.Repository.EntityFramework;
     using Online_Store.Domain.Entities.Products;
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.AspNetCore.Authentication.JwtBearer;
+    using Microsoft.CodeAnalysis.Options;
+    using Microsoft.IdentityModel.Tokens;
+    using System.Text;
 
     public class Startup
     {
@@ -33,7 +37,26 @@
 
             services.AddCors();
 
-            services.AddAuthentication("MyAuthScheme")
+            services.AddAuthentication(option =>
+            {
+                option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = Configuration["JwtToken:Issuer"],
+                    ValidAudience = Configuration["JwtToken:Issuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtToken:SecretKey"]))
+                };
+            });
+
+            /*services.AddAuthentication("MyAuthScheme")
                 .AddCookie("MyAuthScheme", options =>
                 {
                     options.Cookie.HttpOnly = true;
@@ -44,7 +67,7 @@
                 options.Cookie.Name = "Session";
                 options.IdleTimeout = TimeSpan.FromMinutes(30);
                 options.Cookie.MaxAge = TimeSpan.FromMinutes(30);
-            });
+            });*/
 
             //services
             services.AddTransient<JwtService>();
@@ -67,7 +90,7 @@
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseSession();
+            //app.UseSession();
 
             app.UseRouting();
 
@@ -77,10 +100,10 @@
             app.UseStaticFiles();
 
             app.UseCors(options => options
-                .WithOrigins(new[] { "http://localhost:3000", "http://localhost:8080", "http://localhost:4200" })
-                .AllowAnyHeader()
+                //.WithOrigins(new[] { "http://localhost:3000", "http://localhost:8080", "http://localhost:4200"})
+                //.AllowAnyHeader()
                 .AllowAnyMethod()
-                .AllowCredentials()
+                //.AllowCredentials()
             );
 
             //routes 
