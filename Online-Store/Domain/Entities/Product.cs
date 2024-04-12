@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Online_Store.Domain.Entities
 {
-    public abstract class Product: AbstractModel
+    public class Product: AbstractModel
     {
         public string? Name { get; set; }
         public string? Description { get; set; }
@@ -22,5 +22,6 @@ namespace Online_Store.Domain.Entities
         [ForeignKey("CategoryId")]
         public Category? Category { get; set; }
         public List<ProductImages>? Images { get; set; } = new List<ProductImages>();
+        public ICollection<Characteristics>? Characteristics {get; set;} = new List<Characteristics>();
     }
 }

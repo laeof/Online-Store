@@ -21,13 +21,9 @@ namespace Online_Store.Domain
         public DbSet<OrderItems> OrderItems { get; set; }
         public DbSet<CartItems> CartItems { get; set; }
         public DbSet<ProductImages> ProductImages { get; set; }
+        public DbSet<Characteristics> Characteristics { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Product>()
-                .HasDiscriminator<string>("Product")
-                .HasValue<Entities.Products.Monitor>("Monitor")                     
-                .HasValue<Keyboard>("Keyboard");
-
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Role>().HasData(new Role

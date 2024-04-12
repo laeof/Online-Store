@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Online_Store.Domain;
@@ -11,9 +12,11 @@ using Online_Store.Domain;
 namespace Online_Store.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240412111353_friapr1413")]
+    partial class friapr1413
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -106,9 +109,6 @@ namespace Online_Store.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<Guid?>("CategoryId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid?>("CategoryParentId")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("Created")
@@ -334,20 +334,11 @@ namespace Online_Store.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<double?>("DoubleValue")
-                        .HasColumnType("double precision");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
 
                     b.Property<bool>("IsNew")
                         .HasColumnType("boolean");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -445,8 +436,8 @@ namespace Online_Store.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("29164577-4820-44b4-aa7b-8ce62d64b5f3"),
-                            Created = new DateTime(2024, 4, 12, 22, 38, 38, 600, DateTimeKind.Utc).AddTicks(7382),
+                            Id = new Guid("6c3b710d-15e6-4333-9d97-f4b4a7b593d2"),
+                            Created = new DateTime(2024, 4, 12, 11, 13, 53, 821, DateTimeKind.Utc).AddTicks(5705),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "admin",
@@ -454,8 +445,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("3bc5ef03-6960-4bc7-83f4-73f41a63be4a"),
-                            Created = new DateTime(2024, 4, 12, 22, 38, 38, 600, DateTimeKind.Utc).AddTicks(7415),
+                            Id = new Guid("8efca720-884f-4633-9f6d-6c132c037027"),
+                            Created = new DateTime(2024, 4, 12, 11, 13, 53, 821, DateTimeKind.Utc).AddTicks(5733),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "manager",
@@ -463,8 +454,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e5528142-35bb-4797-9cd8-62d5c7c9cd5b"),
-                            Created = new DateTime(2024, 4, 12, 22, 38, 38, 600, DateTimeKind.Utc).AddTicks(7431),
+                            Id = new Guid("d44e97de-506c-428f-8eea-f339e82e028a"),
+                            Created = new DateTime(2024, 4, 12, 11, 13, 53, 821, DateTimeKind.Utc).AddTicks(5748),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "supporter",
@@ -472,8 +463,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("aecc3096-996a-4f22-8b40-766a796f9591"),
-                            Created = new DateTime(2024, 4, 12, 22, 38, 38, 600, DateTimeKind.Utc).AddTicks(7445),
+                            Id = new Guid("32aa933b-7b6f-4104-af31-971441543cc4"),
+                            Created = new DateTime(2024, 4, 12, 11, 13, 53, 821, DateTimeKind.Utc).AddTicks(5763),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "user",

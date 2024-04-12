@@ -33,6 +33,7 @@
             services.AddTransient<ICategoryRepository , EFCategoryRepository>();
             services.AddTransient<ICartRepository , EFCartRepository>();
             services.AddTransient<ICartItemsRepository , EFCartItemsRepository>();
+            services.AddTransient<ICharacteristicsRepository, EFCharacteristicsRepository>();
             services.AddTransient<DataManager>();
 
             services.AddCors();
@@ -74,9 +75,9 @@
             services.AddScoped<AuthService>();
             services.AddScoped<SecurePasswordHasher>();
 
-            services.AddScoped<CategoryProductTypeMapper>();
-            services.AddScoped<IProductFactory, MonitorFactory>();
-            services.AddScoped<IProductFactory, KeyboardFactory>();
+            //services.AddScoped<CategoryProductTypeMapper>();
+            //services.AddScoped<IProductFactory, MonitorFactory>();
+            //services.AddScoped<IProductFactory, KeyboardFactory>();
             //add mvc
             services.AddControllersWithViews()
                 .AddSessionStateTempDataProvider();

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Online_Store.Domain;
@@ -11,9 +12,11 @@ using Online_Store.Domain;
 namespace Online_Store.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240412102904_friapr121328")]
+    partial class friapr121328
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,21 +24,6 @@ namespace Online_Store.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
-
-            modelBuilder.Entity("CharacteristicsProduct", b =>
-                {
-                    b.Property<Guid>("CharacteristicsId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("ProductsId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("CharacteristicsId", "ProductsId");
-
-                    b.HasIndex("ProductsId");
-
-                    b.ToTable("CharacteristicsProduct");
-                });
 
             modelBuilder.Entity("Online_Store.Domain.Entities.Cart", b =>
                 {
@@ -106,9 +94,6 @@ namespace Online_Store.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<Guid?>("CategoryId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid?>("CategoryParentId")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("Created")
@@ -309,6 +294,10 @@ namespace Online_Store.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("numeric");
 
+                    b.Property<string>("Product")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<decimal?>("SalePrice")
                         .HasColumnType("numeric");
 
@@ -323,35 +312,10 @@ namespace Online_Store.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
-                });
 
-            modelBuilder.Entity("Online_Store.Domain.Entities.Products.Characteristics", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                    b.HasDiscriminator<string>("Product").HasValue("Product");
 
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<double?>("DoubleValue")
-                        .HasColumnType("double precision");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("IsNew")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Characteristics");
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Online_Store.Domain.Entities.Products.ProductImages", b =>
@@ -445,8 +409,8 @@ namespace Online_Store.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("29164577-4820-44b4-aa7b-8ce62d64b5f3"),
-                            Created = new DateTime(2024, 4, 12, 22, 38, 38, 600, DateTimeKind.Utc).AddTicks(7382),
+                            Id = new Guid("079d3b12-c11e-4966-a5b2-e4b9d69c12dd"),
+                            Created = new DateTime(2024, 4, 12, 10, 29, 4, 201, DateTimeKind.Utc).AddTicks(3975),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "admin",
@@ -454,8 +418,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("3bc5ef03-6960-4bc7-83f4-73f41a63be4a"),
-                            Created = new DateTime(2024, 4, 12, 22, 38, 38, 600, DateTimeKind.Utc).AddTicks(7415),
+                            Id = new Guid("1fb1f485-9ae9-4528-9dc3-9d27b156f8ea"),
+                            Created = new DateTime(2024, 4, 12, 10, 29, 4, 201, DateTimeKind.Utc).AddTicks(4001),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "manager",
@@ -463,8 +427,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e5528142-35bb-4797-9cd8-62d5c7c9cd5b"),
-                            Created = new DateTime(2024, 4, 12, 22, 38, 38, 600, DateTimeKind.Utc).AddTicks(7431),
+                            Id = new Guid("6f6ef244-a2af-4c20-b205-76ca26ba22ed"),
+                            Created = new DateTime(2024, 4, 12, 10, 29, 4, 201, DateTimeKind.Utc).AddTicks(4017),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "supporter",
@@ -472,8 +436,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("aecc3096-996a-4f22-8b40-766a796f9591"),
-                            Created = new DateTime(2024, 4, 12, 22, 38, 38, 600, DateTimeKind.Utc).AddTicks(7445),
+                            Id = new Guid("0a900a32-e130-487a-8d75-a5015cc15533"),
+                            Created = new DateTime(2024, 4, 12, 10, 29, 4, 201, DateTimeKind.Utc).AddTicks(4031),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "user",
@@ -560,19 +524,42 @@ namespace Online_Store.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("CharacteristicsProduct", b =>
+            modelBuilder.Entity("Online_Store.Domain.Entities.Products.Keyboard", b =>
                 {
-                    b.HasOne("Online_Store.Domain.Entities.Products.Characteristics", null)
-                        .WithMany()
-                        .HasForeignKey("CharacteristicsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasBaseType("Online_Store.Domain.Entities.Product");
 
-                    b.HasOne("Online_Store.Domain.Entities.Product", null)
-                        .WithMany()
-                        .HasForeignKey("ProductsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasDiscriminator().HasValue("Keyboard");
+                });
+
+            modelBuilder.Entity("Online_Store.Domain.Entities.Products.Monitor", b =>
+                {
+                    b.HasBaseType("Online_Store.Domain.Entities.Product");
+
+                    b.Property<string>("Brightness")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Contrast")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Diagonal")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Frequency")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Interfaces")
+                        .HasColumnType("text");
+
+                    b.Property<string>("MatrixType")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ratio")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Reaction")
+                        .HasColumnType("text");
+
+                    b.HasDiscriminator().HasValue("Monitor");
                 });
 
             modelBuilder.Entity("Online_Store.Domain.Entities.Cart", b =>

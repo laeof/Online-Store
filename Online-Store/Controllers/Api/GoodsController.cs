@@ -12,12 +12,11 @@ namespace Online_Store.Controllers.Api
     public class GoodsController : ControllerBase
     {
         private readonly DataManager _dataManager;
-        private readonly CategoryProductTypeMapper _productFactoryMapping;
         private readonly IWebHostEnvironment _environment;
-        public GoodsController(DataManager dataManager, CategoryProductTypeMapper productTypeMapper, IWebHostEnvironment environment)
+        public GoodsController(DataManager dataManager,
+                                IWebHostEnvironment environment)
         {
             _dataManager = dataManager;
-            _productFactoryMapping = productTypeMapper;
             _environment = environment;
         }
 
@@ -48,7 +47,7 @@ namespace Online_Store.Controllers.Api
         {
             var product = await _dataManager.Products.GetProductByIdAsync(id);
 
-            if(product == null)
+            if (product == null)
             {
                 return NotFound();
             }
@@ -72,17 +71,42 @@ namespace Online_Store.Controllers.Api
 
             return Ok(product);
         }
-        [HttpPost("create")]
-        public async Task<IActionResult> CreateProduct(ProductViewModel productData)
+
+        [HttpPost("createcharacteristics")]
+        public async Task<IActionResult> CreateCharacteristics(Characteristics characteristics)
         {
-            //get product type by category id
-            Type productType = await _productFactoryMapping.GetProductType(productData.CategoryId);
+            var Characteristics = new Characteristics()
+            {
+                Name = characteristics.Name,
+                DoubleValue = characteristics.DoubleValue,
+                Value = characteristics.Value
+            };
 
-            //get factory by product type
-            IProductFactory factory = _productFactoryMapping.GetFactory(productType);
+            await _dataManager.Characteristics.SaveCharacteristicsAsync(Characteristics);
 
-            //create product
-            var product = await factory.CreateProduct(productData);
+            return Ok();
+        }
+
+        [HttpPost("create")]
+        public async Task<IActionResult> CreateProduct(Product productData)
+        {
+            var product = new Product()
+            {
+                Name = productData.Name,
+                CategoryId = productData.CategoryId,
+                Color = productData.Color,
+                Country = productData.Country,
+                Description = productData.Description,
+                Guarantee = productData.Guarantee,
+                Kit = productData.Kit,
+                Price = productData.Price,
+                SalePrice = productData.SalePrice,
+                Size = productData.Size,
+                Weight = productData.Weight,
+                Characteristics = productData.Characteristics,
+            };
+
+            await _dataManager.Products.SaveProductAsync(product);
 
             foreach (var a in productData.Images)
             {

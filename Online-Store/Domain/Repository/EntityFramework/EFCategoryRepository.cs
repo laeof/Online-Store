@@ -61,7 +61,7 @@ namespace Online_Store.Domain.Repository.EntityFramework
         }
         public async Task<bool> SoftDeleteCategoryAsync(Category entity)
         {
-            var category = await context.Users.FirstOrDefaultAsync(r => r.Id == entity.Id);
+            var category = await context.Characteristics.FirstOrDefaultAsync(r => r.Id == entity.Id);
             if (category != null)
             {
                 category.IsDeleted = true;
