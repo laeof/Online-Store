@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using NuGet.Packaging;
 using Online_Store.Domain.Entities;
 using Online_Store.Domain.Entities.Products;
 using Online_Store.Domain.Repository.Abstract;
@@ -22,8 +23,45 @@ namespace Online_Store.Domain.Repository.EntityFramework
         }
         public async Task<Category?> GetCategoryByIdAsync(Guid id)
         {
-            return await context.Categories.Where(c => c.Id == id).Include(c => c.Products).FirstOrDefaultAsync();
+            var category = await context.Categories
+                            .Where(c => c.Id == id)
+                            .FirstOrDefaultAsync();
+
+            
+            if(category != null) {
+                category.Categories = await context.Categories
+                                            .Where(c => c.CategoryParentId == category.Id)
+                                            .Select(c => new Category{
+                                                Id = c.Id,
+                                                Name = c.Name,
+                                                CategoryParentId = c.CategoryParentId,
+                                                ImgPath = c.ImgPath,
+                                            })
+                                            .ToListAsync();
+
+                var allNestedCategoryIds = category.Categories.Select(c => c.Id).ToList();
+        
+                var allNestedProducts = await context.Products
+                                            .Where(p => p.CategoryId == id || allNestedCategoryIds.Contains(p.CategoryId))
+                                            .Include(c => c.Images)
+                                            .Select(c => new Product {
+                                                Id = c.Id,
+                                                Additional = c.Additional,
+                                                Amount = c.Amount,
+                                                CategoryId = c.CategoryId,
+                                                Characteristics = c.Characteristics,
+                                                Price = c.Price,
+                                                Name = c.Name,
+                                                Weight = c.Weight,
+                                            })
+                                            .ToListAsync();
+
+                category.Products.AddRange(allNestedProducts);
+            }
+
+            return category;
         }
+        
         public async Task<bool> SaveCategoryAsync(Category entity)
         {
             if (entity.IsNew)

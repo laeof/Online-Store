@@ -28,6 +28,7 @@ namespace Online_Store.Controllers.Api
                 {
                     Name = model.Name,
                     ImgPath = model.ImgPath,
+                    CategoryParentId = new Guid(model.CategoryParentId)
                 };
             }
             else
@@ -36,7 +37,6 @@ namespace Online_Store.Controllers.Api
                 {
                     Name = model.Name,
                     ImgPath = model.ImgPath,
-                    CategoryParentId = new Guid(model.CategoryParentId)
                 };
             }
 
@@ -112,7 +112,7 @@ namespace Online_Store.Controllers.Api
         [HttpGet("getid/{id}")]
         public async Task<IActionResult> GetCategoryById(Guid id)
         {
-            var category = await _dataManager.Categories.GetCategories().Where(c => c.Id == id).Select(category => new
+            /*var category = await _dataManager.Categories.GetCategories().Where(c => c.Id == id).Select(category => new
             {
                 category.Id,
                 category.Name,
@@ -125,7 +125,8 @@ namespace Online_Store.Controllers.Api
                 {
                     category.Id
                 }).ToList(),
-            }).FirstOrDefaultAsync();
+            }).FirstOrDefaultAsync();*/
+            var category = await _dataManager.Categories.GetCategoryByIdAsync(id);
             return Ok(category);
         }
     }
