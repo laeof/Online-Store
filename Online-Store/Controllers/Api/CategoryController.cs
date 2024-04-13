@@ -2,31 +2,75 @@
 using Online_Store.Domain.Entities;
 using Online_Store.Domain;
 using Microsoft.EntityFrameworkCore;
+using Online_Store.Models;
 
 namespace Online_Store.Controllers.Api
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoryController: ControllerBase
+    public class CategoryController : ControllerBase
     {
         private readonly DataManager _dataManager;
-        public CategoryController(DataManager dataManager)
+        private readonly IWebHostEnvironment _environment;
+        public CategoryController(DataManager dataManager,
+                                  IWebHostEnvironment environment)
         {
             _dataManager = dataManager;
+            _environment = environment;
         }
         [HttpPost("create")]
-        public async Task<IActionResult> CreateCategory(Category model)
+        public async Task<IActionResult> CreateCategory(CategoryViewModel model)
         {
-            var category = new Category
+            Category category;
+            if (model.CategoryParentId != null)
             {
-                Name = model.Name,
-                ImgPath = model.ImgPath
-            };
+                category = new Category
+                {
+                    Name = model.Name,
+                    ImgPath = model.ImgPath,
+                    CategoryParentId = new Guid(model.CategoryParentId)
+                };
+            }
+            else
+            {
+                category = new Category
+                {
+                    Name = model.Name,
+                    ImgPath = model.ImgPath,
+                };
+            }
 
             await _dataManager.Categories.SaveCategoryAsync(category);
 
             return Ok();
         }
+
+        [HttpPost("uploadimg")]
+        public async Task<IActionResult> UploadImg([FromForm] List<IFormFile> file)
+        {
+            var files = file;
+            var uploadedFiles = new List<string>();
+            var uploadDirectory = Path.Combine(_environment.WebRootPath, "img", "category");
+
+            foreach (var f in files)
+            {
+                if (f.Length > 0)
+                {
+                    var fileName = Path.GetFileName(f.FileName);
+                    var filePath = Path.Combine(uploadDirectory, fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await f.CopyToAsync(stream);
+                    }
+
+                    uploadedFiles.Add(fileName);
+                }
+            }
+
+            return Ok();
+        }
+
         [HttpGet("getall")]
         public IActionResult GetAllCategories()
         {
@@ -38,14 +82,18 @@ namespace Online_Store.Controllers.Api
                 Products = category.Products.Select(product => new
                 {
                     product.Id
-                }).ToList()
+                }).ToList(),
+                Categories = category.Categories.Select(category => new
+                {
+                    category.Id
+                }).ToList(),
             });
             return Ok(category);
         }
-        [HttpGet("getid/{id}")]
-        public async Task<IActionResult> GetCategoryById(Guid id)
+        [HttpGet("getallwithouttopcategory")]
+        public IActionResult GetAllCategoriesWithoutTopCategory()
         {
-            var category = await _dataManager.Categories.GetCategories().Where(c => c.Id == id).Select(category => new
+            var category = _dataManager.Categories.GetCategories().Where(category => category.CategoryParentId == null).Select(category => new
             {
                 category.Id,
                 category.Name,
@@ -53,8 +101,32 @@ namespace Online_Store.Controllers.Api
                 Products = category.Products.Select(product => new
                 {
                     product.Id
-                }).ToList()
-            }).FirstOrDefaultAsync();
+                }).ToList(),
+                Categories = category.Categories.Select(category => new
+                {
+                    category.Id
+                }).ToList(),
+            });
+            return Ok(category);
+        }
+        [HttpGet("getid/{id}")]
+        public async Task<IActionResult> GetCategoryById(Guid id)
+        {
+            /*var category = await _dataManager.Categories.GetCategories().Where(c => c.Id == id).Select(category => new
+            {
+                category.Id,
+                category.Name,
+                category.ImgPath,
+                Products = category.Products.Select(product => new
+                {
+                    product.Id
+                }).ToList(),
+                Categories = category.Categories.Select(category => new
+                {
+                    category.Id
+                }).ToList(),
+            }).FirstOrDefaultAsync();*/
+            var category = await _dataManager.Categories.GetCategoryByIdAsync(id);
             return Ok(category);
         }
     }

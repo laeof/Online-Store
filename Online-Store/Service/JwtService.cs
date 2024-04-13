@@ -22,8 +22,8 @@ namespace Online_Store.Service
 
             var payload = new JwtPayload
             {
-                { "id", id.ToString() },
-                { JwtRegisteredClaimNames.Exp, DateTime.Today.AddMinutes(1) }
+                { "id", id.ToString() },    
+                { JwtRegisteredClaimNames.Exp, DateTime.UtcNow.AddHours(2) }
             };
 
             var securityToken = new JwtSecurityToken(header, payload);
@@ -37,9 +37,12 @@ namespace Online_Store.Service
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var token = tokenHandler.ReadJwtToken(jwtToken);
 
-                if (token.Payload.TryGetValue("id", out var idClaimValue) && idClaimValue is string idString)
+                token.Payload.TryGetValue("id", out var idClaimValue);
+                token.Payload.TryGetValue(JwtRegisteredClaimNames.Exp, out var expDate);
+
+                if (idClaimValue is string idString)
                 {
-                    if (Guid.TryParse(idString, out var id))
+                    if (Guid.TryParse(idString, out var id) && (DateTime)expDate > DateTime.UtcNow)
                     {
                         return true;
                     }

@@ -67,7 +67,7 @@ namespace Online_Store.Controllers.Api
             Response.Cookies.Append("jwtToken", jwt, new CookieOptions
             {
                 HttpOnly = true,
-                Expires = DateTimeOffset.UtcNow.AddDays(2)
+                Expires = DateTimeOffset.UtcNow.AddMinutes(2)
             });
 
             return Ok();
@@ -90,7 +90,7 @@ namespace Online_Store.Controllers.Api
             Response.Cookies.Append("jwtToken", jwt, new CookieOptions
             {
                 HttpOnly = true,
-                Expires = DateTimeOffset.UtcNow.AddDays(2)
+                Expires = DateTimeOffset.UtcNow.AddMinutes(2)
             });
 
             return Ok();
@@ -98,7 +98,7 @@ namespace Online_Store.Controllers.Api
         [HttpPost("logout")]
         public IActionResult LogOut()
         {
-            _logger.LogInformation("User logged out");
+            //_logger.LogInformation("User logged out");
             Response.Cookies.Delete("jwtToken");
             return Ok();
         }
@@ -110,12 +110,10 @@ namespace Online_Store.Controllers.Api
                 return Unauthorized();
             }
 
-            try
-            {
-                return Ok(_jwtService.Verify(jwtToken));
+            if(_jwtService.Verify(jwtToken)) {
+                return Ok(true);
             }
-            catch
-            {
+            else {
                 return Ok(false);
             }
         }

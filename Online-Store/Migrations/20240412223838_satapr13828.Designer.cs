@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Online_Store.Domain;
@@ -11,9 +12,11 @@ using Online_Store.Domain;
 namespace Online_Store.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240412223838_satapr13828")]
+    partial class satapr13828
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -105,6 +108,9 @@ namespace Online_Store.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<Guid?>("CategoryId")
+                        .HasColumnType("uuid");
+
                     b.Property<Guid?>("CategoryParentId")
                         .HasColumnType("uuid");
 
@@ -127,7 +133,7 @@ namespace Online_Store.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryParentId");
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Categories");
                 });
@@ -442,8 +448,8 @@ namespace Online_Store.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ad887b9c-1969-4ccd-a43b-6d8bfe180d13"),
-                            Created = new DateTime(2024, 4, 13, 9, 57, 7, 267, DateTimeKind.Utc).AddTicks(5294),
+                            Id = new Guid("29164577-4820-44b4-aa7b-8ce62d64b5f3"),
+                            Created = new DateTime(2024, 4, 12, 22, 38, 38, 600, DateTimeKind.Utc).AddTicks(7382),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "admin",
@@ -451,8 +457,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9c6f9956-5865-47ee-8a4f-efa5b3ecc6b1"),
-                            Created = new DateTime(2024, 4, 13, 9, 57, 7, 267, DateTimeKind.Utc).AddTicks(5321),
+                            Id = new Guid("3bc5ef03-6960-4bc7-83f4-73f41a63be4a"),
+                            Created = new DateTime(2024, 4, 12, 22, 38, 38, 600, DateTimeKind.Utc).AddTicks(7415),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "manager",
@@ -460,8 +466,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d82de0dc-5d08-40a1-b5b4-b3ffe906b65e"),
-                            Created = new DateTime(2024, 4, 13, 9, 57, 7, 267, DateTimeKind.Utc).AddTicks(5363),
+                            Id = new Guid("e5528142-35bb-4797-9cd8-62d5c7c9cd5b"),
+                            Created = new DateTime(2024, 4, 12, 22, 38, 38, 600, DateTimeKind.Utc).AddTicks(7431),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "supporter",
@@ -469,8 +475,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a6e56487-c291-4058-9144-6adb29d42bd6"),
-                            Created = new DateTime(2024, 4, 13, 9, 57, 7, 267, DateTimeKind.Utc).AddTicks(5378),
+                            Id = new Guid("aecc3096-996a-4f22-8b40-766a796f9591"),
+                            Created = new DateTime(2024, 4, 12, 22, 38, 38, 600, DateTimeKind.Utc).AddTicks(7445),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "user",
@@ -606,7 +612,7 @@ namespace Online_Store.Migrations
                 {
                     b.HasOne("Online_Store.Domain.Entities.Category", null)
                         .WithMany("Categories")
-                        .HasForeignKey("CategoryParentId");
+                        .HasForeignKey("CategoryId");
                 });
 
             modelBuilder.Entity("Online_Store.Domain.Entities.Order", b =>
