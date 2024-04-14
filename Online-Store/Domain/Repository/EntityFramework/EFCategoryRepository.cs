@@ -8,7 +8,7 @@ using System.Data.Common;
 
 namespace Online_Store.Domain.Repository.EntityFramework
 {
-    public class EFCategoryRepository: ICategoryRepository
+    public class EFCategoryRepository : ICategoryRepository
     {
         private readonly AppDbContext context;
         private readonly ILogger<EFCategoryRepository> logger;
@@ -27,41 +27,43 @@ namespace Online_Store.Domain.Repository.EntityFramework
                             .Where(c => c.Id == id)
                             .FirstOrDefaultAsync();
 
-            
-            if(category != null) {
-                category.Categories = await context.Categories
-                                            .Where(c => c.CategoryParentId == category.Id)
-                                            .Select(c => new Category{
-                                                Id = c.Id,
-                                                Name = c.Name,
-                                                CategoryParentId = c.CategoryParentId,
-                                                ImgPath = c.ImgPath,
-                                            })
-                                            .ToListAsync();
+            if (category == null)
+                return category;
 
-                var allNestedCategoryIds = category.Categories.Select(c => c.Id).ToList();
-        
-                var allNestedProducts = await context.Products
-                                            .Where(p => p.CategoryId == id || allNestedCategoryIds.Contains(p.CategoryId))
-                                            .Include(c => c.Images)
-                                            .Select(c => new Product {
-                                                Id = c.Id,
-                                                Additional = c.Additional,
-                                                Amount = c.Amount,
-                                                CategoryId = c.CategoryId,
-                                                Characteristics = c.Characteristics,
-                                                Price = c.Price,
-                                                Name = c.Name,
-                                                Weight = c.Weight,
-                                            })
-                                            .ToListAsync();
+            category.Categories = await context.Categories
+                                        .Where(c => c.CategoryParentId == category.Id)
+                                        .Select(c => new Category
+                                        {
+                                            Id = c.Id,
+                                            Name = c.Name,
+                                            CategoryParentId = c.CategoryParentId,
+                                            ImgPath = c.ImgPath,
+                                        })
+                                        .ToListAsync();
 
-                category.Products.AddRange(allNestedProducts);
-            }
+            var allNestedCategoryIds = category.Categories.Select(c => c.Id).ToList();
+
+            var allNestedProducts = await context.Products
+                                        .Where(p => p.CategoryId == id || allNestedCategoryIds.Contains(p.CategoryId))
+                                        .Include(c => c.Images)
+                                        .Select(c => new Product
+                                        {
+                                            Id = c.Id,
+                                            Additional = c.Additional,
+                                            Amount = c.Amount,
+                                            CategoryId = c.CategoryId,
+                                            Characteristics = c.Characteristics,
+                                            Price = c.Price,
+                                            Name = c.Name,
+                                            Weight = c.Weight,
+                                        })
+                                        .ToListAsync();
+
+            category.Products.AddRange(allNestedProducts);
 
             return category;
         }
-        
+
         public async Task<bool> SaveCategoryAsync(Category entity)
         {
             if (entity.IsNew)
@@ -100,15 +102,15 @@ namespace Online_Store.Domain.Repository.EntityFramework
         public async Task<bool> SoftDeleteCategoryAsync(Category entity)
         {
             var category = await context.Characteristics.FirstOrDefaultAsync(r => r.Id == entity.Id);
+            
             if (category != null)
-            {
-                category.IsDeleted = true;
+                return false;
 
-                await context.SaveChangesAsync();
+            category.IsDeleted = true;
 
-                return true;
-            }
-            return false;
+            await context.SaveChangesAsync();
+
+            return true;
         }
     }
 }
