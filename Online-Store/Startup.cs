@@ -31,9 +31,9 @@
             services.AddTransient<IOrderRepository, EFOrderRepository>();
             services.AddTransient<IProductRepository, EFProductRepository>();
             services.AddTransient<IProductImagesRepository, EFProductImagesRepository>();
-            services.AddTransient<ICategoryRepository , EFCategoryRepository>();
-            services.AddTransient<ICartRepository , EFCartRepository>();
-            services.AddTransient<ICartItemsRepository , EFCartItemsRepository>();
+            services.AddTransient<ICategoryRepository, EFCategoryRepository>();
+            services.AddTransient<ICartRepository, EFCartRepository>();
+            services.AddTransient<ICartItemsRepository, EFCartItemsRepository>();
             services.AddTransient<ICharacteristicsRepository, EFCharacteristicsRepository>();
             services.AddTransient<DataManager>();
 
@@ -62,7 +62,13 @@
             services.AddTransient<JwtService>();
             services.AddScoped<AuthService>();
             services.AddScoped<SecurePasswordHasher>();
-            services.AddScoped<GoogleOAuthService>();
+            services.AddScoped<GoogleOAuthService>(provider =>
+            {
+                var httpClientHelper = provider.GetRequiredService<HttpClientHelper>();
+                var clientId = Config.clientId;
+                var clientSecret = Config.clientsecret;
+                return new GoogleOAuthService(httpClientHelper, clientId, clientSecret);
+            });
             services.AddScoped<GoogleProfileService>();
             services.AddScoped<HttpClientHelper>();
 
@@ -90,7 +96,7 @@
                 //.WithOrigins(new[] { "http://localhost:3000", "http://localhost:8080", "http://localhost:4200"})
                 //.AllowAnyHeader()
                 .AllowAnyMethod()
-                //.AllowCredentials()
+            //.AllowCredentials()
             );
 
             //routes 

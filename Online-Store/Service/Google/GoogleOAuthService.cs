@@ -9,12 +9,14 @@ namespace Online_Store.Service
     public class GoogleOAuthService
     {
         private readonly HttpClientHelper _httpClientHelper;
-        public GoogleOAuthService(HttpClientHelper httpClientHelper)
+        public GoogleOAuthService(HttpClientHelper httpClientHelper,
+                                  string client_id,
+                                  string client_secret)
         {
             _httpClientHelper = httpClientHelper;
         }
-        private readonly string _clientId = "617562767005-pahb0a2l0auh17hb8k93rtver2tcpn5o.apps.googleusercontent.com";
-        private readonly string _clientSecret = "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";
+        public string _clientId;
+        public string _clientSecret;
         public string GenerateOAuthRequestUrl(string scope, string redirectUrl, string codeChallenge)
         {
             var oAuthServerEndpoint = "https://accounts.google.com/o/oauth2/v2/auth";
