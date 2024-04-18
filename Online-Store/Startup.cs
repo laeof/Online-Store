@@ -65,9 +65,7 @@
             services.AddScoped<GoogleOAuthService>(provider =>
             {
                 var httpClientHelper = provider.GetRequiredService<HttpClientHelper>();
-                var clientId = Config.clientId;
-                var clientSecret = Config.clientsecret;
-                return new GoogleOAuthService(httpClientHelper, clientId, clientSecret);
+                return new GoogleOAuthService(httpClientHelper, Config.ClientId, Config.ClientSecret);
             });
             services.AddScoped<GoogleProfileService>();
             services.AddScoped<HttpClientHelper>();

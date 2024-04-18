@@ -3,8 +3,8 @@
     public class Config
     {
         public static string ConnectionString { get; set; }
-        public static string clientId { get; }
-        public static string clientsecret { get; }
+        public static string ClientId { get; set; }
+        public static string ClientSecret { get; set; }
 
         public static string CompanyName { get; set; } = string.Empty;
         public static string CompanyPhone { get; set; } = string.Empty;
