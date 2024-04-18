@@ -24,6 +24,10 @@ namespace Online_Store.Domain
         public DbSet<Characteristics> Characteristics { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>()
+                    .HasIndex(u => u.GoogleId)
+                    .IsUnique();
+
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Role>().HasData(new Role

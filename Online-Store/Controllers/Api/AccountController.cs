@@ -95,13 +95,6 @@ namespace Online_Store.Controllers.Api
 
             return Ok();
         }
-        [HttpPost("logout")]
-        public IActionResult LogOut()
-        {
-            //_logger.LogInformation("User logged out");
-            Response.Cookies.Delete("jwtToken");
-            return Ok();
-        }
         [HttpGet("check-auth")]
         public IActionResult CheckAuthorization()
         {

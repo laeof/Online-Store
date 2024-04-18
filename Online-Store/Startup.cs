@@ -12,6 +12,7 @@
     using Microsoft.CodeAnalysis.Options;
     using Microsoft.IdentityModel.Tokens;
     using System.Text;
+    using Online_Store.Helpers;
 
     public class Startup
     {
@@ -57,27 +58,14 @@
                 };
             });
 
-            /*services.AddAuthentication("MyAuthScheme")
-                .AddCookie("MyAuthScheme", options =>
-                {
-                    options.Cookie.HttpOnly = true;
-                });
-
-            services.AddSession(options =>
-            {
-                options.Cookie.Name = "Session";
-                options.IdleTimeout = TimeSpan.FromMinutes(30);
-                options.Cookie.MaxAge = TimeSpan.FromMinutes(30);
-            });*/
-
             //services
             services.AddTransient<JwtService>();
             services.AddScoped<AuthService>();
             services.AddScoped<SecurePasswordHasher>();
+            services.AddScoped<GoogleOAuthService>();
+            services.AddScoped<GoogleProfileService>();
+            services.AddScoped<HttpClientHelper>();
 
-            //services.AddScoped<CategoryProductTypeMapper>();
-            //services.AddScoped<IProductFactory, MonitorFactory>();
-            //services.AddScoped<IProductFactory, KeyboardFactory>();
             //add mvc
             services.AddControllersWithViews()
                 .AddSessionStateTempDataProvider();
@@ -90,8 +78,6 @@
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            //app.UseSession();
 
             app.UseRouting();
 

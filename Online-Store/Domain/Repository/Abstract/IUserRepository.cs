@@ -6,6 +6,7 @@ namespace Online_Store.Domain.Repository.Abstract
 	{
 		IQueryable<User> GetUsers();
 		Task<User?> GetUserByIdAsync(Guid id);
+		Task<User?> GetUserByGoogleIdAsync(string googleId);
 		Task<bool> SaveUserAsync(User entity);
 		Task<bool> SoftDeleteUserAsync(User user);
 	}
