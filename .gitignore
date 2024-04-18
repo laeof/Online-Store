@@ -1,3 +1,5 @@
 /Online-Store/bin/
 /Online-Store/obj/
 .vs
+.vscode
+appsettings.Development.json

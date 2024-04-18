@@ -22,7 +22,7 @@ namespace Online_Store.Controllers.Api
         public async Task<IActionResult> CreateCategory(CategoryViewModel model)
         {
             Category category;
-            if (model.CategoryParentId != null)
+            if (model.CategoryParentId != "")
             {
                 category = new Category
                 {

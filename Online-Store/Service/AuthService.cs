@@ -87,7 +87,8 @@ namespace Online_Store.Service
                 LastName = register.LastName,
                 PhoneNumber = register.PhoneNumber,
                 Password = _passwordHasher.Hash(register.Password),
-                RoleId = role.Id
+                RoleId = role.Id,
+                GoogleId = register.GoogleId
             };
 
             var cart = new Cart

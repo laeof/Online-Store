@@ -23,6 +23,9 @@ namespace Online_Store.Domain.Repository.EntityFramework
 		{
 			return await context.Users.FirstOrDefaultAsync(x => x.Id == id);
 		}
+        public async Task<User?> GetUserByGoogleIdAsync(string googleId) {
+            return await context.Users.FirstOrDefaultAsync(x => x.GoogleId == googleId);
+        }
 		public async Task<bool> SaveUserAsync(User entity)
 		{
             if (entity.IsNew)

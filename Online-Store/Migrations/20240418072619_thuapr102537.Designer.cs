@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Online_Store.Domain;
@@ -11,9 +12,11 @@ using Online_Store.Domain;
 namespace Online_Store.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240418072619_thuapr102537")]
+    partial class thuapr102537
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -442,8 +445,8 @@ namespace Online_Store.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("12fd8d24-4b02-4d90-9c3c-5b8cb46b2570"),
-                            Created = new DateTime(2024, 4, 18, 7, 28, 59, 218, DateTimeKind.Utc).AddTicks(6431),
+                            Id = new Guid("1c2d3762-0fb9-48e9-895e-f4be7396c0ed"),
+                            Created = new DateTime(2024, 4, 18, 7, 26, 19, 378, DateTimeKind.Utc).AddTicks(5893),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "admin",
@@ -451,8 +454,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ae0bf20d-f0d5-4467-9760-b3a78e13116a"),
-                            Created = new DateTime(2024, 4, 18, 7, 28, 59, 218, DateTimeKind.Utc).AddTicks(6458),
+                            Id = new Guid("ea6a19e9-3682-48cb-a21d-a92ef97716af"),
+                            Created = new DateTime(2024, 4, 18, 7, 26, 19, 378, DateTimeKind.Utc).AddTicks(5919),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "manager",
@@ -460,8 +463,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d6f83b8a-bdf9-465b-9013-4657f703aa2b"),
-                            Created = new DateTime(2024, 4, 18, 7, 28, 59, 218, DateTimeKind.Utc).AddTicks(6473),
+                            Id = new Guid("609f6fb8-f86c-485e-8591-9d71de5b1ebd"),
+                            Created = new DateTime(2024, 4, 18, 7, 26, 19, 378, DateTimeKind.Utc).AddTicks(5935),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "supporter",
@@ -469,8 +472,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("6fa5ff99-8756-4fd2-a36b-6e198fdbda84"),
-                            Created = new DateTime(2024, 4, 18, 7, 28, 59, 218, DateTimeKind.Utc).AddTicks(6488),
+                            Id = new Guid("22e8e907-19a6-4c54-944b-7e3062adf632"),
+                            Created = new DateTime(2024, 4, 18, 7, 26, 19, 378, DateTimeKind.Utc).AddTicks(5949),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "user",
@@ -507,6 +510,7 @@ namespace Online_Store.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("FirstName")
@@ -536,9 +540,11 @@ namespace Online_Store.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Password")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("PostalCode")
