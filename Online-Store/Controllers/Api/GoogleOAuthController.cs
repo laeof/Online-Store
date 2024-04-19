@@ -63,8 +63,6 @@ namespace Online_Store.Controllers.Api
 
             return Ok(tokenResult);
         }
-
-        //move to accountcontroller or user
         
         private async Task<IActionResult> RegGoogleUser(GoogleUser googleUser)
         {
