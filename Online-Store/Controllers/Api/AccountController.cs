@@ -50,14 +50,14 @@ namespace Online_Store.Controllers.Api
 
             LoginViewModel? login = await _authService.SignUpAsync(register);
 
-            if(login == null)
+            if (login == null)
             {
                 _logger.LogError("Register error (fail to save user)");
                 return BadRequest();
             }
 
             //login with jwt
-            
+
             string jwt = await _authService.GetLoginJWTAsync(login);
 
             var User = await _dataManager.Users.GetUsers().FirstOrDefaultAsync(u => u.Email.ToLower() == login.Email);
@@ -95,27 +95,49 @@ namespace Online_Store.Controllers.Api
 
             return Ok();
         }
-        [HttpPost("logout")]
-        public IActionResult LogOut()
-        {
-            //_logger.LogInformation("User logged out");
-            Response.Cookies.Delete("jwtToken");
-            return Ok();
-        }
         [HttpGet("check-auth")]
         public IActionResult CheckAuthorization()
         {
-            if (!HttpContext.Request.Cookies.TryGetValue("jwtToken", out var jwtToken))
+            string jwtToken = "";
+            string accessToken = "";
+
+            if (!HttpContext.Request.Cookies.TryGetValue("jwtToken", out jwtToken) &&
+                !HttpContext.Request.Cookies.TryGetValue("accessToken", out accessToken))
             {
                 return Unauthorized();
             }
 
-            if(_jwtService.Verify(jwtToken)) {
+            if (jwtToken != null)
+            {
+                return Ok(_jwtService.Verify(jwtToken));
+            }
+            if (accessToken != null)
+            {
                 return Ok(true);
             }
-            else {
-                return Ok(false);
+
+            return BadRequest();
+        }
+        [HttpPost("logout")]
+        public IActionResult Logout()
+        {
+            string jwtToken = "";
+            string accessToken = "";
+
+            if (!HttpContext.Request.Cookies.TryGetValue("jwtToken", out jwtToken) &&
+                !HttpContext.Request.Cookies.TryGetValue("accessToken", out accessToken))
+            {
+                return Unauthorized();
             }
+
+            if (jwtToken != null)
+                Response.Cookies.Delete("jwtToken");
+            else
+            {
+                Response.Cookies.Delete("accessToken");
+                Response.Cookies.Delete("codeVerifier");
+            }
+            return Ok();
         }
     }
 }

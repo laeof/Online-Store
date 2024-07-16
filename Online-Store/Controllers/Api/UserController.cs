@@ -8,32 +8,46 @@ namespace Online_Store.Controllers.Api
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController: ControllerBase
+    public class UserController : ControllerBase
     {
         private readonly DataManager _dataManager;
         private readonly JwtService _jwtService;
-        public UserController(DataManager dataManager, JwtService jwtService) 
+        private readonly GoogleProfileService _googleProfileService;
+        public UserController(DataManager dataManager, 
+                              JwtService jwtService,
+                              GoogleProfileService googleProfileService)
         {
             _dataManager = dataManager;
             _jwtService = jwtService;
+            _googleProfileService = googleProfileService;
         }
 
         [HttpGet("current-user")]
         public async Task<IActionResult> GetCurrentUserInfo()
         {
-            if (!HttpContext.Request.Cookies.TryGetValue("jwtToken", out var jwtToken))
+            string jwtToken = null;
+            string accessToken = null;
+            Guid? userId = null;
+
+            if (!HttpContext.Request.Cookies.TryGetValue("jwtToken", out jwtToken) &&
+                !HttpContext.Request.Cookies.TryGetValue("accessToken", out accessToken))
             {
                 return Unauthorized();
             }
 
-            var userId = _jwtService.GetUserIdFromToken(jwtToken);
+            if (accessToken != null)
+            {
+                userId = await GetUserGoogleOAuth(accessToken);
+            }
+            else if (jwtToken != null)
+            {
+                userId = await GetUserJwtToken(jwtToken);
+            }
+
+            if(userId == null)
+                return Unauthorized();
 
             var user = await _dataManager.Users.GetUserByIdAsync((Guid)userId);
-
-            if (user == null)
-            {
-                return Unauthorized();
-            }
 
             var role = await _dataManager.Roles.GetRoleByIdAsync(user.RoleId);
 
@@ -47,6 +61,16 @@ namespace Online_Store.Controllers.Api
                 Gender = user.Gender,
                 PhoneNumber = user.PhoneNumber,
             });
+        }
+
+        public async Task<Guid> GetUserJwtToken(string jwtToken)
+        {
+            return (Guid)_jwtService.GetUserIdFromToken(jwtToken);
+        }
+
+        public async Task<Guid> GetUserGoogleOAuth(string access_token)
+        {
+            return await _googleProfileService.GetUserIdAsync(await _googleProfileService.UserAsync(access_token));
         }
     }
 }

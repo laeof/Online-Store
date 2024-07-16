@@ -442,8 +442,8 @@ namespace Online_Store.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ad887b9c-1969-4ccd-a43b-6d8bfe180d13"),
-                            Created = new DateTime(2024, 4, 13, 9, 57, 7, 267, DateTimeKind.Utc).AddTicks(5294),
+                            Id = new Guid("12fd8d24-4b02-4d90-9c3c-5b8cb46b2570"),
+                            Created = new DateTime(2024, 4, 18, 7, 28, 59, 218, DateTimeKind.Utc).AddTicks(6431),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "admin",
@@ -451,8 +451,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9c6f9956-5865-47ee-8a4f-efa5b3ecc6b1"),
-                            Created = new DateTime(2024, 4, 13, 9, 57, 7, 267, DateTimeKind.Utc).AddTicks(5321),
+                            Id = new Guid("ae0bf20d-f0d5-4467-9760-b3a78e13116a"),
+                            Created = new DateTime(2024, 4, 18, 7, 28, 59, 218, DateTimeKind.Utc).AddTicks(6458),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "manager",
@@ -460,8 +460,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d82de0dc-5d08-40a1-b5b4-b3ffe906b65e"),
-                            Created = new DateTime(2024, 4, 13, 9, 57, 7, 267, DateTimeKind.Utc).AddTicks(5363),
+                            Id = new Guid("d6f83b8a-bdf9-465b-9013-4657f703aa2b"),
+                            Created = new DateTime(2024, 4, 18, 7, 28, 59, 218, DateTimeKind.Utc).AddTicks(6473),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "supporter",
@@ -469,8 +469,8 @@ namespace Online_Store.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a6e56487-c291-4058-9144-6adb29d42bd6"),
-                            Created = new DateTime(2024, 4, 13, 9, 57, 7, 267, DateTimeKind.Utc).AddTicks(5378),
+                            Id = new Guid("6fa5ff99-8756-4fd2-a36b-6e198fdbda84"),
+                            Created = new DateTime(2024, 4, 18, 7, 28, 59, 218, DateTimeKind.Utc).AddTicks(6488),
                             IsDeleted = false,
                             IsNew = true,
                             Name = "user",
@@ -507,7 +507,6 @@ namespace Online_Store.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("FirstName")
@@ -515,6 +514,9 @@ namespace Online_Store.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Gender")
+                        .HasColumnType("text");
+
+                    b.Property<string>("GoogleId")
                         .HasColumnType("text");
 
                     b.Property<bool>("IsActive")
@@ -534,11 +536,9 @@ namespace Online_Store.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Password")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("PhoneNumber")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("PostalCode")
@@ -551,6 +551,9 @@ namespace Online_Store.Migrations
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("GoogleId")
+                        .IsUnique();
 
                     b.HasIndex("RoleId");
 

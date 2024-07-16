@@ -12,6 +12,7 @@
     using Microsoft.CodeAnalysis.Options;
     using Microsoft.IdentityModel.Tokens;
     using System.Text;
+    using Online_Store.Helpers;
 
     public class Startup
     {
@@ -30,9 +31,9 @@
             services.AddTransient<IOrderRepository, EFOrderRepository>();
             services.AddTransient<IProductRepository, EFProductRepository>();
             services.AddTransient<IProductImagesRepository, EFProductImagesRepository>();
-            services.AddTransient<ICategoryRepository , EFCategoryRepository>();
-            services.AddTransient<ICartRepository , EFCartRepository>();
-            services.AddTransient<ICartItemsRepository , EFCartItemsRepository>();
+            services.AddTransient<ICategoryRepository, EFCategoryRepository>();
+            services.AddTransient<ICartRepository, EFCartRepository>();
+            services.AddTransient<ICartItemsRepository, EFCartItemsRepository>();
             services.AddTransient<ICharacteristicsRepository, EFCharacteristicsRepository>();
             services.AddTransient<DataManager>();
 
@@ -57,27 +58,18 @@
                 };
             });
 
-            /*services.AddAuthentication("MyAuthScheme")
-                .AddCookie("MyAuthScheme", options =>
-                {
-                    options.Cookie.HttpOnly = true;
-                });
-
-            services.AddSession(options =>
-            {
-                options.Cookie.Name = "Session";
-                options.IdleTimeout = TimeSpan.FromMinutes(30);
-                options.Cookie.MaxAge = TimeSpan.FromMinutes(30);
-            });*/
-
             //services
             services.AddTransient<JwtService>();
             services.AddScoped<AuthService>();
             services.AddScoped<SecurePasswordHasher>();
+            services.AddScoped<GoogleOAuthService>(provider =>
+            {
+                var httpClientHelper = provider.GetRequiredService<HttpClientHelper>();
+                return new GoogleOAuthService(httpClientHelper, Config.ClientId, Config.ClientSecret);
+            });
+            services.AddScoped<GoogleProfileService>();
+            services.AddScoped<HttpClientHelper>();
 
-            //services.AddScoped<CategoryProductTypeMapper>();
-            //services.AddScoped<IProductFactory, MonitorFactory>();
-            //services.AddScoped<IProductFactory, KeyboardFactory>();
             //add mvc
             services.AddControllersWithViews()
                 .AddSessionStateTempDataProvider();
@@ -91,8 +83,6 @@
                 app.UseDeveloperExceptionPage();
             }
 
-            //app.UseSession();
-
             app.UseRouting();
 
             app.UseAuthorization();
@@ -104,7 +94,7 @@
                 //.WithOrigins(new[] { "http://localhost:3000", "http://localhost:8080", "http://localhost:4200"})
                 //.AllowAnyHeader()
                 .AllowAnyMethod()
-                //.AllowCredentials()
+            //.AllowCredentials()
             );
 
             //routes 
